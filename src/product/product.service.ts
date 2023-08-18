@@ -26,15 +26,17 @@ export class productServices {
 
   async getProducts(companyId: number): Promise<product[]> {
     try {
-      return await this.product.find({ where: { companyId: companyId } });
+      return (await this.product.find({ relations: ["company"] })).filter(client => client.company.companyId === companyId);
     } catch (err) {
       throw (err);
     }
 
   }
 
-  async createProduct(data) {
+  async createProduct(data, companyId) {
     try {
+      data['company'] = companyId;
+      console.log(data)
       return await this.product.save(data);
     } catch (err) {
       console.log(err)

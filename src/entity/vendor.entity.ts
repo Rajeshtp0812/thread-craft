@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Company } from "./company.entity";
 
 @Entity({ name: "vendor" })
 export class vendor {
@@ -13,9 +14,6 @@ export class vendor {
 
     @Column({ name: "contact" })
     contact: string
-
-    @Column({ name: "companyId" })
-    companyId: number
 
     @Column({ name: "email", nullable: true })
     email: string
@@ -34,4 +32,8 @@ export class vendor {
 
     @Column({ name: "city", nullable: true })
     city: string;
+
+    @ManyToOne(() => Company, company => company)
+    @JoinColumn({ name: "companyCompanyId" })
+    company: Company;
 }

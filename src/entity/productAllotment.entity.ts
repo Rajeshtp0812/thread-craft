@@ -40,8 +40,8 @@ export class productAllotment extends BaseEntity {
   @Column({ name: "Description", nullable: true })
   description: string
 
-  @Column({ name: "productImage", nullable: true })
-  productImage: string
+  @Column({ name: "image", nullable: true })
+  image: string
 
   @Column({ name: "productId" })
   productId: number

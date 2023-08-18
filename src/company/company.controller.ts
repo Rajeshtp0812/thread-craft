@@ -16,9 +16,10 @@ import { createCompanyDto } from 'src/dtos/company/create.dto';
 import { updateCompanyDto } from 'src/dtos/company/update.dto';
 import { Company } from 'src/entity/company.entity';
 import { Public } from '../auth/public.decorator';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('Company')
 @Controller('company')
-
 export class companyController {
 
   constructor(private companyServices: companyServices) { }

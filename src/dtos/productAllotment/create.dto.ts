@@ -52,5 +52,5 @@ export class createProductAllotmentDto {
 
     @IsString()
     @IsOptional()
-    productImage: string
+    image: string
 }

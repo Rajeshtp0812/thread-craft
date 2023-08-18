@@ -52,7 +52,7 @@ export class updateProductAllotmentDto {
 
       @IsString()
       @IsOptional()
-      productImage: string
+      image: string
 
 
 

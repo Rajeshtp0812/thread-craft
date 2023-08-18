@@ -14,15 +14,16 @@ import { productServices } from './product.service';
 import { updateProductDto } from 'src/dtos/product/update.dto';
 import { product } from 'src/entity/product.entity';
 import { createProductDto } from 'src/dtos/product/create.dto';
+import { ApiTags } from '@nestjs/swagger';
 
-
+@ApiTags('Product')
 @Controller('product')
 export class productController {
 
   constructor(private productServices: productServices) { }
 
-  @Get(':id')
-  async getProduct(@Param('id', ParseIntPipe) id: number): Promise<product> {
+  @Get(':productId')
+  async getProduct(@Param('productId', ParseIntPipe) id: number): Promise<product> {
     return await this.productServices.getProduct(id);
   }
 
@@ -32,17 +33,17 @@ export class productController {
   }
 
   @Post()
-  async create(@Body() data: createProductDto) {
-    return await this.productServices.createProduct(data);
+  async create(@Body() data: createProductDto, @Query('companyId', ParseIntPipe) companyId: number) {
+    return await this.productServices.createProduct(data, companyId);
   }
 
-  @Put(':id')
-  async update(@Param('id', ParseIntPipe) id: number, @Body() data: updateProductDto) {
+  @Put(':productId')
+  async update(@Param('productId', ParseIntPipe) id: number, @Body() data: updateProductDto) {
     return await this.productServices.updateProduct(id, data);
   }
 
-  @Delete(':id')
-  async delete(@Param('id', ParseIntPipe) id: number) {
+  @Delete(':productId')
+  async delete(@Param('productId', ParseIntPipe) id: number) {
     return this.productServices.deleteProduct(id)
   }
 }

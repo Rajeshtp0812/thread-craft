@@ -35,10 +35,9 @@ import { productAllotmentModule } from './productAlllotment/productAllotment.mod
         port: configService.get('dbPort'),
         database: configService.get('database'),
         autoLoadEntities: true,
-        dropSchema:true,
+
         synchronize: true,
         entities: [User, Company, Client, vendor, productAllotment],
-        // logging: true,
       }),
     }),
     companyModule,

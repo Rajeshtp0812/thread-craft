@@ -1,7 +1,8 @@
 import { Controller, Get, Param } from "@nestjs/common";
 import { userService } from "./user.service";
+import { ApiTags } from "@nestjs/swagger";
 
-
+@ApiTags('User')
 @Controller('/user')
 export class userController {
 

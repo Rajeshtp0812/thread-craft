@@ -22,16 +22,17 @@ export class clientServices {
     }
   }
 
-  async getClients(id): Promise<Client[]> {
+  async getClients(companyId): Promise<Client[]> {
     try {
-      return (await this.client.find({ relations: ["company"] })).filter(client => client.company.companyId === id);
+      return (await this.client.find({ relations: ["company"] })).filter(client => client.company.companyId === companyId);
     } catch (err) {
       throw (err)
     }
   }
 
-  async createClient(data) {
+  async createClient(data, companyId) {
     try {
+      data['company'] = companyId;
       return await this.client.save(data);
     } catch (err) {
       throw (err);

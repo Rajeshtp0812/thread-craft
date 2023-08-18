@@ -21,16 +21,17 @@ export class vendorServices {
     }
   }
 
-  async getVendors(id: number): Promise<vendor[]> {
+  async getVendors(companyId: number): Promise<vendor[]> {
     try {
-      return await this.vendor.find({ where: { companyId: id } });
+      return (await this.vendor.find({ relations: ["company"] })).filter(vendor => vendor.company.companyId === companyId);
     } catch (err) {
       throw (err);
     }
   }
 
-  async createvendor(data) {
+  async createvendor(data, companyId) {
     try {
+      data['company'] = companyId;
       return await this.vendor.save(data);
     } catch (err) {
       throw (err);
@@ -54,9 +55,4 @@ export class vendorServices {
     }
   }
 
-  async getCompanyVendors(id: number) {
-    return await this.vendor.find({ where: { companyId: id } })
-
-
-  }
 }

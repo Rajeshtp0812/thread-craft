@@ -15,7 +15,9 @@ import { vendorServices } from './vendor.service';
 import { updateVendorDto } from 'src/dtos/vendor/update.dto';
 import { vendor } from 'src/entity/vendor.entity';
 import { createVendorDto } from 'src/dtos/vendor/create.dto';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('Vendor')
 @Controller('vendor')
 export class vendorController {
 
@@ -33,8 +35,8 @@ export class vendorController {
 
   @Post()
   @UsePipes(new ValidationPipe())
-  async create(@Body() data: createVendorDto) {
-    return await this.vendorServices.createvendor(data);
+  async create(@Body() data: createVendorDto, @Query('companyId', ParseIntPipe) companyId: number) {
+    return await this.vendorServices.createvendor(data, companyId);
   }
 
 

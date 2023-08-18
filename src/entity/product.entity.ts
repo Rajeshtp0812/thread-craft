@@ -1,14 +1,15 @@
 
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 import { Company } from "./company.entity";
 
 @Entity({ name: "product" })
 export class product {
+
     @PrimaryGeneratedColumn()
     productId: number
 
     @Column({ name: "date" })
-    date: string
+    date: Date
 
     @Column({ name: "details" })
     details: string
@@ -67,7 +68,8 @@ export class product {
     @Column({ name: "image", nullable: true })
     image: string
 
-    @Column({ name: "companyId", nullable: true })
-    companyId: number
- 
+    @ManyToOne(() => Company, company => company)
+    @JoinColumn({ name: "companyCompanyId" })
+    company: Company;
+
 }

@@ -76,7 +76,7 @@ export class updateProductDto {
 
   @IsString()
   @IsOptional()
-  productImage: string;
+  image: string;
 
   @IsString()
   @IsOptional()

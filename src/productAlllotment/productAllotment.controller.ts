@@ -18,7 +18,9 @@ import { productAllotment } from 'src/entity/productAllotment.entity';
 import { Public } from '../auth/public.decorator';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { storage } from './storage.config';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('Product Allotment')
 @Controller('productAllotment')
 export class productAllotmentController {
 
