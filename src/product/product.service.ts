@@ -36,10 +36,8 @@ export class productServices {
   async createProduct(data, companyId) {
     try {
       data['company'] = companyId;
-      console.log(data)
       return await this.product.save(data);
     } catch (err) {
-      console.log(err)
       throw (err);
     }
 

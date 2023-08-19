@@ -31,7 +31,6 @@ export class clientController {
   @Get()
   @ApiBearerAuth()
   async getClient(@Query('companyId', ParseIntPipe) companyId: number) {
-    console.log(companyId)
     return await this.clientServices.getClients(companyId);
   }
 
