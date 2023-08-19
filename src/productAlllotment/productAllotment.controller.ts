@@ -1,26 +1,23 @@
 import {
   Body,
   Controller,
-  BadRequestException,
+  
   Param,
   ParseIntPipe,
   Post,
   Get,
   Put,
   Delete,
-  UploadedFile,
-  UseInterceptors,
+ 
 } from '@nestjs/common';
 import { productAllotmentServices } from './productAllotment.service';
 import { createProductAllotmentDto } from 'src/dtos/productAllotment/create.dto';
 import { updateProductAllotmentDto } from 'src/dtos/productAllotment/update.dto';
 import { productAllotment } from 'src/entity/productAllotment.entity';
-import { Public } from '../auth/public.decorator';
-import { FileInterceptor } from '@nestjs/platform-express';
-import { storage } from './storage.config';
-import { ApiTags } from '@nestjs/swagger';
-
+import { Public } from '../auth/public.decorator';import { ApiTags } from '@nestjs/swagger'
+ 
 @ApiTags('Product Allotment')
+
 @Controller('productAllotment')
 export class productAllotmentController {
 
@@ -52,10 +49,5 @@ export class productAllotmentController {
     return await this.productAllotmentServices.deleteAllotedProduct(id)
   }
 
-  @Post('upload')
-  @UseInterceptors(FileInterceptor("file", { storage }))
-  async upload(@UploadedFile() file: Express.Multer.File) {
-    return file;
-  }
 }
 

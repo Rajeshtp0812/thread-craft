@@ -1,30 +1,31 @@
-import { IsNotEmpty, IsOptional, IsString, IsNumber } from 'class-validator';
+import { IsNotEmpty, IsOptional, IsString, IsNumber, IsDate } from 'class-validator';
+import { isArrayBuffer } from 'util/types';
 
 export class createProductDto {
 
   @IsString()
   @IsNotEmpty()
-  date: string;
+  date:string;
 
   @IsString()
   @IsNotEmpty()
   details: string;
 
-  @IsNumber()
+  @IsString()
   @IsNotEmpty()
   rate: string;
 
-  @IsNumber()
+  @IsString()
   @IsNotEmpty()
-  code: number;
+  code: string;
 
-  @IsNumber()
+  @IsString()
   @IsNotEmpty()
-  billNo: number;
+  billNo: string;
 
-  @IsNumber()
+  @IsString()
   @IsNotEmpty()
-  runNo: number;
+  runNo:  string;
 
   @IsOptional()
   @IsString()
@@ -32,19 +33,17 @@ export class createProductDto {
 
   @IsNumber()
   @IsOptional()
-  size: number;
+  size: string;
 
-  @IsNumber()
+  @IsString()
   @IsOptional()
-  average: number;
+  average:string;
 
-  @IsNumber()
+  @IsString()
   @IsOptional()
-  totalAmount: number;
+  totalAmount:string;
 
-  @IsNumber()
-  @IsNotEmpty()
-  companyId: number;
+   
 
   @IsString()
   @IsOptional()

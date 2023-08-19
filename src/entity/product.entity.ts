@@ -9,28 +9,31 @@ export class product {
     productId: number
 
     @Column({ name: "date" })
-    date: Date
+    date: string
 
     @Column({ name: "details" })
     details: string
 
     @Column({ name: "rate" })
-    rate: number
+    rate:  string
+
+    @Column({ name: "companyId" })
+    companyId: string
 
     @Column({ name: "code" })
-    code: number
+    code: string
 
     @Column({ name: "size", nullable: true })
-    size: number
+    size: string
 
     @Column({ name: "runNo" })
-    runNo: number
+    runNo:  string
 
     @Column({ name: "billNo" })
-    billNo: number
+    billNo:  string
 
     @Column({ name: "average", nullable: true })
-    average: number
+    average: string
 
     @Column({ name: "embroidary", nullable: true })
     embroidary: string
@@ -63,13 +66,13 @@ export class product {
     canvas: string
 
     @Column({ name: "totalAmount", nullable: true })
-    totalAmount: number
+    totalAmount:string
 
     @Column({ name: "image", nullable: true })
     image: string
 
     @ManyToOne(() => Company, company => company)
     @JoinColumn({ name: "companyCompanyId" })
-    company: Company;
+    company: Company
 
-}
+  }

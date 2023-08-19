@@ -1,14 +1,15 @@
 import { Company } from "./company.entity";
 export declare class product {
     productId: number;
-    date: Date;
+    date: string;
     details: string;
-    rate: number;
-    code: number;
-    size: number;
-    runNo: number;
-    billNo: number;
-    average: number;
+    rate: string;
+    companyId: string;
+    code: string;
+    size: string;
+    runNo: string;
+    billNo: string;
+    average: string;
     embroidary: string;
     fittingStich: string;
     buttonStich: string;
@@ -19,7 +20,7 @@ export declare class product {
     label: string;
     making: string;
     canvas: string;
-    totalAmount: number;
+    totalAmount: string;
     image: string;
     company: Company;
 }

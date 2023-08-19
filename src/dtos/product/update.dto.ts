@@ -10,41 +10,39 @@ export class updateProductDto {
   @IsOptional()
   details: string;
 
-  @IsNumber()
+  @IsString()
   @IsOptional()
-  rate: number;
+  rate: string;
 
-  @IsNumber()
+  @IsString()
   @IsOptional()
-  code: number;
+  code:string;
 
-  @IsNumber()
+  @IsString()
   @IsOptional()
-  billNo: number;
+  billNo: string;
 
-  @IsNumber()
+  @IsString()
   @IsOptional()
-  runNo: number;
+  runNo:  string;
 
   @IsOptional()
   @IsString()
   embroidary: string;
 
-  @IsNumber()
+  @IsString()
   @IsOptional()
-  size: number;
+  size: string;
 
-  @IsNumber()
+  @IsString()
   @IsOptional()
-  average: number;
+  average: string;
 
-  @IsNumber()
+  @IsString()
   @IsOptional()
-  totalAmount: number;
+  totalAmount:string;
 
-  @IsNumber()
-  @IsOptional()
-  companyId: number;
+ 
 
   @IsString()
   @IsOptional()

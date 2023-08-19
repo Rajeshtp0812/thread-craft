@@ -12,6 +12,5 @@ export declare class productAllotment extends BaseEntity {
     advancePayment: number;
     balanceAmount: number;
     description: string;
-    image: string;
     productId: number;
 }

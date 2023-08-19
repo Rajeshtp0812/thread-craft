@@ -20,7 +20,7 @@ __decorate([
 ], product.prototype, "productId", void 0);
 __decorate([
     (0, typeorm_1.Column)({ name: "date" }),
-    __metadata("design:type", Date)
+    __metadata("design:type", String)
 ], product.prototype, "date", void 0);
 __decorate([
     (0, typeorm_1.Column)({ name: "details" }),
@@ -28,27 +28,31 @@ __decorate([
 ], product.prototype, "details", void 0);
 __decorate([
     (0, typeorm_1.Column)({ name: "rate" }),
-    __metadata("design:type", Number)
+    __metadata("design:type", String)
 ], product.prototype, "rate", void 0);
 __decorate([
+    (0, typeorm_1.Column)({ name: "companyId" }),
+    __metadata("design:type", String)
+], product.prototype, "companyId", void 0);
+__decorate([
     (0, typeorm_1.Column)({ name: "code" }),
-    __metadata("design:type", Number)
+    __metadata("design:type", String)
 ], product.prototype, "code", void 0);
 __decorate([
     (0, typeorm_1.Column)({ name: "size", nullable: true }),
-    __metadata("design:type", Number)
+    __metadata("design:type", String)
 ], product.prototype, "size", void 0);
 __decorate([
     (0, typeorm_1.Column)({ name: "runNo" }),
-    __metadata("design:type", Number)
+    __metadata("design:type", String)
 ], product.prototype, "runNo", void 0);
 __decorate([
     (0, typeorm_1.Column)({ name: "billNo" }),
-    __metadata("design:type", Number)
+    __metadata("design:type", String)
 ], product.prototype, "billNo", void 0);
 __decorate([
     (0, typeorm_1.Column)({ name: "average", nullable: true }),
-    __metadata("design:type", Number)
+    __metadata("design:type", String)
 ], product.prototype, "average", void 0);
 __decorate([
     (0, typeorm_1.Column)({ name: "embroidary", nullable: true }),
@@ -92,7 +96,7 @@ __decorate([
 ], product.prototype, "canvas", void 0);
 __decorate([
     (0, typeorm_1.Column)({ name: "totalAmount", nullable: true }),
-    __metadata("design:type", Number)
+    __metadata("design:type", String)
 ], product.prototype, "totalAmount", void 0);
 __decorate([
     (0, typeorm_1.Column)({ name: "image", nullable: true }),

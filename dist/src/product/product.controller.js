@@ -17,6 +17,8 @@ const common_1 = require("@nestjs/common");
 const product_service_1 = require("./product.service");
 const update_dto_1 = require("../dtos/product/update.dto");
 const create_dto_1 = require("../dtos/product/create.dto");
+const platform_express_1 = require("@nestjs/platform-express");
+const storage_config_1 = require("./storage.config");
 const swagger_1 = require("@nestjs/swagger");
 let productController = exports.productController = class productController {
     constructor(productServices) {
@@ -28,19 +30,19 @@ let productController = exports.productController = class productController {
     async getProducts(companyId) {
         return await this.productServices.getProducts(companyId);
     }
-    async create(data, companyId) {
-        return await this.productServices.createProduct(data, companyId);
-    }
     async update(id, data) {
         return await this.productServices.updateProduct(id, data);
     }
     async delete(id) {
         return this.productServices.deleteProduct(id);
     }
+    async createProduct(file, data, companyId) {
+        return await this.productServices.createProduct({ ...data, image: file.filename, companyId });
+    }
 };
 __decorate([
-    (0, common_1.Get)(':productId'),
-    __param(0, (0, common_1.Param)('productId', common_1.ParseIntPipe)),
+    (0, common_1.Get)(':id'),
+    __param(0, (0, common_1.Param)('id', common_1.ParseIntPipe)),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number]),
     __metadata("design:returntype", Promise)
@@ -53,31 +55,33 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], productController.prototype, "getProducts", null);
 __decorate([
-    (0, common_1.Post)(),
-    __param(0, (0, common_1.Body)()),
-    __param(1, (0, common_1.Query)('companyId', common_1.ParseIntPipe)),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [create_dto_1.createProductDto, Number]),
-    __metadata("design:returntype", Promise)
-], productController.prototype, "create", null);
-__decorate([
-    (0, common_1.Put)(':productId'),
-    __param(0, (0, common_1.Param)('productId', common_1.ParseIntPipe)),
+    (0, common_1.Put)(':id'),
+    __param(0, (0, common_1.Param)('id', common_1.ParseIntPipe)),
     __param(1, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number, update_dto_1.updateProductDto]),
     __metadata("design:returntype", Promise)
 ], productController.prototype, "update", null);
 __decorate([
-    (0, common_1.Delete)(':productId'),
-    __param(0, (0, common_1.Param)('productId', common_1.ParseIntPipe)),
+    (0, common_1.Delete)(':id'),
+    __param(0, (0, common_1.Param)('id', common_1.ParseIntPipe)),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number]),
     __metadata("design:returntype", Promise)
 ], productController.prototype, "delete", null);
+__decorate([
+    (0, common_1.Post)('upload'),
+    (0, common_1.UseInterceptors)((0, platform_express_1.FileInterceptor)("image", { storage: storage_config_1.storage })),
+    __param(0, (0, common_1.UploadedFile)()),
+    __param(1, (0, common_1.Body)()),
+    __param(2, (0, common_1.Query)('companyId', common_1.ParseIntPipe)),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object, create_dto_1.createProductDto, Number]),
+    __metadata("design:returntype", Promise)
+], productController.prototype, "createProduct", null);
 exports.productController = productController = __decorate([
-    (0, swagger_1.ApiTags)('Product'),
-    (0, common_1.Controller)('product'),
+    (0, swagger_1.ApiTags)('product'),
+    (0, common_1.Controller)("product"),
     __metadata("design:paramtypes", [product_service_1.productServices])
 ], productController);
 //# sourceMappingURL=product.controller.js.map

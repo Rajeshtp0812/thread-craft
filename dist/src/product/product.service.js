@@ -41,9 +41,8 @@ let productServices = exports.productServices = class productServices {
             throw (err);
         }
     }
-    async createProduct(data, companyId) {
+    async createProduct(data) {
         try {
-            data['company'] = companyId;
             return await this.product.save(data);
         }
         catch (err) {

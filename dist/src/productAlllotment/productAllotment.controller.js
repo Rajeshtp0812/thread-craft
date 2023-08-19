@@ -17,8 +17,6 @@ const common_1 = require("@nestjs/common");
 const productAllotment_service_1 = require("./productAllotment.service");
 const create_dto_1 = require("../dtos/productAllotment/create.dto");
 const public_decorator_1 = require("../auth/public.decorator");
-const platform_express_1 = require("@nestjs/platform-express");
-const storage_config_1 = require("./storage.config");
 const swagger_1 = require("@nestjs/swagger");
 let productAllotmentController = exports.productAllotmentController = class productAllotmentController {
     constructor(productAllotmentServices) {
@@ -38,9 +36,6 @@ let productAllotmentController = exports.productAllotmentController = class prod
     }
     async delete(id) {
         return await this.productAllotmentServices.deleteAllotedProduct(id);
-    }
-    async upload(file) {
-        return file;
     }
 };
 __decorate([
@@ -79,14 +74,6 @@ __decorate([
     __metadata("design:paramtypes", [Number]),
     __metadata("design:returntype", Promise)
 ], productAllotmentController.prototype, "delete", null);
-__decorate([
-    (0, common_1.Post)('upload'),
-    (0, common_1.UseInterceptors)((0, platform_express_1.FileInterceptor)("file", { storage: storage_config_1.storage })),
-    __param(0, (0, common_1.UploadedFile)()),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object]),
-    __metadata("design:returntype", Promise)
-], productAllotmentController.prototype, "upload", null);
 exports.productAllotmentController = productAllotmentController = __decorate([
     (0, swagger_1.ApiTags)('Product Allotment'),
     (0, common_1.Controller)('productAllotment'),

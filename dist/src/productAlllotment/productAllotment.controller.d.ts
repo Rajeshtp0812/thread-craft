@@ -1,4 +1,3 @@
-/// <reference types="multer" />
 import { productAllotmentServices } from './productAllotment.service';
 import { createProductAllotmentDto } from 'src/dtos/productAllotment/create.dto';
 import { updateProductAllotmentDto } from 'src/dtos/productAllotment/update.dto';
@@ -11,5 +10,4 @@ export declare class productAllotmentController {
     create(data: createProductAllotmentDto): Promise<any>;
     update(id: number, data: Partial<updateProductAllotmentDto>): Promise<import("typeorm").UpdateResult>;
     delete(id: number): Promise<import("typeorm").DeleteResult>;
-    upload(file: Express.Multer.File): Promise<Express.Multer.File>;
 }

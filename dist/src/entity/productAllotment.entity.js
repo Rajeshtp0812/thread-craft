@@ -62,10 +62,6 @@ __decorate([
     __metadata("design:type", String)
 ], productAllotment.prototype, "description", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ name: "image", nullable: true }),
-    __metadata("design:type", String)
-], productAllotment.prototype, "image", void 0);
-__decorate([
     (0, typeorm_1.Column)({ name: "productId" }),
     __metadata("design:type", Number)
 ], productAllotment.prototype, "productId", void 0);

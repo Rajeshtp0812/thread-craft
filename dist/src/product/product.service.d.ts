@@ -6,7 +6,7 @@ export declare class productServices {
     constructor(product: Repository<product>);
     getProduct(id: number): Promise<product>;
     getProducts(companyId: number): Promise<product[]>;
-    createProduct(data: any, companyId: any): Promise<any>;
+    createProduct(data: any): Promise<any>;
     updateProduct(id: number, data: Partial<updateProductDto>): Promise<import("typeorm").UpdateResult>;
     deleteProduct(id: number): Promise<import("typeorm").DeleteResult>;
 }

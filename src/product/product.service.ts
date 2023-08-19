@@ -2,6 +2,7 @@ import {
   Injectable,
 } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+ 
 import { updateProductDto } from 'src/dtos/product/update.dto';
 import { product } from 'src/entity/product.entity';
 import { Repository } from 'typeorm';
@@ -33,11 +34,13 @@ export class productServices {
 
   }
 
-  async createProduct(data, companyId) {
+  async createProduct(data) {
     try {
-      data['company'] = companyId;
+    
+     
       return await this.product.save(data);
     } catch (err) {
+   
       throw (err);
     }
 

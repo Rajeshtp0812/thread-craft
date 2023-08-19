@@ -1,15 +1,14 @@
 export declare class updateProductDto {
     date: string;
     details: string;
-    rate: number;
-    code: number;
-    billNo: number;
-    runNo: number;
+    rate: string;
+    code: string;
+    billNo: string;
+    runNo: string;
     embroidary: string;
-    size: number;
-    average: number;
-    totalAmount: number;
-    companyId: number;
+    size: string;
+    average: string;
+    totalAmount: string;
     canvas: string;
     fittingStich: string;
     buttonStich: string;

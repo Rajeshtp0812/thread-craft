@@ -10,6 +10,6 @@ exports.storage = (0, multer_1.diskStorage)({
     }
 });
 function generateFilename(file) {
-    return `${Date.now()}.${(0, path_1.extname)(file.originalname)}`;
+    return `${Date.now()}${(0, path_1.extname)(file.originalname)}`;
 }
 //# sourceMappingURL=storage.config.js.map
