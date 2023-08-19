@@ -1,5 +1,5 @@
 ---
 deployment:
-    tasks:
-        - export DEPLOYPATH=/home/sabafas2/backend/
-        - /bin/cp -R * $DEPLOYPATH
+  tasks:
+    - export DEPLOYPATH=/home/sabafas2/backend/services/
+    - /bin/cp -R dist/ $DEPLOYPATH
