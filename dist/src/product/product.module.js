@@ -12,14 +12,26 @@ const product_service_1 = require("./product.service");
 const product_controller_1 = require("./product.controller");
 const typeorm_1 = require("@nestjs/typeorm");
 const product_entity_1 = require("../entity/product.entity");
+const config_1 = require("@nestjs/config");
+const cloudinary_1 = require("cloudinary");
 let productModule = exports.productModule = class productModule {
 };
 exports.productModule = productModule = __decorate([
     (0, common_1.Module)({
         imports: [
-            typeorm_1.TypeOrmModule.forFeature([product_entity_1.product])
+            typeorm_1.TypeOrmModule.forFeature([product_entity_1.product]),
         ],
-        providers: [product_service_1.productServices],
+        providers: [product_service_1.productServices, {
+                inject: [config_1.ConfigService],
+                provide: 'Clouldinary',
+                useFactory: (configService) => {
+                    cloudinary_1.v2.config({
+                        cloud_name: configService.get('cloud_name'),
+                        api_key: configService.get('api_key'),
+                        api_secret: configService.get('api_secret')
+                    });
+                }
+            }],
         controllers: [product_controller_1.productController]
     })
 ], productModule);

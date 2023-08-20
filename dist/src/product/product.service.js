@@ -17,9 +17,12 @@ const common_1 = require("@nestjs/common");
 const typeorm_1 = require("@nestjs/typeorm");
 const product_entity_1 = require("../entity/product.entity");
 const typeorm_2 = require("typeorm");
+const cloudinary_1 = require("cloudinary");
+const config_1 = require("@nestjs/config");
 let productServices = exports.productServices = class productServices {
-    constructor(product) {
+    constructor(product, configService) {
         this.product = product;
+        this.configService = configService;
     }
     async getProduct(id) {
         try {
@@ -41,9 +44,11 @@ let productServices = exports.productServices = class productServices {
             throw (err);
         }
     }
-    async createProduct(data) {
+    async createProduct(file, data) {
         try {
-            return await this.product.save(data);
+            const image = await cloudinary_1.v2.uploader.upload(file.path, { public_id: "image12", folder: "images" }, (err, res) => {
+            }).then(res => res.url);
+            return await this.product.save({ ...data, image });
         }
         catch (err) {
             throw (err);
@@ -57,8 +62,9 @@ let productServices = exports.productServices = class productServices {
             throw (err);
         }
     }
-    async deleteProduct(id) {
+    async deleteProduct(id, imageUrl) {
         try {
+            await cloudinary_1.v2.uploader.destroy("v1692524817").then(res => console.log(res));
             return await this.product.delete({ productId: id });
         }
         catch (err) {
@@ -69,6 +75,7 @@ let productServices = exports.productServices = class productServices {
 exports.productServices = productServices = __decorate([
     (0, common_1.Injectable)(),
     __param(0, (0, typeorm_1.InjectRepository)(product_entity_1.product)),
-    __metadata("design:paramtypes", [typeorm_2.Repository])
+    __metadata("design:paramtypes", [typeorm_2.Repository,
+        config_1.ConfigService])
 ], productServices);
 //# sourceMappingURL=product.service.js.map

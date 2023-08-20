@@ -9,6 +9,6 @@ export declare class productController {
     getProduct(id: number): Promise<product>;
     getProducts(companyId: number): Promise<product[]>;
     update(id: number, data: updateProductDto): Promise<import("typeorm").UpdateResult>;
-    delete(id: number): Promise<import("typeorm").DeleteResult>;
+    delete(id: number, imageUrl: string): Promise<import("typeorm").DeleteResult>;
     createProduct(file: Express.Multer.File, data: createProductDto, companyId: number): Promise<any>;
 }

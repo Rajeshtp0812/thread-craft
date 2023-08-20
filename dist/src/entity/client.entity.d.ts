@@ -9,5 +9,6 @@ export declare class Client extends BaseEntity {
     pinCode: string;
     state: string;
     city: string;
+    companyId: number;
     company: Company;
 }

@@ -19,12 +19,14 @@ import { createProductDto } from 'src/dtos/product/create.dto';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { storage } from './storage.config';
 import { ApiTags } from '@nestjs/swagger';
+import {v2} from 'cloudinary'
+ 
 @ApiTags('product')
 @Controller("product")
 export class productController {
 
   constructor(private productServices: productServices) { }
-
+   
   @Get(':id')
   async getProduct(@Param('id', ParseIntPipe) id: number): Promise<product> {
     return await this.productServices.getProduct(id);
@@ -43,15 +45,22 @@ export class productController {
   }
 
   @Delete(':id')
-  async delete(@Param('id', ParseIntPipe) id: number) {
-    return this.productServices.deleteProduct(id)
+  async delete(@Param('id', ParseIntPipe) id: number,@Body() imageUrl:string) {
+    return this.productServices.deleteProduct(id,imageUrl)
   }
 
   
   @Post('upload')
   @UseInterceptors(FileInterceptor("image", { storage }))
-  async createProduct(@UploadedFile() file: Express.Multer.File,@Body() data: createProductDto,@Query('companyId', ParseIntPipe) companyId: number ) {
+  async createProduct(@UploadedFile() file: Express.Multer.File ,@Body() data:createProductDto,@Query('companyId', ParseIntPipe) companyId: number ) {
+   
+
+    
+    return await this.productServices.createProduct(file,data)
      
-    return await this.productServices.createProduct({...data,image:file.filename,companyId} );
+         
+      
+ 
   }
+  
 }

@@ -31,7 +31,7 @@ export class createProductDto {
   @IsString()
   embroidary: string;
 
-  @IsNumber()
+  @IsString()
   @IsOptional()
   size: string;
 

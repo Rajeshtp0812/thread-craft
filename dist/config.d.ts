@@ -7,4 +7,7 @@ export declare const config: () => {
     database: string;
     port: string;
     jwtSecret: string;
+    cloud_name: string;
+    api_key: string;
+    api_secret: string;
 };

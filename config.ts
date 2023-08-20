@@ -8,5 +8,8 @@ export const config=()=>({
     dbPort:process.env.DB_PORT,
     database:process.env.DB_NAME,
     port: process.env.PORT,
-     jwtSecret:process.env.JWT_SECRET
+    jwtSecret:process.env.JWT_SECRET,
+    cloud_name:process.env.Cloud_Name,
+    api_key:  process.env.Api_Key,
+    api_secret:  process.env.Api_Secret
 })

@@ -17,6 +17,7 @@ import { vendor } from './entity/vendor.entity';
 import { productModule } from './product/product.module';
 import { productAllotment } from './entity/productAllotment.entity';
 import { productAllotmentModule } from './productAlllotment/productAllotment.module';
+import { invoiceModule } from './invoice/invoice.module';
 
 
 @Module({
@@ -46,7 +47,8 @@ import { productAllotmentModule } from './productAlllotment/productAllotment.mod
     clientModule,
     vendorModule,
     productModule,
-    productAllotmentModule
+    productAllotmentModule,
+    
   ],
   controllers: [AppController],
   providers: [AppService],

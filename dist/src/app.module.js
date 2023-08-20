@@ -55,7 +55,7 @@ exports.AppModule = AppModule = __decorate([
             client_module_1.clientModule,
             vendor_module_1.vendorModule,
             product_module_1.productModule,
-            productAllotment_module_1.productAllotmentModule
+            productAllotment_module_1.productAllotmentModule,
         ],
         controllers: [app_controller_1.AppController],
         providers: [app_service_1.AppService],
