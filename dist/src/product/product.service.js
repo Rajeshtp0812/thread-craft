@@ -28,47 +28,53 @@ let productServices = exports.productServices = class productServices {
         try {
             return await this.product.findOne({
                 where: {
-                    productId: id
-                }, relations: ['company']
+                    productId: id,
+                },
+                relations: ['company'],
             });
         }
         catch (err) {
-            throw (err);
+            throw err;
         }
     }
     async getProducts(companyId) {
         try {
-            return (await this.product.find({ relations: ["company"] })).filter(client => client.company.companyId === companyId);
+            return (await this.product.find({ relations: ['company'] })).filter((client) => client.company.companyId === companyId);
         }
         catch (err) {
-            throw (err);
+            throw err;
         }
     }
     async createProduct(file, data) {
         try {
-            const image = await cloudinary_1.v2.uploader.upload(file.path, { public_id: "image12", folder: "images" }, (err, res) => {
-            }).then(res => res.url);
+            const image = await cloudinary_1.v2.uploader
+                .upload(file.path, { public_id: 'image12', folder: 'images' })
+                .then((res) => res.url);
             return await this.product.save({ ...data, image });
         }
         catch (err) {
-            throw (err);
+            throw err;
         }
     }
-    async updateProduct(id, data) {
+    async updateProduct(id, data, file) {
         try {
-            return this.product.update({ productId: id }, data);
+            const image = await cloudinary_1.v2.uploader
+                .upload(file.path, { public_id: 'image12', folder: 'images' })
+                .then((res) => res.url);
+            await cloudinary_1.v2.uploader.destroy("").then(res => res.data);
+            return this.product.update({ productId: id }, { ...data, image });
         }
         catch (err) {
-            throw (err);
+            throw err;
         }
     }
     async deleteProduct(id, imageUrl) {
         try {
-            await cloudinary_1.v2.uploader.destroy("v1692524817").then(res => console.log(res));
+            await cloudinary_1.v2.uploader.destroy('v1692524817').then((res) => console.log(res));
             return await this.product.delete({ productId: id });
         }
         catch (err) {
-            throw (err);
+            throw err;
         }
     }
 };

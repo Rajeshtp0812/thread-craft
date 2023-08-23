@@ -9,6 +9,6 @@ export declare class productServices {
     getProduct(id: number): Promise<product>;
     getProducts(companyId: number): Promise<product[]>;
     createProduct(file: any, data: any): Promise<any>;
-    updateProduct(id: number, data: Partial<updateProductDto>): Promise<import("typeorm").UpdateResult>;
+    updateProduct(id: number, data: Partial<updateProductDto>, file: any): Promise<import("typeorm").UpdateResult>;
     deleteProduct(id: number, imageUrl: string): Promise<import("typeorm").DeleteResult>;
 }

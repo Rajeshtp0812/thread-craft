@@ -8,14 +8,67 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.incvoiceService = void 0;
-const common_1 = require("@nestjs/common");
-let incvoiceService = exports.incvoiceService = class incvoiceService {
-    constructor() { }
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
 };
-exports.incvoiceService = incvoiceService = __decorate([
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.invoiceServices = void 0;
+const common_1 = require("@nestjs/common");
+const typeorm_1 = require("@nestjs/typeorm");
+const invoice_entity_1 = require("../entity/invoice.entity");
+const typeorm_2 = require("typeorm");
+let invoiceServices = exports.invoiceServices = class invoiceServices {
+    constructor(invoice) {
+        this.invoice = invoice;
+    }
+    async getInvoice(id) {
+        return await this.invoice.findOne({
+            where: {
+                invoiceId: id,
+            },
+            relations: ['company'],
+        });
+    }
+    async getInvoices() {
+        try {
+            return await this.invoice.find();
+        }
+        catch (err) {
+            throw (err);
+        }
+    }
+    async createInvoice(data) {
+        try {
+            if (!data) {
+                throw new common_1.HttpException('not found', 400);
+            }
+            console.log(data);
+            return await this.invoice.save(data);
+        }
+        catch (err) {
+            throw (err);
+        }
+    }
+    async updateInvoice(id, data) {
+        try {
+            return await this.invoice.update({ invoiceId: id }, data);
+        }
+        catch (err) {
+            throw (err);
+        }
+    }
+    async deleteInvoice(id) {
+        try {
+            return await this.invoice.delete({ invoiceId: id });
+        }
+        catch (err) {
+            throw (err);
+        }
+    }
+};
+exports.invoiceServices = invoiceServices = __decorate([
     (0, common_1.Injectable)(),
-    __metadata("design:paramtypes", [])
-], incvoiceService);
+    __param(0, (0, typeorm_1.InjectRepository)(invoice_entity_1.Invoice)),
+    __metadata("design:paramtypes", [typeorm_2.Repository])
+], invoiceServices);
 //# sourceMappingURL=invoice.service.js.map

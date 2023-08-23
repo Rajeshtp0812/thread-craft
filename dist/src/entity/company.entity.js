@@ -13,6 +13,7 @@ exports.Company = void 0;
 const typeorm_1 = require("typeorm");
 const client_entity_1 = require("./client.entity");
 const product_entity_1 = require("./product.entity");
+const invoice_entity_1 = require("./invoice.entity");
 let Company = exports.Company = class Company extends typeorm_1.BaseEntity {
 };
 __decorate([
@@ -59,6 +60,10 @@ __decorate([
     (0, typeorm_1.OneToMany)(() => product_entity_1.product, product => product),
     __metadata("design:type", Array)
 ], Company.prototype, "products", void 0);
+__decorate([
+    (0, typeorm_1.OneToMany)(() => invoice_entity_1.Invoice, Invoice => Invoice.company),
+    __metadata("design:type", Array)
+], Company.prototype, "invoice", void 0);
 exports.Company = Company = __decorate([
     (0, typeorm_1.Entity)({ name: "company" })
 ], Company);
