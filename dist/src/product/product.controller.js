@@ -30,8 +30,8 @@ let productController = exports.productController = class productController {
     async getProducts(companyId) {
         return await this.productServices.getProducts(companyId);
     }
-    async update(id, data) {
-        return await this.productServices.updateProduct(id, data);
+    async update(file, id, data) {
+        return await this.productServices.updateProduct(id, data, file);
     }
     async delete(id, imageUrl) {
         return this.productServices.deleteProduct(id, imageUrl);
@@ -56,10 +56,12 @@ __decorate([
 ], productController.prototype, "getProducts", null);
 __decorate([
     (0, common_1.Put)(':id'),
-    __param(0, (0, common_1.Param)('id', common_1.ParseIntPipe)),
-    __param(1, (0, common_1.Body)()),
+    (0, common_1.UseInterceptors)((0, platform_express_1.FileInterceptor)("image", { storage: storage_config_1.storage })),
+    __param(0, (0, common_1.UploadedFile)()),
+    __param(1, (0, common_1.Param)('id', common_1.ParseIntPipe)),
+    __param(2, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Number, update_dto_1.updateProductDto]),
+    __metadata("design:paramtypes", [Object, Number, update_dto_1.updateProductDto]),
     __metadata("design:returntype", Promise)
 ], productController.prototype, "update", null);
 __decorate([
