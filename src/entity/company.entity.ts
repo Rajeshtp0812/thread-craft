@@ -1,6 +1,6 @@
-import { BaseEntity, Column, Entity, JoinColumn,  OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { BaseEntity, Column, Entity, JoinColumn, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { Client } from "./client.entity";
-import { product } from "./product.entity";
+import { Product } from "./product.entity";
 
 @Entity({ name: "company" })
 export class Company extends BaseEntity {
@@ -32,12 +32,12 @@ export class Company extends BaseEntity {
       @Column({ name: "pinCode" })
       pinCode: string;
 
-      @OneToMany(() => Client, client=>client)
-     
+      @OneToMany(() => Client, client => client)
+
       clients: Client[];
 
-      @OneToMany(() => product, product=>product)
-     
-      products: product[];
+      @OneToMany(() => Product, product => product)
+
+      products: Product[];
 
 } 

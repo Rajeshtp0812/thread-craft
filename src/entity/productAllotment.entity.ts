@@ -1,4 +1,7 @@
-import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { BaseEntity, Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Product } from './product.entity';
+import { Company } from "./company.entity";
+import { vendor } from "./vendor.entity";
 
 
 @Entity({ name: "productallotment" })
@@ -7,20 +10,11 @@ export class productAllotment extends BaseEntity {
   @PrimaryGeneratedColumn()
   productAllotmentId: number
 
-  @Column({ name: "Date", nullable: true })
-  date: string
-
-  @Column({ name: "vendorId" })
-  vendorId: number
-
-  @Column({ name: "companyId" })
-  companyId: number
-
   @Column({ name: "Size", nullable: true })
   size: string
 
   @Column({ name: "ProductQuantity", nullable: true })
-  productQuantity: number
+  quantity: number
 
   @Column({ name: "VendorRate", nullable: true })
   vendorRate: number
@@ -40,9 +34,16 @@ export class productAllotment extends BaseEntity {
   @Column({ name: "Description", nullable: true })
   description: string
 
- 
+  @ManyToOne(() => vendor, vendor => vendor)
+  @JoinColumn({ name: "vendorVendorId" })
+  vendor: number
 
-  @Column({ name: "productId" })
-  productId: number
+  @ManyToOne(() => Product, product => product)
+  @JoinColumn({ name: "productProductId" })
+  product: number
+
+  @ManyToOne(() => Company, company => company)
+  @JoinColumn({ name: "companyCompanyId" })
+  company: number
 
 }

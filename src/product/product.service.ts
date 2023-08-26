@@ -3,21 +3,21 @@ import {
   Injectable,
 } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
- 
+
 import { updateProductDto } from 'src/dtos/product/update.dto';
-import { product } from 'src/entity/product.entity';
+import { Product } from 'src/entity/product.entity';
 import { Repository } from 'typeorm';
 import { v2 } from 'cloudinary';
 import { ConfigService } from '@nestjs/config';
 @Injectable()
 export class productServices {
 
-  constructor(@InjectRepository(product) private readonly product: Repository<product>
-  
-  ,
-   private configService:ConfigService
+  constructor(@InjectRepository(Product) private readonly product: Repository<Product>
+
+    ,
+    private configService: ConfigService
   ) { }
-  
+
   async getProduct(id: number) {
     try {
       return await this.product.findOne({
@@ -31,7 +31,7 @@ export class productServices {
 
   }
 
-  async getProducts(companyId: number): Promise<product[]> {
+  async getProducts(companyId: number): Promise<Product[]> {
     try {
       return (await this.product.find({ relations: ["company"] })).filter(client => client.company.companyId === companyId);
     } catch (err) {
@@ -40,17 +40,17 @@ export class productServices {
 
   }
 
-  async createProduct( file,data) {
+  async createProduct(file, data) {
     try {
-      
-      const image=await v2.uploader.upload( file.path,{ public_id: "image12" ,folder:"images"},(err,res)=>{
-        
-      
-    }).then(res=> res.url)
-     
-      return await this.product.save({...data,image});
+
+      const image = await v2.uploader.upload(file.path, { public_id: "image12", folder: "images" }, (err, res) => {
+
+
+      }).then(res => res.url)
+
+      return await this.product.save({ ...data, image });
     } catch (err) {
-   
+
       throw (err);
     }
 
@@ -65,10 +65,10 @@ export class productServices {
 
   }
 
-  async deleteProduct(id: number,imageUrl:string) {
+  async deleteProduct(id: number, imageUrl: string) {
     try {
-      
-       await v2.uploader.destroy("v1692524817").then(res=>console.log(res))
+
+      await v2.uploader.destroy("v1692524817").then(res => console.log(res))
       return await this.product.delete({ productId: id });
     } catch (err) {
       throw (err);
