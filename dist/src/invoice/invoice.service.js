@@ -42,7 +42,6 @@ let invoiceServices = exports.invoiceServices = class invoiceServices {
             if (!data) {
                 throw new common_1.HttpException('not found', 400);
             }
-            console.log(data);
             return await this.invoice.save(data);
         }
         catch (err) {

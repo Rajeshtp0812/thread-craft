@@ -33,7 +33,7 @@ export class invoiceServices {
       if(!data){
         throw  new HttpException('not found',400)
       }
-      console.log(data)
+ 
       return await this.invoice.save(data);
     } catch (err) {
       throw (err);

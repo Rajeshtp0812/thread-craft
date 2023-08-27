@@ -1,7 +1,5 @@
 import { BaseEntity } from "typeorm";
 import { Client } from "./client.entity";
-import { product } from "./product.entity";
-import { Invoice } from "./invoice.entity";
 export declare class Company extends BaseEntity {
     companyId: number;
     companyName: string;
@@ -13,6 +11,4 @@ export declare class Company extends BaseEntity {
     city: string;
     pinCode: string;
     clients: Client[];
-    products: product[];
-    invoice: Invoice[];
 }

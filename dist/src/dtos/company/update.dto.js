@@ -51,7 +51,7 @@ __decorate([
 ], updateCompanyDto.prototype, "city", void 0);
 __decorate([
     (0, class_validator_1.IsString)(),
-    (0, class_validator_1.IsNotEmpty)(),
+    (0, class_validator_1.IsOptional)(),
     __metadata("design:type", String)
 ], updateCompanyDto.prototype, "pinCode", void 0);
 //# sourceMappingURL=update.dto.js.map

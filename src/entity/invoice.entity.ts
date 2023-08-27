@@ -39,8 +39,8 @@ export class Invoice extends BaseEntity{
   @Column({ name: 'CompanyId' })
   companyId: number;
 
-  @ManyToOne(type=>Company,Company=>Company.invoice )
-  @JoinColumn()
+  @ManyToOne(type=>Company,Company=>Company )
+  @JoinColumn({name:'companyCompanyId'})
   company:Company
 
   @OneToOne(type=>invoiceItems)

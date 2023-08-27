@@ -80,8 +80,8 @@ __decorate([
     __metadata("design:type", Number)
 ], Invoice.prototype, "companyId", void 0);
 __decorate([
-    (0, typeorm_1.ManyToOne)(type => company_entity_1.Company, Company => Company.invoice),
-    (0, typeorm_1.JoinColumn)(),
+    (0, typeorm_1.ManyToOne)(type => company_entity_1.Company, Company => Company),
+    (0, typeorm_1.JoinColumn)({ name: 'companyCompanyId' }),
     __metadata("design:type", company_entity_1.Company)
 ], Invoice.prototype, "company", void 0);
 __decorate([

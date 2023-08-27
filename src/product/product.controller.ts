@@ -19,7 +19,7 @@ import { createProductDto } from 'src/dtos/product/create.dto';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { storage } from './storage.config';
 import { ApiTags } from '@nestjs/swagger';
-import {v2} from 'cloudinary'
+ 
  
 @ApiTags('product')
 @Controller("product")
@@ -51,13 +51,13 @@ export class productController {
   }
 
   
-  @Post('upload')
+  @Post()
   @UseInterceptors(FileInterceptor("image", { storage }))
   async createProduct(@UploadedFile() file: Express.Multer.File ,@Body() data:createProductDto,@Query('companyId', ParseIntPipe) companyId: number ) {
    
 
     
-    return await this.productServices.createProduct(file,data)
+    return await this.productServices.createProduct(file,{...data,companyId})
      
          
       

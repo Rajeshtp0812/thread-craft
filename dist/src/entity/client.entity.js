@@ -51,7 +51,7 @@ __decorate([
     __metadata("design:type", Number)
 ], Client.prototype, "companyId", void 0);
 __decorate([
-    (0, typeorm_1.ManyToOne)(() => company_entity_1.Company, company => company),
+    (0, typeorm_1.ManyToOne)(() => company_entity_1.Company, company => company.clients),
     (0, typeorm_1.JoinColumn)({ name: "companyCompanyId" }),
     __metadata("design:type", company_entity_1.Company)
 ], Client.prototype, "company", void 0);
