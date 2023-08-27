@@ -25,8 +25,8 @@ let invoiceItemController = exports.invoiceItemController = class invoiceItemCon
     async getOneInvoiceItem(id) {
         return await this.invoiceItemServices.getInvoiceItem(id);
     }
-    async getInvoiceItem(companyId) {
-        return await this.invoiceItemServices.getInvoiceItems(companyId);
+    async getInvoiceItem(invoiceId) {
+        return await this.invoiceItemServices.getInvoiceItems(invoiceId);
     }
     async create(data, invoiceId) {
         return await this.invoiceItemServices.createInvoiceItem(data, invoiceId);
@@ -48,7 +48,7 @@ __decorate([
 __decorate([
     (0, common_1.Get)(),
     (0, swagger_1.ApiBearerAuth)(),
-    __param(0, (0, common_1.Query)('companyId', common_1.ParseIntPipe)),
+    __param(0, (0, common_1.Query)('invoiceId', common_1.ParseIntPipe)),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number]),
     __metadata("design:returntype", Promise)

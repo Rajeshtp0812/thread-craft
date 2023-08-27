@@ -31,10 +31,6 @@ __decorate([
     __metadata("design:type", String)
 ], product.prototype, "rate", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ name: "companyId" }),
-    __metadata("design:type", String)
-], product.prototype, "companyId", void 0);
-__decorate([
     (0, typeorm_1.Column)({ name: "code" }),
     __metadata("design:type", String)
 ], product.prototype, "code", void 0);
@@ -73,7 +69,7 @@ __decorate([
 __decorate([
     (0, typeorm_1.Column)({ name: "pintex", nullable: true }),
     __metadata("design:type", String)
-], product.prototype, "printex", void 0);
+], product.prototype, "pintex", void 0);
 __decorate([
     (0, typeorm_1.Column)({ name: "kMaking", nullable: true }),
     __metadata("design:type", String)

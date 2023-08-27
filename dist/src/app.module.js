@@ -46,8 +46,6 @@ exports.AppModule = AppModule = __decorate([
                     port: configService.get('dbPort'),
                     database: configService.get('database'),
                     autoLoadEntities: true,
-                    dropSchema: true,
-                    synchronize: true,
                     entities: [user_entity_1.User, company_entity_1.Company, client_entity_1.Client, vendor_entity_1.vendor, productAllotment_entity_1.productAllotment],
                 }),
             }),

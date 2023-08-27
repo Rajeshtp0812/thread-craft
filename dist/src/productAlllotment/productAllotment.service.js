@@ -27,15 +27,18 @@ let productAllotmentServices = exports.productAllotmentServices = class productA
                 where: {
                     productAllotmentId: id,
                 },
+                relations: ["company", "vendor", "product"]
             });
         }
         catch (err) {
             throw (err);
         }
     }
-    async getAllotedProducts() {
+    async getAllotedProducts(id) {
         try {
-            return await this.productAllotment.find();
+            return await (await this.productAllotment.find({
+                relations: ['company', "product", "vendor"]
+            })).filter(company => company.company.companyId == id);
         }
         catch (err) {
             throw (err);

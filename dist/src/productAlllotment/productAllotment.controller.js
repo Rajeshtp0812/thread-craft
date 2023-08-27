@@ -16,7 +16,6 @@ exports.productAllotmentController = void 0;
 const common_1 = require("@nestjs/common");
 const productAllotment_service_1 = require("./productAllotment.service");
 const create_dto_1 = require("../dtos/productAllotment/create.dto");
-const public_decorator_1 = require("../auth/public.decorator");
 const swagger_1 = require("@nestjs/swagger");
 let productAllotmentController = exports.productAllotmentController = class productAllotmentController {
     constructor(productAllotmentServices) {
@@ -25,8 +24,8 @@ let productAllotmentController = exports.productAllotmentController = class prod
     async getOneAllotedProduct(id) {
         return await this.productAllotmentServices.getAllotedProduct(id);
     }
-    async getproductAllotment() {
-        return await this.productAllotmentServices.getAllotedProducts();
+    async getproductAllotment(companyId) {
+        return await this.productAllotmentServices.getAllotedProducts(companyId);
     }
     async create(data) {
         return await this.productAllotmentServices.createAllotedProduct(data);
@@ -47,9 +46,9 @@ __decorate([
 ], productAllotmentController.prototype, "getOneAllotedProduct", null);
 __decorate([
     (0, common_1.Get)(),
-    (0, public_decorator_1.Public)(),
+    __param(0, (0, common_1.Query)("companyId", common_1.ParseIntPipe)),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
+    __metadata("design:paramtypes", [Number]),
     __metadata("design:returntype", Promise)
 ], productAllotmentController.prototype, "getproductAllotment", null);
 __decorate([

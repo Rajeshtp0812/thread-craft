@@ -6,7 +6,7 @@ export declare class invoiceItemServices {
     constructor(invoiceItem: Repository<invoiceItems>);
     getInvoiceItem(id: number): Promise<invoiceItems>;
     getInvoiceItems(invoiceId: any): Promise<invoiceItems[]>;
-    createInvoiceItem(data: any, companyId: any): Promise<any>;
+    createInvoiceItem(data: any, invoiceId: any): Promise<any>;
     updateInvoiceItem(id: number, data: Partial<updateInvoiceItemDto>): Promise<import("typeorm").UpdateResult>;
     deleteInvoiceItem(id: number): Promise<import("typeorm").DeleteResult>;
 }

@@ -13,7 +13,7 @@ export declare class updateProductDto {
     fittingStich: string;
     buttonStich: string;
     print: string;
-    printex: string;
+    pintex: string;
     kMaking: string;
     tag: string;
     image: string;

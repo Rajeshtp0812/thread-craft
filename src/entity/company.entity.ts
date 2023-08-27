@@ -37,6 +37,10 @@ export class Company extends BaseEntity {
      
       clients: Client[]
 
+      @OneToMany(() => product, product=>product)
+     
+      products: product[]
+
       
 
       

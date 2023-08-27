@@ -1,9 +1,10 @@
 import { BaseEntity } from "typeorm";
+import { Company } from "./company.entity";
+import { product } from "./product.entity";
 export declare class productAllotment extends BaseEntity {
     productAllotmentId: number;
     date: string;
-    vendorId: number;
-    companyId: number;
+    company: Company;
     size: string;
     productQuantity: number;
     vendorRate: number;
@@ -12,5 +13,5 @@ export declare class productAllotment extends BaseEntity {
     advancePayment: number;
     balanceAmount: number;
     description: string;
-    productId: number;
+    product: product;
 }

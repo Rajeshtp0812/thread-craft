@@ -6,7 +6,7 @@ export declare class productAllotmentController {
     private productAllotmentServices;
     constructor(productAllotmentServices: productAllotmentServices);
     getOneAllotedProduct(id: number): Promise<productAllotment>;
-    getproductAllotment(): Promise<productAllotment[]>;
+    getproductAllotment(companyId: number): Promise<productAllotment[]>;
     create(data: createProductAllotmentDto): Promise<any>;
     update(id: number, data: Partial<updateProductAllotmentDto>): Promise<import("typeorm").UpdateResult>;
     delete(id: number): Promise<import("typeorm").DeleteResult>;

@@ -41,9 +41,9 @@ let invoiceItemServices = exports.invoiceItemServices = class invoiceItemService
             throw (err);
         }
     }
-    async createInvoiceItem(data, companyId) {
+    async createInvoiceItem(data, invoiceId) {
         try {
-            data['company'] = companyId;
+            data['invoice'] = invoiceId;
             return await this.invoiceItem.save(data);
         }
         catch (err) {

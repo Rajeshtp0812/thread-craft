@@ -4,7 +4,6 @@ export declare class product {
     date: string;
     details: string;
     rate: string;
-    companyId: string;
     code: string;
     size: string;
     runNo: string;
@@ -14,7 +13,7 @@ export declare class product {
     fittingStich: string;
     buttonStich: string;
     print: string;
-    printex: string;
+    pintex: string;
     kMaking: string;
     tag: string;
     label: string;

@@ -21,10 +21,6 @@ export class createVendorDto {
   @IsNotEmpty()
   contact: string;
 
-  @IsNumber()
-  @IsNotEmpty()
-  companyId: number;
-
   @IsString()
   @IsOptional()
   gst: string;

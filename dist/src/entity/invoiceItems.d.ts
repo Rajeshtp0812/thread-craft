@@ -8,6 +8,5 @@ export declare class invoiceItems extends BaseEntity {
     rate: number;
     quantity: number;
     amount: number;
-    invoiceId: number;
     invoice: Invoice;
 }

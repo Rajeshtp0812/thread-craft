@@ -23,8 +23,7 @@ export class invoiceItems extends BaseEntity {
   quantity: number;
   @Column({ name: 'Amount' })
   amount: number;
-  @Column({ name: 'InvoiceId' })
-  invoiceId: number;
+ 
   @OneToOne((type) => Invoice)
   @JoinColumn({name:"invoiceInvoiceId"})
   invoice: Invoice;

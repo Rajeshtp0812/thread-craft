@@ -13,7 +13,7 @@ export declare class createProductDto {
     fittingStich: string;
     buttonStich: string;
     print: string;
-    printex: string;
+    pintex: string;
     kMaking: string;
     tag: string;
     image: string;

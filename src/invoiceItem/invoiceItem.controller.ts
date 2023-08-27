@@ -30,8 +30,8 @@ export class invoiceItemController {
 
   @Get()
   @ApiBearerAuth()
-  async getInvoiceItem(@Query('companyId', ParseIntPipe) companyId: number) {
-    return await this.invoiceItemServices.getInvoiceItems(companyId);
+  async getInvoiceItem(@Query('invoiceId', ParseIntPipe) invoiceId: number) {
+    return await this.invoiceItemServices.getInvoiceItems(invoiceId);
   }
 
   @Post()

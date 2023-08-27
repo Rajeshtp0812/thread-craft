@@ -43,8 +43,6 @@ export class createProductDto {
   @IsOptional()
   totalAmount:string;
 
-   
-
   @IsString()
   @IsOptional()
   canvas: string;
@@ -63,7 +61,7 @@ export class createProductDto {
 
   @IsString()
   @IsOptional()
-  printex: string;
+  pintex: string;
 
   @IsString()
   @IsOptional()

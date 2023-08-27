@@ -17,9 +17,6 @@ export class product {
     @Column({ name: "rate" })
     rate:  string
 
-    @Column({ name: "companyId" })
-    companyId: string
-
     @Column({ name: "code" })
     code: string
 
@@ -48,7 +45,7 @@ export class product {
     print: string
 
     @Column({ name: "pintex", nullable: true })
-    printex: string
+    pintex: string
 
     @Column({ name: "kMaking", nullable: true })
     kMaking: string

@@ -43,12 +43,8 @@ __decorate([
     __metadata("design:type", Number)
 ], invoiceItems.prototype, "amount", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ name: 'InvoiceId' }),
-    __metadata("design:type", Number)
-], invoiceItems.prototype, "invoiceId", void 0);
-__decorate([
     (0, typeorm_1.OneToOne)((type) => invoice_entity_1.Invoice),
-    (0, typeorm_1.JoinColumn)(),
+    (0, typeorm_1.JoinColumn)({ name: "invoiceInvoiceId" }),
     __metadata("design:type", invoice_entity_1.Invoice)
 ], invoiceItems.prototype, "invoice", void 0);
 exports.invoiceItems = invoiceItems = __decorate([

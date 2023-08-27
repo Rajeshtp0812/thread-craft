@@ -37,7 +37,10 @@ let productController = exports.productController = class productController {
         return this.productServices.deleteProduct(id, imageUrl);
     }
     async createProduct(file, data, companyId) {
-        return await this.productServices.createProduct(file, { ...data, companyId });
+        return await this.productServices.createProduct(file, {
+            ...data,
+            company: companyId,
+        });
     }
 };
 __decorate([
@@ -56,7 +59,7 @@ __decorate([
 ], productController.prototype, "getProducts", null);
 __decorate([
     (0, common_1.Put)(':id'),
-    (0, common_1.UseInterceptors)((0, platform_express_1.FileInterceptor)("image", { storage: storage_config_1.storage })),
+    (0, common_1.UseInterceptors)((0, platform_express_1.FileInterceptor)('image', { storage: storage_config_1.storage })),
     __param(0, (0, common_1.UploadedFile)()),
     __param(1, (0, common_1.Param)('id', common_1.ParseIntPipe)),
     __param(2, (0, common_1.Body)()),
@@ -74,7 +77,7 @@ __decorate([
 ], productController.prototype, "delete", null);
 __decorate([
     (0, common_1.Post)(),
-    (0, common_1.UseInterceptors)((0, platform_express_1.FileInterceptor)("image", { storage: storage_config_1.storage })),
+    (0, common_1.UseInterceptors)((0, platform_express_1.FileInterceptor)('image', { storage: storage_config_1.storage })),
     __param(0, (0, common_1.UploadedFile)()),
     __param(1, (0, common_1.Body)()),
     __param(2, (0, common_1.Query)('companyId', common_1.ParseIntPipe)),
@@ -84,7 +87,7 @@ __decorate([
 ], productController.prototype, "createProduct", null);
 exports.productController = productController = __decorate([
     (0, swagger_1.ApiTags)('product'),
-    (0, common_1.Controller)("product"),
+    (0, common_1.Controller)('product'),
     __metadata("design:paramtypes", [product_service_1.productServices])
 ], productController);
 //# sourceMappingURL=product.controller.js.map

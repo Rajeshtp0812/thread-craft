@@ -44,6 +44,7 @@ export class Invoice extends BaseEntity{
   company:Company
 
   @OneToOne(type=>invoiceItems)
+  
   invoice:invoiceItems
 
 }
