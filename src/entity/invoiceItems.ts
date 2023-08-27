@@ -26,6 +26,6 @@ export class invoiceItems extends BaseEntity {
   @Column({ name: 'InvoiceId' })
   invoiceId: number;
   @OneToOne((type) => Invoice)
-  @JoinColumn()
+  @JoinColumn({name:"invoiceInvoiceId"})
   invoice: Invoice;
 }
