@@ -24,6 +24,7 @@ import { invoiceModule } from './invoice/invoice.module';
 
 @Module({
   imports: [
+    
     ConfigModule.forRoot({
       isGlobal: true,
       load: [config],

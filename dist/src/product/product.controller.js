@@ -20,6 +20,7 @@ const create_dto_1 = require("../dtos/product/create.dto");
 const platform_express_1 = require("@nestjs/platform-express");
 const storage_config_1 = require("./storage.config");
 const swagger_1 = require("@nestjs/swagger");
+const public_decorator_1 = require("../auth/public.decorator");
 let productController = exports.productController = class productController {
     constructor(productServices) {
         this.productServices = productServices;
@@ -30,8 +31,8 @@ let productController = exports.productController = class productController {
     async getProducts(companyId) {
         return await this.productServices.getProducts(companyId);
     }
-    async update(file, id, data) {
-        return await this.productServices.updateProduct(id, data, file);
+    async update(file, id, url, data) {
+        return await this.productServices.updateProduct(id, data, file, url);
     }
     async delete(id, imageUrl) {
         return this.productServices.deleteProduct(id, imageUrl);
@@ -41,6 +42,9 @@ let productController = exports.productController = class productController {
             ...data,
             company: companyId,
         });
+    }
+    async serveAvatar(fileId, res) {
+        res.sendFile(fileId, { root: 'uploads' });
     }
 };
 __decorate([
@@ -62,9 +66,10 @@ __decorate([
     (0, common_1.UseInterceptors)((0, platform_express_1.FileInterceptor)('image', { storage: storage_config_1.storage })),
     __param(0, (0, common_1.UploadedFile)()),
     __param(1, (0, common_1.Param)('id', common_1.ParseIntPipe)),
-    __param(2, (0, common_1.Body)()),
+    __param(2, (0, common_1.Param)('url')),
+    __param(3, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object, Number, update_dto_1.updateProductDto]),
+    __metadata("design:paramtypes", [Object, Number, String, update_dto_1.updateProductDto]),
     __metadata("design:returntype", Promise)
 ], productController.prototype, "update", null);
 __decorate([
@@ -85,6 +90,15 @@ __decorate([
     __metadata("design:paramtypes", [Object, create_dto_1.createProductDto, Number]),
     __metadata("design:returntype", Promise)
 ], productController.prototype, "createProduct", null);
+__decorate([
+    (0, common_1.Get)('uploads/:fileId'),
+    (0, public_decorator_1.Public)(),
+    __param(0, (0, common_1.Param)('fileId')),
+    __param(1, (0, common_1.Res)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object, Object]),
+    __metadata("design:returntype", Promise)
+], productController.prototype, "serveAvatar", null);
 exports.productController = productController = __decorate([
     (0, swagger_1.ApiTags)('product'),
     (0, common_1.Controller)('product'),

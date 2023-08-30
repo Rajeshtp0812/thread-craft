@@ -26,7 +26,7 @@ exports.productModule = productModule = __decorate([
                 provide: 'Clouldinary',
                 useFactory: (configService) => {
                     cloudinary_1.v2.config({
-                        cloud_name: configService.get('cloud_name'),
+                        cloud_name: 'ddohllrbg',
                         api_key: configService.get('api_key'),
                         api_secret: configService.get('api_secret')
                     });

@@ -10,6 +10,7 @@ import {
   Query,
   UseInterceptors,
   UploadedFile,
+  Res,
 } from '@nestjs/common';
 import { productServices } from './product.service';
 import { updateProductDto } from 'src/dtos/product/update.dto';
@@ -18,6 +19,7 @@ import { createProductDto } from 'src/dtos/product/create.dto';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { storage } from './storage.config';
 import { ApiTags } from '@nestjs/swagger';
+import { Public } from 'src/auth/public.decorator';
 
 @ApiTags('product')
 @Controller('product')
@@ -39,9 +41,10 @@ export class productController {
   async update(
     @UploadedFile() file: Express.Multer.File,
     @Param('id', ParseIntPipe) id: number,
+    @Param('url') url:string,
     @Body() data: updateProductDto,
   ) {
-    return await this.productServices.updateProduct(id, data, file);
+    return await this.productServices.updateProduct(id, data, file,url);
   }
 
   @Delete(':id')
@@ -63,5 +66,14 @@ export class productController {
       ...data,
       company: companyId,
     });
+  }
+
+
+ 
+
+  @Get('uploads/:fileId')
+  @Public()
+  async serveAvatar(@Param('fileId') fileId, @Res() res): Promise<any> {
+    res.sendFile(fileId, { root: 'uploads'});
   }
 }

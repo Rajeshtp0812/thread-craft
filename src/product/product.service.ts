@@ -5,13 +5,11 @@ import { updateProductDto } from 'src/dtos/product/update.dto';
 import { product } from 'src/entity/product.entity';
 import { Repository } from 'typeorm';
 import { v2 } from 'cloudinary';
-import { ConfigService } from '@nestjs/config';
+
 @Injectable()
 export class productServices {
   constructor(
     @InjectRepository(product) private readonly product: Repository<product>,
-
- 
   ) {}
 
   async getProduct(id: number) {
@@ -37,34 +35,45 @@ export class productServices {
     }
   }
 
-  async createProduct(file, data) {
+  async createProduct(image, data) {
     try {
-      const image = await v2.uploader
-        .upload(file.path, { public_id: Date.now().toString(20), folder: 'images' })
-        .then((res) => res.url);
+      const {url,product_id} = await v2.uploader.upload(image.path, { folder: 'newImage' });
 
-      return await this.product.save({ ...data, image });
+      
+      return await this.product.save({ ...data, image:url });
     } catch (err) {
       throw err;
     }
   }
 
-  async updateProduct(id: number, data: Partial<updateProductDto>, file) {
+  async updateProduct(id: number, data: Partial<updateProductDto>, file,product_id:string) {
     try {
       const image = await v2.uploader
-        .upload(file.path, { public_id: Date.now().toString(20), folder: 'images' })
+        .upload(file.path, {
+          folder: 'images',
+        })
         .then((res) => res.url);
-       await v2.uploader.destroy("").then(res=>res.data)
-      return this.product.update({ productId: id }, {...data,image});
+      await v2.api
+        .delete_resources([`${product_id}`], {
+          type: 'upload',
+          resource_type: 'image',
+        })
+        .then((res) => res.data);
+      return this.product.update({ productId: id }, { ...data, image });
     } catch (err) {
       throw err;
     }
   }
 
-  async deleteProduct(id: number, imageUrl: string) {
+  async deleteProduct(id: number, product_id: string) {
     try {
-      await v2.uploader.destroy('362ei340je').then((res) => console.log(res));
-      return await this.product.delete({ productId: id });
+       await v2.api
+        .delete_resources([`${product_id}`], {
+          type: 'upload',
+          resource_type: 'image',
+        })
+        .then((res) => console.log(res));
+   return await this.product.delete({ productId: id });
     } catch (err) {
       throw err;
     }

@@ -43,32 +43,42 @@ let productServices = exports.productServices = class productServices {
             throw err;
         }
     }
-    async createProduct(file, data) {
+    async createProduct(image, data) {
         try {
-            const image = await cloudinary_1.v2.uploader
-                .upload(file.path, { public_id: Date.now().toString(20), folder: 'images' })
-                .then((res) => res.url);
-            return await this.product.save({ ...data, image });
+            const { url, product_id } = await cloudinary_1.v2.uploader.upload(image.path, { folder: 'newImage' });
+            return await this.product.save({ ...data, image: url });
         }
         catch (err) {
             throw err;
         }
     }
-    async updateProduct(id, data, file) {
+    async updateProduct(id, data, file, product_id) {
         try {
             const image = await cloudinary_1.v2.uploader
-                .upload(file.path, { public_id: Date.now().toString(20), folder: 'images' })
+                .upload(file.path, {
+                folder: 'images',
+            })
                 .then((res) => res.url);
-            await cloudinary_1.v2.uploader.destroy("").then(res => res.data);
+            await cloudinary_1.v2.api
+                .delete_resources([`${product_id}`], {
+                type: 'upload',
+                resource_type: 'image',
+            })
+                .then((res) => res.data);
             return this.product.update({ productId: id }, { ...data, image });
         }
         catch (err) {
             throw err;
         }
     }
-    async deleteProduct(id, imageUrl) {
+    async deleteProduct(id, product_id) {
         try {
-            await cloudinary_1.v2.uploader.destroy('362ei340je').then((res) => console.log(res));
+            await cloudinary_1.v2.api
+                .delete_resources([`${product_id}`], {
+                type: 'upload',
+                resource_type: 'image',
+            })
+                .then((res) => console.log(res));
             return await this.product.delete({ productId: id });
         }
         catch (err) {
