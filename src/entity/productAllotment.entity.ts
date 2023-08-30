@@ -36,14 +36,14 @@ export class productAllotment extends BaseEntity {
 
   @ManyToOne(() => vendor, vendor => vendor)
   @JoinColumn({ name: "vendorVendorId" })
-  vendor: number
+  vendor: vendor
 
   @ManyToOne(() => Product, product => product)
   @JoinColumn({ name: "productProductId" })
-  product: number
+  product: Product
 
   @ManyToOne(() => Company, company => company)
   @JoinColumn({ name: "companyCompanyId" })
-  company: number
+  company: Company
 
 }

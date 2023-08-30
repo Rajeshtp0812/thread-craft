@@ -17,7 +17,6 @@ import { vendor } from './entity/vendor.entity';
 import { productModule } from './product/product.module';
 import { productAllotment } from './entity/productAllotment.entity';
 import { productAllotmentModule } from './productAlllotment/productAllotment.module';
-import { invoiceItemModule } from './invoiceItem/invoiceItem.module';
 import { invoiceModule } from './invoice/invoice.module';
 import { Invoice } from './entity/invoice.entity';
 import { invoiceItems } from './entity/invoiceItems';
