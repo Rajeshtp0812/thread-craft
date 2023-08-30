@@ -61,7 +61,7 @@ export class createProductDto {
 
   @IsString()
   @IsOptional()
-  printex: string;
+  pintex: string;
 
   @IsString()
   @IsOptional()

@@ -36,6 +36,6 @@ export class updateCompanyDto {
   city: string;
 
   @IsString()
-  @IsNotEmpty()
+  @IsOptional()
   pinCode: string;
 }

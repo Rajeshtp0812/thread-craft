@@ -29,13 +29,7 @@ export class invoiceServices {
 
   async createInvoice(data) {
     try {
-      // let invoice = await this.invoice.save(data.invoice);
-      // data.invoiceItems?.forEach(async (items: any) => {
-      //   items['invoiceId'] = invoice.id;
-      //   await this.invoiceItems.save(items);
-      // });
       return this.invoice.create(data.invoice);
-      // return this.invoice.save(invoice);
     } catch (err) {
       throw (err);
     }

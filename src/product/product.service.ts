@@ -11,7 +11,7 @@ export class productServices {
   constructor(
     @InjectRepository(Product) private readonly product: Repository<Product>,
 
-    private configService: ConfigService,
+
   ) { }
 
   async getProduct(id: number) {
@@ -40,7 +40,7 @@ export class productServices {
   async createProduct(file, data) {
     try {
       const image = await v2.uploader
-        .upload(file.path, { public_id: 'image12', folder: 'images' })
+        .upload(file.path, { public_id: Date.now().toString(20), folder: 'images' })
         .then((res) => res.url);
 
       return await this.product.save({ ...data, image });
@@ -52,7 +52,7 @@ export class productServices {
   async updateProduct(id: number, data: Partial<updateProductDto>, file) {
     try {
       const image = await v2.uploader
-        .upload(file.path, { public_id: 'image12', folder: 'images' })
+        .upload(file.path, { public_id: Date.now().toString(20), folder: 'images' })
         .then((res) => res.url);
       await v2.uploader.destroy("").then(res => res.data)
       return this.product.update({ productId: id }, { ...data, image });
@@ -63,7 +63,7 @@ export class productServices {
 
   async deleteProduct(id: number, imageUrl: string) {
     try {
-      await v2.uploader.destroy('v1692524817').then((res) => console.log(res));
+      await v2.uploader.destroy('362ei340je').then((res) => console.log(res));
       return await this.product.delete({ productId: id });
     } catch (err) {
       throw err;

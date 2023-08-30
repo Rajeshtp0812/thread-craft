@@ -8,13 +8,14 @@ import {
   Get,
   Put,
   Delete,
+  Query,
  
 } from '@nestjs/common';
 import { productAllotmentServices } from './productAllotment.service';
 import { createProductAllotmentDto } from 'src/dtos/productAllotment/create.dto';
 import { updateProductAllotmentDto } from 'src/dtos/productAllotment/update.dto';
 import { productAllotment } from 'src/entity/productAllotment.entity';
-import { Public } from '../auth/public.decorator';import { ApiTags } from '@nestjs/swagger'
+import { ApiTags } from '@nestjs/swagger'
  
 @ApiTags('Product Allotment')
 
@@ -29,9 +30,9 @@ export class productAllotmentController {
   }
 
   @Get()
-  @Public()
-  async getproductAllotment() {
-    return await this.productAllotmentServices.getAllotedProducts();
+ 
+  async getproductAllotment(@Query("companyId",ParseIntPipe) companyId:number) {
+    return await this.productAllotmentServices.getAllotedProducts(companyId);
   }
 
   @Post()
