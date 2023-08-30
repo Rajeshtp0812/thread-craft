@@ -43,10 +43,9 @@ let productServices = exports.productServices = class productServices {
             throw err;
         }
     }
-    async createProduct(image, data) {
+    async createProduct(file, data) {
         try {
-            const { url, product_id } = await cloudinary_1.v2.uploader.upload(image.path, { folder: 'newImage' });
-            return await this.product.save({ ...data, image: url });
+            return await this.product.save({ ...data, image: file.originalname });
         }
         catch (err) {
             throw err;

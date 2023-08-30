@@ -32,6 +32,7 @@ let productController = exports.productController = class productController {
         return await this.productServices.getProducts(companyId);
     }
     async update(file, id, url, data) {
+        console.log(file);
         return await this.productServices.updateProduct(id, data, file, url);
     }
     async delete(id, imageUrl) {

@@ -35,12 +35,12 @@ export class productServices {
     }
   }
 
-  async createProduct(image, data) {
+  async createProduct( file, data) {
     try {
-      const {url,product_id} = await v2.uploader.upload(image.path, { folder: 'newImage' });
-
+      // const {url,product_id} = await v2.uploader.upload(image.path, { folder: 'newImage' });
+ 
       
-      return await this.product.save({ ...data, image:url });
+    return await this.product.save({ ...data, image:file.originalname });
     } catch (err) {
       throw err;
     }

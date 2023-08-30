@@ -44,6 +44,7 @@ export class productController {
     @Param('url') url:string,
     @Body() data: updateProductDto,
   ) {
+    console.log(file)
     return await this.productServices.updateProduct(id, data, file,url);
   }
 
@@ -58,11 +59,12 @@ export class productController {
   @Post()
   @UseInterceptors(FileInterceptor('image', { storage }))
   async createProduct(
-    @UploadedFile() file: Express.Multer.File,
+    @UploadedFile()  file: Express.Multer.File,
     @Body() data: createProductDto,
     @Query('companyId', ParseIntPipe) companyId: number,
   ) {
-    return await this.productServices.createProduct(file, {
+     
+    return await this.productServices.createProduct( file, {
       ...data,
       company: companyId,
     });
