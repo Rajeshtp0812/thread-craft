@@ -21,6 +21,7 @@ const platform_express_1 = require("@nestjs/platform-express");
 const storage_config_1 = require("./storage.config");
 const swagger_1 = require("@nestjs/swagger");
 const public_decorator_1 = require("../auth/public.decorator");
+const fs_1 = require("fs");
 let productController = exports.productController = class productController {
     constructor(productServices) {
         this.productServices = productServices;
@@ -32,11 +33,20 @@ let productController = exports.productController = class productController {
         return await this.productServices.getProducts(companyId);
     }
     async update(file, id, url, data) {
-        console.log(file);
-        return await this.productServices.updateProduct(id, data, file, url);
+        (0, fs_1.unlink)(`uploads/${url}`, (err) => {
+            if (err) {
+                return;
+            }
+        });
+        return await this.productServices.updateProduct(id, data, file);
     }
-    async delete(id, imageUrl) {
-        return this.productServices.deleteProduct(id, imageUrl);
+    async delete(id, url) {
+        (0, fs_1.unlink)(`uploads/${url}`, (err) => {
+            if (err) {
+                return;
+            }
+        });
+        return this.productServices.deleteProduct(id);
     }
     async createProduct(file, data, companyId) {
         return await this.productServices.createProduct(file, {
@@ -63,7 +73,7 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], productController.prototype, "getProducts", null);
 __decorate([
-    (0, common_1.Put)(':id'),
+    (0, common_1.Put)('/:id/:url'),
     (0, common_1.UseInterceptors)((0, platform_express_1.FileInterceptor)('image', { storage: storage_config_1.storage })),
     __param(0, (0, common_1.UploadedFile)()),
     __param(1, (0, common_1.Param)('id', common_1.ParseIntPipe)),
@@ -74,9 +84,9 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], productController.prototype, "update", null);
 __decorate([
-    (0, common_1.Delete)(':id'),
+    (0, common_1.Delete)('/:id/:url'),
     __param(0, (0, common_1.Param)('id', common_1.ParseIntPipe)),
-    __param(1, (0, common_1.Body)()),
+    __param(1, (0, common_1.Param)('url')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number, String]),
     __metadata("design:returntype", Promise)

@@ -4,7 +4,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { updateProductDto } from 'src/dtos/product/update.dto';
 import { product } from 'src/entity/product.entity';
 import { Repository } from 'typeorm';
-import { v2 } from 'cloudinary';
+ 
 
 @Injectable()
 export class productServices {
@@ -37,7 +37,7 @@ export class productServices {
 
   async createProduct( file, data) {
     try {
-      // const {url,product_id} = await v2.uploader.upload(image.path, { folder: 'newImage' });
+        
  
       
     return await this.product.save({ ...data, image:file.originalname });
@@ -46,33 +46,18 @@ export class productServices {
     }
   }
 
-  async updateProduct(id: number, data: Partial<updateProductDto>, file,product_id:string) {
+  async updateProduct(id: number, data: Partial<updateProductDto>, file) {
     try {
-      const image = await v2.uploader
-        .upload(file.path, {
-          folder: 'images',
-        })
-        .then((res) => res.url);
-      await v2.api
-        .delete_resources([`${product_id}`], {
-          type: 'upload',
-          resource_type: 'image',
-        })
-        .then((res) => res.data);
-      return this.product.update({ productId: id }, { ...data, image });
+      
+      return this.product.update({ productId: id }, { ...data, image:file.originalname });
     } catch (err) {
       throw err;
     }
   }
 
-  async deleteProduct(id: number, product_id: string) {
+  async deleteProduct(id: number) {
     try {
-       await v2.api
-        .delete_resources([`${product_id}`], {
-          type: 'upload',
-          resource_type: 'image',
-        })
-        .then((res) => console.log(res));
+      
    return await this.product.delete({ productId: id });
     } catch (err) {
       throw err;

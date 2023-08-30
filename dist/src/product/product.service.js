@@ -17,7 +17,6 @@ const common_1 = require("@nestjs/common");
 const typeorm_1 = require("@nestjs/typeorm");
 const product_entity_1 = require("../entity/product.entity");
 const typeorm_2 = require("typeorm");
-const cloudinary_1 = require("cloudinary");
 let productServices = exports.productServices = class productServices {
     constructor(product) {
         this.product = product;
@@ -51,33 +50,16 @@ let productServices = exports.productServices = class productServices {
             throw err;
         }
     }
-    async updateProduct(id, data, file, product_id) {
+    async updateProduct(id, data, file) {
         try {
-            const image = await cloudinary_1.v2.uploader
-                .upload(file.path, {
-                folder: 'images',
-            })
-                .then((res) => res.url);
-            await cloudinary_1.v2.api
-                .delete_resources([`${product_id}`], {
-                type: 'upload',
-                resource_type: 'image',
-            })
-                .then((res) => res.data);
-            return this.product.update({ productId: id }, { ...data, image });
+            return this.product.update({ productId: id }, { ...data, image: file.originalname });
         }
         catch (err) {
             throw err;
         }
     }
-    async deleteProduct(id, product_id) {
+    async deleteProduct(id) {
         try {
-            await cloudinary_1.v2.api
-                .delete_resources([`${product_id}`], {
-                type: 'upload',
-                resource_type: 'image',
-            })
-                .then((res) => console.log(res));
             return await this.product.delete({ productId: id });
         }
         catch (err) {

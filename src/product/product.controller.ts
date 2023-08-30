@@ -20,7 +20,7 @@ import { FileInterceptor } from '@nestjs/platform-express';
 import { storage } from './storage.config';
 import { ApiTags } from '@nestjs/swagger';
 import { Public } from 'src/auth/public.decorator';
-
+import {unlink} from 'fs'
 @ApiTags('product')
 @Controller('product')
 export class productController {
@@ -36,24 +36,40 @@ export class productController {
     return await this.productServices.getProducts(companyId);
   }
 
-  @Put(':id')
+  @Put('/:id/:url')
   @UseInterceptors(FileInterceptor('image', { storage }))
   async update(
     @UploadedFile() file: Express.Multer.File,
     @Param('id', ParseIntPipe) id: number,
-    @Param('url') url:string,
-    @Body() data: updateProductDto,
+     @Param('url') url:string,
+    @Body()data: updateProductDto,
   ) {
-    console.log(file)
-    return await this.productServices.updateProduct(id, data, file,url);
+
+
+    unlink(`uploads/${url}`,(err)=>{
+      if(err){
+        return
+      }
+
+    })
+
+    
+  return await this.productServices.updateProduct(id, data, file);
   }
 
-  @Delete(':id')
+  @Delete('/:id/:url')
   async delete(
     @Param('id', ParseIntPipe) id: number,
-    @Body() imageUrl: string,
+     @Param('url') url:string
   ) {
-    return this.productServices.deleteProduct(id, imageUrl);
+
+    unlink(`uploads/${url}`,(err)=>{
+      if(err){
+        return
+      }
+
+    })
+    return this.productServices.deleteProduct(id);
   }
 
   @Post()
