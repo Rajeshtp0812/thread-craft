@@ -85,9 +85,9 @@ __decorate([
     __metadata("design:type", company_entity_1.Company)
 ], Invoice.prototype, "company", void 0);
 __decorate([
-    (0, typeorm_1.OneToOne)(type => invoiceItems_1.invoiceItems),
-    __metadata("design:type", invoiceItems_1.invoiceItems)
-], Invoice.prototype, "invoice", void 0);
+    (0, typeorm_1.OneToMany)(() => invoiceItems_1.invoiceItems, item => item.invoice),
+    __metadata("design:type", Array)
+], Invoice.prototype, "items", void 0);
 exports.Invoice = Invoice = __decorate([
     (0, typeorm_1.Entity)({ name: 'invoice' })
 ], Invoice);

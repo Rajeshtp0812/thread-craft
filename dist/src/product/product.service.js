@@ -80,7 +80,7 @@ let productServices = exports.productServices = class productServices {
 };
 exports.productServices = productServices = __decorate([
     (0, common_1.Injectable)(),
-    __param(0, (0, typeorm_1.InjectRepository)(product_entity_1.product)),
+    __param(0, (0, typeorm_1.InjectRepository)(product_entity_1.Product)),
     __metadata("design:paramtypes", [typeorm_2.Repository,
         config_1.ConfigService])
 ], productServices);

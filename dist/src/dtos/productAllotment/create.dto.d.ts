@@ -1,7 +1,6 @@
 export declare class createProductAllotmentDto {
-    vendorId: number;
-    productId: number;
-    companyId: number;
+    vendor: number;
+    product: number;
     adavancedPayment: number;
     totalAmount: number;
     productQuantity: number;

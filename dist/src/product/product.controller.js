@@ -73,7 +73,7 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], productController.prototype, "delete", null);
 __decorate([
-    (0, common_1.Post)('upload'),
+    (0, common_1.Post)(),
     (0, common_1.UseInterceptors)((0, platform_express_1.FileInterceptor)("image", { storage: storage_config_1.storage })),
     __param(0, (0, common_1.UploadedFile)()),
     __param(1, (0, common_1.Body)()),

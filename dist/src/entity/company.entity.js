@@ -57,7 +57,7 @@ __decorate([
     __metadata("design:type", Array)
 ], Company.prototype, "clients", void 0);
 __decorate([
-    (0, typeorm_1.OneToMany)(() => product_entity_1.product, product => product),
+    (0, typeorm_1.OneToMany)(() => product_entity_1.Product, product => product),
     __metadata("design:type", Array)
 ], Company.prototype, "products", void 0);
 __decorate([

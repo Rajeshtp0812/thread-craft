@@ -1,10 +1,9 @@
-import { Injectable,HttpException } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
- 
- 
 import { updateInvoiceDto } from 'src/dtos/invoice/update.dto';
 import { Invoice } from 'src/entity/invoice.entity';
 import { Repository } from 'typeorm';
+import { invoiceItems } from '../entity/invoiceItems';
 
 @Injectable()
 export class invoiceServices {
@@ -15,7 +14,7 @@ export class invoiceServices {
     return await this.invoice.findOne({
       where: {
         invoiceId: id,
-      }, 
+      },
       relations: ['company'],
     });
   }
@@ -30,11 +29,13 @@ export class invoiceServices {
 
   async createInvoice(data) {
     try {
-      if(!data){
-        throw  new HttpException('not found',400)
-      }
-      console.log(data)
-      return await this.invoice.save(data);
+      // let invoice = await this.invoice.save(data.invoice);
+      // data.invoiceItems?.forEach(async (items: any) => {
+      //   items['invoiceId'] = invoice.id;
+      //   await this.invoiceItems.save(items);
+      // });
+      return this.invoice.create(data.invoice);
+      // return this.invoice.save(invoice);
     } catch (err) {
       throw (err);
     }

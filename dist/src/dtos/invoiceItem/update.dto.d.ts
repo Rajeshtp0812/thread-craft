@@ -5,5 +5,4 @@ export declare class updateInvoiceItemDto {
     rate: number;
     quantity: number;
     amount: number;
-    invoiceId: number;
 }

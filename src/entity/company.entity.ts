@@ -34,15 +34,12 @@ export class Company extends BaseEntity {
       pinCode: string;
 
       @OneToMany(() => Client, client => client)
-
       clients: Client[];
 
       @OneToMany(() => Product, product => product)
-
       products: Product[];
 
       @OneToMany(() => Invoice, Invoice => Invoice.company)
-
       invoice: Invoice[];
 
 } 

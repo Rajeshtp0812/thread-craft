@@ -17,7 +17,7 @@ let invoiceItems = exports.invoiceItems = class invoiceItems extends typeorm_1.B
 __decorate([
     (0, typeorm_1.PrimaryGeneratedColumn)(),
     __metadata("design:type", Object)
-], invoiceItems.prototype, "invoiceItemId", void 0);
+], invoiceItems.prototype, "itemId", void 0);
 __decorate([
     (0, typeorm_1.Column)({ name: 'code' }),
     __metadata("design:type", String)
@@ -43,12 +43,7 @@ __decorate([
     __metadata("design:type", Number)
 ], invoiceItems.prototype, "amount", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ name: 'InvoiceId' }),
-    __metadata("design:type", Number)
-], invoiceItems.prototype, "invoiceId", void 0);
-__decorate([
-    (0, typeorm_1.OneToOne)((type) => invoice_entity_1.Invoice),
-    (0, typeorm_1.JoinColumn)(),
+    (0, typeorm_1.ManyToOne)(() => invoice_entity_1.Invoice, invoice => invoice.items),
     __metadata("design:type", invoice_entity_1.Invoice)
 ], invoiceItems.prototype, "invoice", void 0);
 exports.invoiceItems = invoiceItems = __decorate([

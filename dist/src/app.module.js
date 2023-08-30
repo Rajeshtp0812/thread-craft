@@ -25,8 +25,9 @@ const vendor_entity_1 = require("./entity/vendor.entity");
 const product_module_1 = require("./product/product.module");
 const productAllotment_entity_1 = require("./entity/productAllotment.entity");
 const productAllotment_module_1 = require("./productAlllotment/productAllotment.module");
-const invoiceItem_module_1 = require("./invoiceItem/invoiceItem.module");
 const invoice_module_1 = require("./invoice/invoice.module");
+const invoice_entity_1 = require("./entity/invoice.entity");
+const invoiceItems_1 = require("./entity/invoiceItems");
 let AppModule = exports.AppModule = class AppModule {
 };
 exports.AppModule = AppModule = __decorate([
@@ -46,9 +47,9 @@ exports.AppModule = AppModule = __decorate([
                     port: configService.get('dbPort'),
                     database: configService.get('database'),
                     autoLoadEntities: true,
-                    dropSchema: true,
                     synchronize: true,
-                    entities: [user_entity_1.User, company_entity_1.Company, client_entity_1.Client, vendor_entity_1.vendor, productAllotment_entity_1.productAllotment],
+                    entities: [user_entity_1.User, company_entity_1.Company, client_entity_1.Client, vendor_entity_1.vendor, productAllotment_entity_1.productAllotment, invoice_entity_1.Invoice, invoiceItems_1.invoiceItems],
+                    schemas: ["default", "invoiceItems"],
                 }),
             }),
             company_module_1.companyModule,
@@ -58,7 +59,6 @@ exports.AppModule = AppModule = __decorate([
             vendor_module_1.vendorModule,
             product_module_1.productModule,
             productAllotment_module_1.productAllotmentModule,
-            invoiceItem_module_1.invoiceItemModule,
             invoice_module_1.invoiceModule
         ],
         controllers: [app_controller_1.AppController],

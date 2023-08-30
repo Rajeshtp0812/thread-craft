@@ -1,5 +1,5 @@
 import { Company } from "./company.entity";
-export declare class product {
+export declare class Product {
     productId: number;
     date: string;
     details: string;

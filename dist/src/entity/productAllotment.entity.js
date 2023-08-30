@@ -11,6 +11,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.productAllotment = void 0;
 const typeorm_1 = require("typeorm");
+const product_entity_1 = require("./product.entity");
+const company_entity_1 = require("./company.entity");
+const vendor_entity_1 = require("./vendor.entity");
 let productAllotment = exports.productAllotment = class productAllotment extends typeorm_1.BaseEntity {
 };
 __decorate([
@@ -18,25 +21,13 @@ __decorate([
     __metadata("design:type", Number)
 ], productAllotment.prototype, "productAllotmentId", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ name: "Date", nullable: true }),
-    __metadata("design:type", String)
-], productAllotment.prototype, "date", void 0);
-__decorate([
-    (0, typeorm_1.Column)({ name: "vendorId" }),
-    __metadata("design:type", Number)
-], productAllotment.prototype, "vendorId", void 0);
-__decorate([
-    (0, typeorm_1.Column)({ name: "companyId" }),
-    __metadata("design:type", Number)
-], productAllotment.prototype, "companyId", void 0);
-__decorate([
     (0, typeorm_1.Column)({ name: "Size", nullable: true }),
     __metadata("design:type", String)
 ], productAllotment.prototype, "size", void 0);
 __decorate([
     (0, typeorm_1.Column)({ name: "ProductQuantity", nullable: true }),
     __metadata("design:type", Number)
-], productAllotment.prototype, "productQuantity", void 0);
+], productAllotment.prototype, "quantity", void 0);
 __decorate([
     (0, typeorm_1.Column)({ name: "VendorRate", nullable: true }),
     __metadata("design:type", Number)
@@ -62,9 +53,20 @@ __decorate([
     __metadata("design:type", String)
 ], productAllotment.prototype, "description", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ name: "productId" }),
+    (0, typeorm_1.ManyToOne)(() => vendor_entity_1.vendor, vendor => vendor),
+    (0, typeorm_1.JoinColumn)({ name: "vendorVendorId" }),
     __metadata("design:type", Number)
-], productAllotment.prototype, "productId", void 0);
+], productAllotment.prototype, "vendor", void 0);
+__decorate([
+    (0, typeorm_1.ManyToOne)(() => product_entity_1.Product, product => product),
+    (0, typeorm_1.JoinColumn)({ name: "productProductId" }),
+    __metadata("design:type", Number)
+], productAllotment.prototype, "product", void 0);
+__decorate([
+    (0, typeorm_1.ManyToOne)(() => company_entity_1.Company, company => company),
+    (0, typeorm_1.JoinColumn)({ name: "companyCompanyId" }),
+    __metadata("design:type", Number)
+], productAllotment.prototype, "company", void 0);
 exports.productAllotment = productAllotment = __decorate([
     (0, typeorm_1.Entity)({ name: "productallotment" })
 ], productAllotment);

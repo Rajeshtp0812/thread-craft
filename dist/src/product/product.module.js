@@ -19,7 +19,7 @@ let productModule = exports.productModule = class productModule {
 exports.productModule = productModule = __decorate([
     (0, common_1.Module)({
         imports: [
-            typeorm_1.TypeOrmModule.forFeature([product_entity_1.product]),
+            typeorm_1.TypeOrmModule.forFeature([product_entity_1.Product]),
         ],
         providers: [product_service_1.productServices, {
                 inject: [config_1.ConfigService],

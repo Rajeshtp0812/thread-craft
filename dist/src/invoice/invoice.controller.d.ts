@@ -6,7 +6,7 @@ export declare class invoiceController {
     private invoiceServices;
     constructor(invoiceServices: invoiceServices);
     getInvoice(id: number): Promise<Invoice>;
-    create(data: createInvoiceDto, companyId: number): Promise<any>;
+    create(data: createInvoiceDto, companyId: number): Promise<Invoice[]>;
     update(id: number, data: updateInvoiceDto): Promise<import("typeorm").UpdateResult>;
     delete(id: number): Promise<void>;
 }

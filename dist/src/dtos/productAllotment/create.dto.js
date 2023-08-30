@@ -18,17 +18,12 @@ __decorate([
     (0, class_validator_1.IsNumber)(),
     (0, class_validator_1.IsNotEmpty)(),
     __metadata("design:type", Number)
-], createProductAllotmentDto.prototype, "vendorId", void 0);
+], createProductAllotmentDto.prototype, "vendor", void 0);
 __decorate([
     (0, class_validator_1.IsNumber)(),
     (0, class_validator_1.IsNotEmpty)(),
     __metadata("design:type", Number)
-], createProductAllotmentDto.prototype, "productId", void 0);
-__decorate([
-    (0, class_validator_1.IsNumber)(),
-    (0, class_validator_1.IsNotEmpty)(),
-    __metadata("design:type", Number)
-], createProductAllotmentDto.prototype, "companyId", void 0);
+], createProductAllotmentDto.prototype, "product", void 0);
 __decorate([
     (0, class_validator_1.IsNumber)(),
     (0, class_validator_1.IsOptional)(),

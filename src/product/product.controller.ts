@@ -41,8 +41,8 @@ export class productController {
 
   @Put(':id')
   @UseInterceptors(FileInterceptor("image", { storage }))
-  async update(@UploadedFile() file: Express.Multer.File ,@Param('id', ParseIntPipe) id: number, @Body() data: updateProductDto) {
-    return await this.productServices.updateProduct(id, data,file);
+  async update(@UploadedFile() file: Express.Multer.File, @Param('id', ParseIntPipe) id: number, @Body() data: updateProductDto) {
+    return await this.productServices.updateProduct(id, data, file);
   }
 
   @Delete(':id')
@@ -51,17 +51,10 @@ export class productController {
   }
 
 
-  @Post('upload')
+  @Post()
   @UseInterceptors(FileInterceptor("image", { storage }))
   async createProduct(@UploadedFile() file: Express.Multer.File, @Body() data: createProductDto, @Query('companyId', ParseIntPipe) companyId: number) {
-
-
-
     return await this.productServices.createProduct(file, data)
-
-
-
-
   }
 
 }

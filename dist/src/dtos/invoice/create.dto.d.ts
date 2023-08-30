@@ -1,3 +1,4 @@
+import { invoiceItems } from '../../entity/invoiceItems';
 export declare class createInvoiceDto {
     invoiceNo: number;
     supplyDate: string;
@@ -13,4 +14,5 @@ export declare class createInvoiceDto {
     sgstPercentage: string;
     totalAmount: number;
     amountInWords: string;
+    invoiceItem: invoiceItems[];
 }

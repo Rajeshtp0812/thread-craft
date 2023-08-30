@@ -39,11 +39,7 @@ let invoiceServices = exports.invoiceServices = class invoiceServices {
     }
     async createInvoice(data) {
         try {
-            if (!data) {
-                throw new common_1.HttpException('not found', 400);
-            }
-            console.log(data);
-            return await this.invoice.save(data);
+            return this.invoice.create(data.invoice);
         }
         catch (err) {
             throw (err);

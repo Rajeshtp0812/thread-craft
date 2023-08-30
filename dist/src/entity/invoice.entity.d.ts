@@ -19,5 +19,5 @@ export declare class Invoice extends BaseEntity {
     amountInWords: string;
     companyId: number;
     company: Company;
-    invoice: invoiceItems;
+    items: invoiceItems[];
 }

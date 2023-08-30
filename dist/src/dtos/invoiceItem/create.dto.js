@@ -44,9 +44,4 @@ __decorate([
     (0, class_validator_1.IsNotEmpty)(),
     __metadata("design:type", Number)
 ], createInvoiceItemDto.prototype, "amount", void 0);
-__decorate([
-    (0, class_validator_1.IsNumber)(),
-    (0, class_validator_1.IsNotEmpty)(),
-    __metadata("design:type", Number)
-], createInvoiceItemDto.prototype, "invoiceId", void 0);
 //# sourceMappingURL=create.dto.js.map

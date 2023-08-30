@@ -17,9 +17,10 @@ import { vendor } from './entity/vendor.entity';
 import { productModule } from './product/product.module';
 import { productAllotment } from './entity/productAllotment.entity';
 import { productAllotmentModule } from './productAlllotment/productAllotment.module';
-import { invoiceItemModule } from './invoiceItem/invoiceItem.module';
 import { invoiceModule } from './invoice/invoice.module';
- 
+import { Invoice } from './entity/invoice.entity';
+import { invoiceItems } from './entity/invoiceItems';
+
 
 
 @Module({
@@ -38,9 +39,9 @@ import { invoiceModule } from './invoice/invoice.module';
         port: configService.get('dbPort'),
         database: configService.get('database'),
         autoLoadEntities: true,
-        dropSchema:true,
         synchronize: true,
-        entities: [User, Company, Client, vendor, productAllotment],
+        entities: [User, Company, Client, vendor, productAllotment, Invoice, invoiceItems],
+        schemas: ["default", "invoiceItems"],
       }),
     }),
     companyModule,
@@ -50,7 +51,6 @@ import { invoiceModule } from './invoice/invoice.module';
     vendorModule,
     productModule,
     productAllotmentModule,
-    invoiceItemModule,
     invoiceModule
   ],
   controllers: [AppController],

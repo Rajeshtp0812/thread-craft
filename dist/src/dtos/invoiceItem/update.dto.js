@@ -44,9 +44,4 @@ __decorate([
     (0, class_validator_1.IsOptional)(),
     __metadata("design:type", Number)
 ], updateInvoiceItemDto.prototype, "amount", void 0);
-__decorate([
-    (0, class_validator_1.IsNumber)(),
-    (0, class_validator_1.IsOptional)(),
-    __metadata("design:type", Number)
-], updateInvoiceItemDto.prototype, "invoiceId", void 0);
 //# sourceMappingURL=update.dto.js.map

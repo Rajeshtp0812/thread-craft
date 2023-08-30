@@ -10,7 +10,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.createInvoiceDto = void 0;
+const class_transformer_1 = require("class-transformer");
 const class_validator_1 = require("class-validator");
+const invoiceItems_1 = require("../../entity/invoiceItems");
 class createInvoiceDto {
 }
 exports.createInvoiceDto = createInvoiceDto;
@@ -70,4 +72,10 @@ __decorate([
     (0, class_validator_1.IsString)(),
     __metadata("design:type", String)
 ], createInvoiceDto.prototype, "amountInWords", void 0);
+__decorate([
+    (0, class_validator_1.IsArray)(),
+    (0, class_validator_1.ValidateNested)({ each: true }),
+    (0, class_transformer_1.Type)(() => invoiceItems_1.invoiceItems),
+    __metadata("design:type", Array)
+], createInvoiceDto.prototype, "invoiceItem", void 0);
 //# sourceMappingURL=create.dto.js.map
