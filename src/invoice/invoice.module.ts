@@ -1,14 +1,25 @@
 import { Module } from "@nestjs/common";
-import { incvoiceService } from "./invoice.service";
+import { invoiceServices } from './invoice.service'
 import { invoiceController } from "./invoice.controller";
+import { TypeOrmModule } from "@nestjs/typeorm";
+import { Invoice } from "src/entity/invoice.entity";
 
 
 @Module({
-    imports:[],
-    providers:[incvoiceService],
-    controllers:[invoiceController]
+    imports: [
+        TypeOrmModule.forFeature([Invoice])
+
+    ],
+    providers: [invoiceServices],
+    controllers: [invoiceController]
+
 })
 
-export class invoiceModule{
+
+export class invoiceModule {
+
+
+
+
 
 }

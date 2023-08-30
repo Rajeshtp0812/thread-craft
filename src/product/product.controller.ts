@@ -40,8 +40,9 @@ export class productController {
 
 
   @Put(':id')
-  async update(@Param('id', ParseIntPipe) id: number, @Body() data: updateProductDto) {
-    return await this.productServices.updateProduct(id, data);
+  @UseInterceptors(FileInterceptor("image", { storage }))
+  async update(@UploadedFile() file: Express.Multer.File ,@Param('id', ParseIntPipe) id: number, @Body() data: updateProductDto) {
+    return await this.productServices.updateProduct(id, data,file);
   }
 
   @Delete(':id')

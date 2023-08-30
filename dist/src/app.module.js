@@ -25,6 +25,8 @@ const vendor_entity_1 = require("./entity/vendor.entity");
 const product_module_1 = require("./product/product.module");
 const productAllotment_entity_1 = require("./entity/productAllotment.entity");
 const productAllotment_module_1 = require("./productAlllotment/productAllotment.module");
+const invoiceItem_module_1 = require("./invoiceItem/invoiceItem.module");
+const invoice_module_1 = require("./invoice/invoice.module");
 let AppModule = exports.AppModule = class AppModule {
 };
 exports.AppModule = AppModule = __decorate([
@@ -56,6 +58,8 @@ exports.AppModule = AppModule = __decorate([
             vendor_module_1.vendorModule,
             product_module_1.productModule,
             productAllotment_module_1.productAllotmentModule,
+            invoiceItem_module_1.invoiceItemModule,
+            invoice_module_1.invoiceModule
         ],
         controllers: [app_controller_1.AppController],
         providers: [app_service_1.AppService],
