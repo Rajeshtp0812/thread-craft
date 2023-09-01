@@ -39,7 +39,7 @@ export class Client extends BaseEntity {
   @Column({ name: "city" })
   city: string;
 
-  @ManyToOne(() => Company, company => company.clients)
+  @ManyToOne(() => Company, company => company, { cascade: true })
   @JoinColumn({ name: "companyCompanyId" })
   company: Company;
 }

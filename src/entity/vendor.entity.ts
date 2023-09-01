@@ -33,7 +33,7 @@ export class vendor {
     @Column({ name: "city", nullable: true })
     city: string;
 
-    @ManyToOne(() => Company, company => company)
+    @ManyToOne(() => Company, company => company, { cascade: true })
     @JoinColumn({ name: "companyCompanyId" })
     company: Company;
 }
