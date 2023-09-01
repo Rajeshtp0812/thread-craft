@@ -10,20 +10,8 @@ import { v2 } from "cloudinary";
 @Module({
     imports: [
         TypeOrmModule.forFeature([Product]),
-
-
     ],
-    providers: [productServices, {
-        inject: [ConfigService],
-        provide: 'Clouldinary',
-        useFactory: (configService: ConfigService) => {
-            v2.config({
-                cloud_name: configService.get('cloud_name'),
-                api_key: configService.get('api_key'),
-                api_secret: configService.get('api_secret')
-            });
-        }
-    }],
+    providers: [productServices],
     controllers: [productController]
 
 })

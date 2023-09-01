@@ -25,6 +25,7 @@ import { invoiceItems } from './entity/invoiceItems';
 
 @Module({
   imports: [
+    
     ConfigModule.forRoot({
       isGlobal: true,
       load: [config],

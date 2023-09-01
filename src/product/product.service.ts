@@ -1,17 +1,14 @@
-import { Inject, Injectable } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-
 import { updateProductDto } from 'src/dtos/product/update.dto';
 import { Product } from 'src/entity/product.entity';
 import { Repository } from 'typeorm';
-import { v2 } from 'cloudinary';
-import { ConfigService } from '@nestjs/config';
+
+
 @Injectable()
 export class productServices {
   constructor(
     @InjectRepository(Product) private readonly product: Repository<Product>,
-
-
   ) { }
 
   async getProduct(id: number) {
@@ -39,11 +36,7 @@ export class productServices {
 
   async createProduct(file, data) {
     try {
-      const image = await v2.uploader
-        .upload(file.path, { public_id: Date.now().toString(20), folder: 'images' })
-        .then((res) => res.url);
-
-      return await this.product.save({ ...data, image });
+      return await this.product.save({ ...data, image: file.originalname });
     } catch (err) {
       throw err;
     }
@@ -51,19 +44,16 @@ export class productServices {
 
   async updateProduct(id: number, data: Partial<updateProductDto>, file) {
     try {
-      const image = await v2.uploader
-        .upload(file.path, { public_id: Date.now().toString(20), folder: 'images' })
-        .then((res) => res.url);
-      await v2.uploader.destroy("").then(res => res.data)
-      return this.product.update({ productId: id }, { ...data, image });
+
+      return this.product.update({ productId: id }, { ...data, image: file.originalname });
     } catch (err) {
       throw err;
     }
   }
 
-  async deleteProduct(id: number, imageUrl: string) {
+  async deleteProduct(id: number) {
     try {
-      await v2.uploader.destroy('362ei340je').then((res) => console.log(res));
+
       return await this.product.delete({ productId: id });
     } catch (err) {
       throw err;

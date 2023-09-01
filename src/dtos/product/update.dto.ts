@@ -1,4 +1,4 @@
-import { IsOptional, IsString, IsNumber } from 'class-validator';
+import { IsOptional, IsString } from 'class-validator';
 
 export class updateProductDto {
 
@@ -16,7 +16,7 @@ export class updateProductDto {
 
   @IsString()
   @IsOptional()
-  code:string;
+  code: string;
 
   @IsString()
   @IsOptional()
@@ -24,7 +24,7 @@ export class updateProductDto {
 
   @IsString()
   @IsOptional()
-  runNo:  string;
+  runNo: string;
 
   @IsOptional()
   @IsString()
@@ -40,7 +40,7 @@ export class updateProductDto {
 
   @IsString()
   @IsOptional()
-  totalAmount:string;
+  totalAmount: string;
 
   @IsString()
   @IsOptional()
