@@ -44,7 +44,7 @@ export class productServices {
 
   async updateProduct(id: number, data: Partial<updateProductDto>, file) {
     try {
-      return this.product.update({ productId: id }, { ...data, image: file.originalname });
+      return this.product.update({ productId: id }, { ...data, image: file.filename });
     } catch (err) {
       throw err;
     }
