@@ -20,7 +20,7 @@ export class product {
     @Column({ name: "code" })
     code: string
 
-    @Column({ name: "size", nullable: true })
+    @Column({ name: "size", default:" " })
     size: string
 
     @Column({ name: "runNo" })
@@ -29,43 +29,43 @@ export class product {
     @Column({ name: "billNo" })
     billNo:  string
 
-    @Column({ name: "average", nullable: true })
+    @Column({ name: "average", default:"" })
     average: string
 
-    @Column({ name: "embroidary", nullable: true })
+    @Column({ name: "embroidary", default:"" })
     embroidary: string
 
-    @Column({ name: "fittingStich", nullable: true })
+    @Column({ name: "fittingStich", default:"" })
     fittingStich: string
 
-    @Column({ name: 'buttonStich', nullable: true })
+    @Column({ name: 'buttonStich', default:" " })
     buttonStich: string
 
-    @Column({ name: "print", nullable: true })
+    @Column({ name: "print", default:" " })
     print: string
 
-    @Column({ name: "pintex", nullable: true })
+    @Column({ name: "pintex", default:" " })
     pintex: string
 
-    @Column({ name: "kMaking", nullable: true })
+    @Column({ name: "kMaking", default:" " })
     kMaking: string
 
-    @Column({ name: "tag", nullable: true })
+    @Column({ name: "tag", default:" " })
     tag: string
 
-    @Column({ name: "label", nullable: true })
+    @Column({ name: "label", default:" " })
     label: string
 
-    @Column({ name: "making", nullable: true })
+    @Column({ name: "making", default:" " })
     making: string
 
-    @Column({ name: "canvas", nullable: true })
+    @Column({ name: "canvas", default:" " })
     canvas: string
 
-    @Column({ name: "totalAmount", nullable: true })
+    @Column({ name: "totalAmount", default:" " })
     totalAmount:string
 
-    @Column({ name: "image", nullable: true })
+    @Column({ name: "image", default:" " })
     image: string
 
     @ManyToOne(() => Company, company => company)

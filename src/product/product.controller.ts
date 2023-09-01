@@ -20,7 +20,7 @@ import { FileInterceptor } from '@nestjs/platform-express';
 import { storage } from './storage.config';
 import { ApiTags } from '@nestjs/swagger';
 import { Public } from 'src/auth/public.decorator';
-import {unlink} from 'fs'
+import { unlink } from 'fs';
 @ApiTags('product')
 @Controller('product')
 export class productController {
@@ -36,62 +36,51 @@ export class productController {
     return await this.productServices.getProducts(companyId);
   }
 
-  @Put('/:id/:url')
+  @Put('/:id')
   @UseInterceptors(FileInterceptor('image', { storage }))
   async update(
     @UploadedFile() file: Express.Multer.File,
     @Param('id', ParseIntPipe) id: number,
-     @Param('url') url:string,
-    @Body()data: updateProductDto,
+    @Body() data: updateProductDto,
   ) {
-
-
-    unlink(`uploads/${url}`,(err)=>{
-      if(err){
-        return
+    const { image } = await this.productServices.getProduct(id);
+    unlink(`uploads/${image}`, (err) => {
+      if (err) {
+        return;
       }
+    });
 
-    })
-
-    
-  return await this.productServices.updateProduct(id, data, file);
+    return await this.productServices.updateProduct(id, data, file);
   }
 
-  @Delete('/:id/:url')
-  async delete(
-    @Param('id', ParseIntPipe) id: number,
-     @Param('url') url:string
-  ) {
+  @Delete('/:id')
+  async delete(@Param('id', ParseIntPipe) id: number) {
+    const { image } = await this.productServices.getProduct(id);
 
-    unlink(`uploads/${url}`,(err)=>{
-      if(err){
-        return
+    unlink(`uploads/${image}`, (err) => {
+      if (err) {
+        return;
       }
-
-    })
+    });
     return this.productServices.deleteProduct(id);
   }
 
   @Post()
   @UseInterceptors(FileInterceptor('image', { storage }))
   async createProduct(
-    @UploadedFile()  file: Express.Multer.File,
+    @UploadedFile() file: Express.Multer.File,
     @Body() data: createProductDto,
     @Query('companyId', ParseIntPipe) companyId: number,
   ) {
-     
-    return await this.productServices.createProduct( file, {
+    return await this.productServices.createProduct(file, {
       ...data,
       company: companyId,
     });
   }
 
-
- 
-
   @Get('uploads/:fileId')
   @Public()
-  async serveAvatar(@Param('fileId') fileId:string, @Res() res): Promise<any> {
-    res.sendFile(fileId, { root: 'uploads'});
+  async serveAvatar(@Param('fileId') fileId: string, @Res() res): Promise<any> {
+    res.sendFile(fileId, { root: 'uploads' });
   }
 }

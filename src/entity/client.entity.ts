@@ -24,10 +24,10 @@ export class Client extends BaseEntity {
   @Column({ name: "contact" })
   contact: string;
 
-  @Column({ nullable: true, name: "address" })
+  @Column({ default:" ", name: "address" })
   address: string;
 
-  @Column({ nullable: true, name: "email" })
+  @Column({ default:" ", name: "email" })
   email: string;
 
   @Column({ name: "pinCode" })
