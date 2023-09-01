@@ -3,73 +3,76 @@ import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "t
 import { Company } from "./company.entity";
 
 @Entity({ name: "product" })
-export class product {
+export class Product {
 
-    @PrimaryGeneratedColumn()
-    productId: number
+  @PrimaryGeneratedColumn()
+  productId: number
 
-    @Column({ name: "date" })
-    date: string
+  @Column({ name: "date" })
+  date: string
 
-    @Column({ name: "details" })
-    details: string
+  @Column({ name: "details" })
+  details: string
 
-    @Column({ name: "rate" })
-    rate:  string
+  @Column({ name: "rate" })
+  rate: string
 
-    @Column({ name: "code" })
-    code: string
+  @Column({ name: "companyId" })
+  companyId: string
 
-    @Column({ name: "size", nullable: true })
-    size: string
+  @Column({ name: "code" })
+  code: string
 
-    @Column({ name: "runNo" })
-    runNo:  string
+  @Column({ name: "size", nullable: true })
+  size: string
 
-    @Column({ name: "billNo" })
-    billNo:  string
+  @Column({ name: "runNo" })
+  runNo: string
 
-    @Column({ name: "average", nullable: true })
-    average: string
+  @Column({ name: "billNo" })
+  billNo: string
 
-    @Column({ name: "embroidary", nullable: true })
-    embroidary: string
+  @Column({ name: "average", nullable: true })
+  average: string
 
-    @Column({ name: "fittingStich", nullable: true })
-    fittingStich: string
+  @Column({ name: "embroidary", nullable: true })
+  embroidary: string
 
-    @Column({ name: 'buttonStich', nullable: true })
-    buttonStich: string
+  @Column({ name: "fittingStich", nullable: true })
+  fittingStich: string
 
-    @Column({ name: "print", nullable: true })
-    print: string
+  @Column({ name: 'buttonStich', nullable: true })
+  buttonStich: string
 
-    @Column({ name: "pintex", nullable: true })
-    pintex: string
+  @Column({ name: "print", nullable: true })
+  print: string
 
-    @Column({ name: "kMaking", nullable: true })
-    kMaking: string
+  @Column({ name: "pintex", nullable: true })
+  printex: string
 
-    @Column({ name: "tag", nullable: true })
-    tag: string
+  @Column({ name: "kMaking", nullable: true })
+  kMaking: string
 
-    @Column({ name: "label", nullable: true })
-    label: string
+  @Column({ name: "tag", nullable: true })
+  tag: string
 
-    @Column({ name: "making", nullable: true })
-    making: string
+  @Column({ name: "label", nullable: true })
+  label: string
 
-    @Column({ name: "canvas", nullable: true })
-    canvas: string
+  @Column({ name: "making", nullable: true })
+  making: string
 
-    @Column({ name: "totalAmount", nullable: true })
-    totalAmount:string
+  @Column({ name: "canvas", nullable: true })
+  canvas: string
 
-    @Column({ name: "image", nullable: true })
-    image: string
+  @Column({ name: "totalAmount", nullable: true })
+  totalAmount: string
 
-    @ManyToOne(() => Company, company => company)
-    @JoinColumn({ name: "companyCompanyId" })
-    company: Company
+  @Column({ name: "image", nullable: true })
+  image: string
 
-  }
+  @ManyToOne(() => Company, company => company)
+  @JoinColumn({ name: "companyCompanyId" })
+  company: Company
+
+}

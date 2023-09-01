@@ -14,7 +14,7 @@ import {
 } from '@nestjs/common';
 import { productServices } from './product.service';
 import { updateProductDto } from 'src/dtos/product/update.dto';
-import { product } from 'src/entity/product.entity';
+import { Product } from 'src/entity/product.entity';
 import { createProductDto } from 'src/dtos/product/create.dto';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { storage } from './storage.config';
@@ -24,10 +24,10 @@ import {unlink} from 'fs'
 @ApiTags('product')
 @Controller('product')
 export class productController {
-  constructor(private productServices: productServices) {}
+  constructor(private productServices: productServices) { }
 
   @Get(':id')
-  async getProduct(@Param('id', ParseIntPipe) id: number): Promise<product> {
+  async getProduct(@Param('id', ParseIntPipe) id: number): Promise<Product> {
     return await this.productServices.getProduct(id);
   }
 

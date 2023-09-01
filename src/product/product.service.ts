@@ -2,15 +2,15 @@ import { Inject, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 
 import { updateProductDto } from 'src/dtos/product/update.dto';
-import { product } from 'src/entity/product.entity';
+import { Product } from 'src/entity/product.entity';
 import { Repository } from 'typeorm';
- 
+
 
 @Injectable()
 export class productServices {
   constructor(
-    @InjectRepository(product) private readonly product: Repository<product>,
-  ) {}
+    @InjectRepository(Product) private readonly product: Repository<Product>,
+  ) { }
 
   async getProduct(id: number) {
     try {
@@ -25,7 +25,7 @@ export class productServices {
     }
   }
 
-  async getProducts(companyId: number): Promise<product[]> {
+  async getProducts(companyId: number): Promise<Product[]> {
     try {
       return (await this.product.find({ relations: ['company'] })).filter(
         (client) => client.company.companyId === companyId,
@@ -35,12 +35,12 @@ export class productServices {
     }
   }
 
-  async createProduct( file, data) {
+  async createProduct(file, data) {
     try {
-        
- 
-      
-    return await this.product.save({ ...data, image:file.originalname });
+
+
+
+      return await this.product.save({ ...data, image: file.originalname });
     } catch (err) {
       throw err;
     }
@@ -48,8 +48,8 @@ export class productServices {
 
   async updateProduct(id: number, data: Partial<updateProductDto>, file) {
     try {
-      
-      return this.product.update({ productId: id }, { ...data, image:file.originalname });
+
+      return this.product.update({ productId: id }, { ...data, image: file.originalname });
     } catch (err) {
       throw err;
     }
@@ -57,8 +57,8 @@ export class productServices {
 
   async deleteProduct(id: number) {
     try {
-      
-   return await this.product.delete({ productId: id });
+
+      return await this.product.delete({ productId: id });
     } catch (err) {
       throw err;
     }

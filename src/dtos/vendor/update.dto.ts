@@ -23,7 +23,7 @@ export class updateVendorDto {
   @IsOptional()
   gst: string;
 
-  @IsNumber()
+  @IsString()
   @IsOptional()
   address: string;
 
