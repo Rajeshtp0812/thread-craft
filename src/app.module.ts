@@ -18,12 +18,14 @@ import { productModule } from './product/product.module';
 import { productAllotment } from './entity/productAllotment.entity';
 import { productAllotmentModule } from './productAlllotment/productAllotment.module';
 import { invoiceModule } from './invoice/invoice.module';
- 
+import { Invoice } from './entity/invoice.entity';
+import { invoiceItems } from './entity/invoiceItems';
+
 
 
 @Module({
   imports: [
-    
+
     ConfigModule.forRoot({
       isGlobal: true,
       load: [config],
@@ -38,8 +40,7 @@ import { invoiceModule } from './invoice/invoice.module';
         port: configService.get('dbPort'),
         database: configService.get('database'),
         autoLoadEntities: true,
-     
-        entities: [User, Company, Client, vendor, productAllotment],
+        entities: [User, Company, Client, vendor, Invoice, invoiceItems, productAllotment],
       }),
     }),
     companyModule,
