@@ -50,7 +50,6 @@ import { invoiceModule } from './invoice/invoice.module';
     vendorModule,
     productModule,
     productAllotmentModule,
-    invoiceItemModule,
     invoiceModule
   ],
   controllers: [AppController],
