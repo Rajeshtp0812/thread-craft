@@ -21,7 +21,7 @@ export class Client extends BaseEntity {
   @Column({ name: "gst" })
   gst: string;
 
-  @Column({ name: "gst" })
+  @Column({ name: "contact" })
   contact: string;
 
   @Column({ nullable: true, name: "address" })
