@@ -13,16 +13,6 @@ export class productAllotment extends BaseEntity {
   @Column({ name: "Date", nullable: true })
   date: string
 
- 
-
-  // @ManyToOne(type=>vendor,vendor=>vendor )
-  // @JoinColumn( )
-  // vendor:vendor
-  
-  @ManyToOne(type=>Company,Company=>Company )
-  @JoinColumn({name:'companyCompanyId'})
-  company:Company
-
   @Column({ name: "Size", nullable: true })
   size: string
 
@@ -47,9 +37,15 @@ export class productAllotment extends BaseEntity {
   @Column({ name: "Description", nullable: true })
   description: string
 
-  @ManyToOne(type=>product,product=>product )
-  @JoinColumn({name:'productProductId'})
-   product:product
+  @ManyToOne(type => product, product => product)
+  @JoinColumn({ name: 'productProductId' })
+  product: product
 
+  @ManyToOne(type => vendor, vendor => vendor)
+  @JoinColumn({ name: 'vendorVendorId' })
+  vendor: vendor
 
+  @ManyToOne(type => Company, Company => Company)
+  @JoinColumn({ name: 'companyCompanyId' })
+  company: Company
 }

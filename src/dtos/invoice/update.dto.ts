@@ -1,7 +1,7 @@
 import { IsNumber, IsString, IsOptional } from 'class-validator';
 
 export class updateInvoiceDto {
-  @IsNumber()
+  @IsString()
   @IsOptional()
   invoiceNo: number;
   @IsString()
@@ -13,13 +13,13 @@ export class updateInvoiceDto {
   @IsString()
   @IsOptional()
   transportMode: string;
-  @IsNumber()
+  @IsString()
   @IsOptional()
   contact: number;
   @IsString()
   @IsOptional()
   address: string;
-  @IsNumber()
+  @IsString()
   @IsOptional()
   gstNo: number;
   @IsString()

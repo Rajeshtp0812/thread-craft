@@ -1,7 +1,7 @@
 import { IsNumber, IsString } from 'class-validator';
 
 export class createInvoiceDto {
-  @IsNumber()
+  @IsString()
   invoiceNo: number;
   @IsString()
   supplyDate: string;
@@ -9,11 +9,11 @@ export class createInvoiceDto {
   state: string;
   @IsString()
   transportMode: string;
-  @IsNumber()
+  @IsString()
   contact: number;
   @IsString()
   address: string;
-  @IsNumber()
+  @IsString()
   gstNo: number;
   @IsString()
   supplyPlace: string;

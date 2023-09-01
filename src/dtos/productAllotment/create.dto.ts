@@ -3,18 +3,6 @@ import { IsNotEmpty, IsNumber, IsOptional, IsString } from "class-validator"
 export class createProductAllotmentDto {
 
     @IsNumber()
-    @IsNotEmpty()
-    vendorId: number
-
-    @IsNumber()
-    @IsNotEmpty()
-    productId: number
-
-    @IsNumber()
-    @IsNotEmpty()
-    companyId: number
-
-    @IsNumber()
     @IsOptional()
     adavancedPayment: number
 
@@ -50,7 +38,15 @@ export class createProductAllotmentDto {
     @IsOptional()
     description: string
 
-    @IsString()
-    @IsOptional()
-    image: string
+    @IsNumber()
+    @IsNotEmpty()
+    vendor: number
+
+    @IsNumber()
+    @IsNotEmpty()
+    product: number
+
+    @IsNumber()
+    @IsNotEmpty()
+    company: number
 }

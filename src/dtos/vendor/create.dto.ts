@@ -1,8 +1,6 @@
 import {
   IsEmail,
   IsNotEmpty,
-  IsNumber,
-  IsNumberString,
   IsOptional,
   IsString,
 } from 'class-validator';
@@ -17,7 +15,7 @@ export class createVendorDto {
   @IsNotEmpty()
   companyName: string;
 
-  @IsNumberString()
+  @IsString()
   @IsNotEmpty()
   contact: string;
 
