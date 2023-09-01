@@ -1,7 +1,7 @@
 import { BaseEntity, Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
-import { Product } from './product.entity';
 import { Company } from "./company.entity";
 import { vendor } from "./vendor.entity";
+import { product } from "./product.entity";
 
 
 @Entity({ name: "productallotment" })
@@ -10,11 +10,24 @@ export class productAllotment extends BaseEntity {
   @PrimaryGeneratedColumn()
   productAllotmentId: number
 
+  @Column({ name: "Date", nullable: true })
+  date: string
+
+ 
+
+  // @ManyToOne(type=>vendor,vendor=>vendor )
+  // @JoinColumn( )
+  // vendor:vendor
+  
+  @ManyToOne(type=>Company,Company=>Company )
+  @JoinColumn({name:'companyCompanyId'})
+  company:Company
+
   @Column({ name: "Size", nullable: true })
   size: string
 
   @Column({ name: "ProductQuantity", nullable: true })
-  quantity: number
+  productQuantity: number
 
   @Column({ name: "VendorRate", nullable: true })
   vendorRate: number
@@ -34,16 +47,9 @@ export class productAllotment extends BaseEntity {
   @Column({ name: "Description", nullable: true })
   description: string
 
-  @ManyToOne(() => vendor, vendor => vendor)
-  @JoinColumn({ name: "vendorVendorId" })
-  vendor: vendor
+  @ManyToOne(type=>product,product=>product )
+  @JoinColumn({name:'productProductId'})
+   product:product
 
-  @ManyToOne(() => Product, product => product)
-  @JoinColumn({ name: "productProductId" })
-  product: Product
-
-  @ManyToOne(() => Company, company => company)
-  @JoinColumn({ name: "companyCompanyId" })
-  company: Company
 
 }

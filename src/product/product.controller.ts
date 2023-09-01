@@ -14,7 +14,7 @@ import {
 } from '@nestjs/common';
 import { productServices } from './product.service';
 import { updateProductDto } from 'src/dtos/product/update.dto';
-import { Product } from 'src/entity/product.entity';
+import { product } from 'src/entity/product.entity';
 import { createProductDto } from 'src/dtos/product/create.dto';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { storage } from './storage.config';
@@ -24,10 +24,10 @@ import {unlink} from 'fs'
 @ApiTags('product')
 @Controller('product')
 export class productController {
-  constructor(private productServices: productServices) { }
+  constructor(private productServices: productServices) {}
 
   @Get(':id')
-  async getProduct(@Param('id', ParseIntPipe) id: number): Promise<Product> {
+  async getProduct(@Param('id', ParseIntPipe) id: number): Promise<product> {
     return await this.productServices.getProduct(id);
   }
 
@@ -91,7 +91,7 @@ export class productController {
 
   @Get('uploads/:fileId')
   @Public()
-  async serveAvatar(@Param('fileId') fileId, @Res() res): Promise<any> {
+  async serveAvatar(@Param('fileId') fileId:string, @Res() res): Promise<any> {
     res.sendFile(fileId, { root: 'uploads'});
   }
 }

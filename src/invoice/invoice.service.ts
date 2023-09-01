@@ -1,9 +1,10 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable,HttpException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+ 
+ 
 import { updateInvoiceDto } from 'src/dtos/invoice/update.dto';
 import { Invoice } from 'src/entity/invoice.entity';
 import { Repository } from 'typeorm';
-import { invoiceItems } from '../entity/invoiceItems';
 
 @Injectable()
 export class invoiceServices {
@@ -14,7 +15,7 @@ export class invoiceServices {
     return await this.invoice.findOne({
       where: {
         invoiceId: id,
-      },
+      }, 
       relations: ['company'],
     });
   }
@@ -29,7 +30,11 @@ export class invoiceServices {
 
   async createInvoice(data) {
     try {
-      return this.invoice.create(data.invoice);
+      if(!data){
+        throw  new HttpException('not found',400)
+      }
+ 
+      return await this.invoice.save(data);
     } catch (err) {
       throw (err);
     }

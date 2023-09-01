@@ -1,26 +1,26 @@
 import { Get, Module } from "@nestjs/common";
-import { productServices } from './product.service'
-import { productController } from "./product.controller";
+ import {productServices} from './product.service'
+ import { productController } from "./product.controller";
 import { TypeOrmModule } from "@nestjs/typeorm";
-import { Product } from "src/entity/product.entity";
+import { product } from "src/entity/product.entity";
 import { ConfigService } from "@nestjs/config";
 import { v2 } from "cloudinary";
-
-
+ 
+ 
 @Module({
-    imports: [
-        TypeOrmModule.forFeature([Product]),
+    imports:[
+        TypeOrmModule.forFeature([product]),   
     ],
-    providers: [productServices],
-    controllers: [productController]
-
+    providers:[productServices],
+    controllers:[productController]
+    
 })
 
 
-export class productModule {
+export class productModule{
+      
 
 
-
-
+      
 
 }

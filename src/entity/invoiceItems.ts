@@ -1,30 +1,30 @@
-import { BaseEntity, Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  BaseEntity,
+  Column,
+  Entity,
+  JoinColumn,
+  OneToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 import { Invoice } from './invoice.entity';
-
-@Entity({ name: "invoiceItem" })
+@Entity({name:"invoiceItem"})
 export class invoiceItems extends BaseEntity {
-
   @PrimaryGeneratedColumn()
-  itemId;
-
+  invoiceItemId;
   @Column({ name: 'code' })
   code: string;
-
   @Column({ name: 'description' })
   description: string;
-
   @Column({ name: 'hasCode' })
   hasCode: string;
-
   @Column({ name: 'Rate' })
   rate: number;
-
   @Column({ name: 'Quantity' })
   quantity: number;
-
   @Column({ name: 'Amount' })
   amount: number;
-
-  @ManyToOne(() => Invoice, invoice => invoice.items)
+ 
+  @OneToOne((type) => Invoice)
+  @JoinColumn({name:"invoiceInvoiceId"})
   invoice: Invoice;
 }

@@ -5,7 +5,7 @@ export class createProductDto {
 
   @IsString()
   @IsNotEmpty()
-  date: string;
+  date:string;
 
   @IsString()
   @IsNotEmpty()
@@ -25,7 +25,7 @@ export class createProductDto {
 
   @IsString()
   @IsNotEmpty()
-  runNo: string;
+  runNo:  string;
 
   @IsOptional()
   @IsString()
@@ -37,11 +37,11 @@ export class createProductDto {
 
   @IsString()
   @IsOptional()
-  average: string;
+  average:string;
 
   @IsString()
   @IsOptional()
-  totalAmount: string;
+  totalAmount:string;
 
   @IsString()
   @IsOptional()

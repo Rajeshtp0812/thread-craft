@@ -21,9 +21,6 @@ export class Client extends BaseEntity {
   @Column({ name: "gst" })
   gst: string;
 
-  @Column({ name: "contact" })
-  contact: string;
-
   @Column({ nullable: true, name: "address" })
   address: string;
 
@@ -39,7 +36,11 @@ export class Client extends BaseEntity {
   @Column({ name: "city" })
   city: string;
 
-  @ManyToOne(() => Company, company => company)
-  @JoinColumn({ name: "companyCompanyId" })
+  //  @Column({name:"companyId" })
+  //  companyId:number
+
+
+  @ManyToOne(() => Company, company => company.clients)
+  @JoinColumn({ name: "companyCompanyId"  })
   company: Company;
 }

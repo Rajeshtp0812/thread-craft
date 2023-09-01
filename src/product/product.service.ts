@@ -1,14 +1,14 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { updateProductDto } from 'src/dtos/product/update.dto';
-import { Product } from 'src/entity/product.entity';
+import { product } from 'src/entity/product.entity';
 import { Repository } from 'typeorm';
 
 
 @Injectable()
 export class productServices {
   constructor(
-    @InjectRepository(Product) private readonly product: Repository<Product>,
+    @InjectRepository(product) private readonly product: Repository<product>,
   ) { }
 
   async getProduct(id: number) {
@@ -24,7 +24,7 @@ export class productServices {
     }
   }
 
-  async getProducts(companyId: number): Promise<Product[]> {
+  async getProducts(companyId: number): Promise<product[]> {
     try {
       return (await this.product.find({ relations: ['company'] })).filter(
         (client) => client.company.companyId === companyId,
@@ -36,7 +36,7 @@ export class productServices {
 
   async createProduct(file, data) {
     try {
-      return await this.product.save({ ...data, image: file.originalname });
+      return await this.product.save({ ...data, image: `https://backend.services.sabafashion.in/product/uploads/${file.filename}` });
     } catch (err) {
       throw err;
     }
@@ -44,7 +44,6 @@ export class productServices {
 
   async updateProduct(id: number, data: Partial<updateProductDto>, file) {
     try {
-
       return this.product.update({ productId: id }, { ...data, image: file.originalname });
     } catch (err) {
       throw err;
