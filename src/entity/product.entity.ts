@@ -1,4 +1,3 @@
-
 import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 import { Company } from "./company.entity";
 

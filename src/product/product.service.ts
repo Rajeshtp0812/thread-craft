@@ -1,6 +1,5 @@
-import { Inject, Injectable } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-
 import { updateProductDto } from 'src/dtos/product/update.dto';
 import { Product } from 'src/entity/product.entity';
 import { Repository } from 'typeorm';
@@ -37,9 +36,6 @@ export class productServices {
 
   async createProduct(file, data) {
     try {
-
-
-
       return await this.product.save({ ...data, image: file.originalname });
     } catch (err) {
       throw err;
