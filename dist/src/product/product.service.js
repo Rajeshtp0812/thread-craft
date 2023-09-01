@@ -44,7 +44,7 @@ let productServices = exports.productServices = class productServices {
     }
     async createProduct(file, data) {
         try {
-            return await this.product.save({ ...data, image: file.originalname });
+            return await this.product.save({ ...data, image: `https://backend.services.sabafashion.in/product/uploads/${file.filename}` });
         }
         catch (err) {
             throw err;

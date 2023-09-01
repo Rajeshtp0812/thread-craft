@@ -91,7 +91,7 @@ export class productController {
 
   @Get('uploads/:fileId')
   @Public()
-  async serveAvatar(@Param('fileId') fileId, @Res() res): Promise<any> {
+  async serveAvatar(@Param('fileId') fileId:string, @Res() res): Promise<any> {
     res.sendFile(fileId, { root: 'uploads'});
   }
 }

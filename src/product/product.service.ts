@@ -40,7 +40,7 @@ export class productServices {
         
  
       
-    return await this.product.save({ ...data, image:file.originalname });
+    return await this.product.save({ ...data, image:`https://backend.services.sabafashion.in/product/uploads/${file.filename}` });
     } catch (err) {
       throw err;
     }
