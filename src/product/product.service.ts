@@ -52,7 +52,6 @@ export class productServices {
 
   async deleteProduct(id: number) {
     try {
-
       return await this.product.delete({ productId: id });
     } catch (err) {
       throw err;

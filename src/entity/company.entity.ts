@@ -1,4 +1,4 @@
-import { BaseEntity, Column, Entity, JoinColumn,  OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { BaseEntity, Column, Entity, JoinColumn, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { Client } from "./client.entity";
 import { product } from "./product.entity";
 import { Invoice } from "./invoice.entity";
@@ -33,16 +33,11 @@ export class Company extends BaseEntity {
       @Column({ name: "pinCode" })
       pinCode: string;
 
-      @OneToMany(() => Client, client=>client)
-     
+      @OneToMany(() => Client, client => client)
+
       clients: Client[]
 
-      @OneToMany(() => product, product=>product)
-     
+      @OneToMany(() => product, product => product)
+
       products: product[]
-
-      
-
-      
-
 } 

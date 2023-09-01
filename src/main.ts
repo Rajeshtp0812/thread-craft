@@ -6,7 +6,7 @@ import { ConfigService } from '@nestjs/config';
 import { join } from 'path';
 import { ResponseFormatInterceptor } from './middlewares/response-format.middleware';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
- 
+
 async function bootstrap() {
 
   const app = await NestFactory.create<NestApplication>(AppModule);
@@ -24,7 +24,7 @@ async function bootstrap() {
   const configService = app.get(ConfigService);
   app.useStaticAssets(join(__dirname + '/src/uploads'));
 
-  
+
   // Swagger setup
   const config = new DocumentBuilder()
     .setTitle('Thread Craft')
