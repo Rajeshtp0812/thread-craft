@@ -44,7 +44,4 @@ export class updateProductAllotmentDto {
 
       @IsNotEmpty()
       product: any
-
-      @IsNotEmpty()
-      company: any
 } 

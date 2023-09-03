@@ -1,7 +1,7 @@
 import {
   Body,
   Controller,
-  
+
   Param,
   ParseIntPipe,
   Post,
@@ -9,14 +9,14 @@ import {
   Put,
   Delete,
   Query,
- 
+
 } from '@nestjs/common';
 import { productAllotmentServices } from './productAllotment.service';
 import { createProductAllotmentDto } from 'src/dtos/productAllotment/create.dto';
 import { updateProductAllotmentDto } from 'src/dtos/productAllotment/update.dto';
 import { productAllotment } from 'src/entity/productAllotment.entity';
 import { ApiTags } from '@nestjs/swagger'
- 
+
 @ApiTags('Product Allotment')
 
 @Controller('productAllotment')
@@ -30,13 +30,14 @@ export class productAllotmentController {
   }
 
   @Get()
- 
-  async getproductAllotment(@Query("companyId",ParseIntPipe) companyId:number) {
+
+  async getproductAllotment(@Query("companyId", ParseIntPipe) companyId: number) {
     return await this.productAllotmentServices.getAllotedProducts(companyId);
   }
 
   @Post()
-  async create(@Body() data: createProductAllotmentDto) {
+  async create(@Query("companyId", ParseIntPipe) companyId: number, @Body() data: createProductAllotmentDto) {
+    data['company'] = companyId;
     return await this.productAllotmentServices.createAllotedProduct(data);
   }
 
