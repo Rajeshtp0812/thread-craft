@@ -7,7 +7,7 @@ import {
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { Invoice } from './invoice.entity';
-@Entity({name:"invoiceItem"})
+@Entity({ name: "invoiceItem" })
 export class invoiceItems extends BaseEntity {
   @PrimaryGeneratedColumn()
   invoiceItemId;
@@ -23,8 +23,8 @@ export class invoiceItems extends BaseEntity {
   quantity: number;
   @Column({ name: 'Amount' })
   amount: number;
- 
-  @OneToOne((type) => Invoice)
-  @JoinColumn({name:"invoiceInvoiceId"})
-  invoice: Invoice;
+
+  // @OneToOne((type) => Invoice, { onDelete: "CASCADE" })
+  // @JoinColumn({ name: "invoiceInvoiceId" })
+  // invoice: Invoice;
 }

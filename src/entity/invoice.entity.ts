@@ -2,6 +2,7 @@
 import { BaseEntity, Column, Entity, JoinColumn, ManyToOne, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { Company } from './company.entity';
 import { invoiceItems } from './invoiceItems';
+import { Client } from './client.entity';
 
 @Entity({ name: 'invoice' })
 export class Invoice extends BaseEntity {
@@ -12,37 +13,37 @@ export class Invoice extends BaseEntity {
   @Column({ name: 'invoiceNo' })
   invoiceNo: number;
 
-  @Column({ name: 'SupplyDate' })
+  @Column({ name: 'SupplyDate' ,nullable:true})
   supplyDate: string;
 
-  @Column({ name: 'State' })
+  @Column({ name: 'State'  })
   state: string;
 
-  @Column({ name: 'TransportMode' })
+  @Column({ name: 'TransportMode' ,nullable:true})
   transportMode: string;
 
-  @Column({ name: 'Conatact' })
+  @Column({ name: 'Conatact',nullable:true })
   contact: number;
 
-  @Column({ name: 'Address' })
+  @Column({ name: 'Address',nullable:true })
   address: string;
 
-  @Column({ name: 'GstNo' })
+  @Column({ name: 'GstNo',nullable:true })
   gstNo: number;
 
-  @Column({ name: 'SupplyPlace' })
+  @Column({ name: 'SupplyPlace' ,nullable:true})
   supplyPlace: string;
 
-  @Column({ name: 'Cgst' })
+  @Column({ name: 'Cgst' ,nullable:true})
   cgst: string;
 
-  @Column({ name: 'CgstPercentage' })
+  @Column({ name: 'CgstPercentage' ,nullable:true})
   cgstPercentage: string;
 
-  @Column({ name: 'Sgst' })
+  @Column({ name: 'Sgst' ,nullable:true})
   sgst: string;
 
-  @Column({ name: 'SgstPercentage' })
+  @Column({ name: 'SgstPercentage',nullable:true })
   sgstPercentage: string;
 
   @Column({ name: 'TotalAmount' })
@@ -50,15 +51,19 @@ export class Invoice extends BaseEntity {
 
   @Column({ name: 'AmountInWords' })
   amountInWords: string;
-
+  
   @Column({ name: 'CompanyId' })
   companyId: number;
 
-  @ManyToOne(type => Company, Company => Company)
+  @ManyToOne(type => Company, Company => Company, { onDelete: "CASCADE" })
   @JoinColumn({ name: 'companyCompanyId' })
   company: Company
 
-  @OneToOne(type => invoiceItems)
-  invoice: invoiceItems[]
+  @ManyToOne(type => Client, client=>client, { onDelete: "CASCADE" })
+  @JoinColumn({ name: 'clientClientId' })
+   client:Client
+  
+  @OneToOne(type => invoiceItems ,{ onDelete: "CASCADE",cascade:true })
+  invoice: invoiceItems
 
 }

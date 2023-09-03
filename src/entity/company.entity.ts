@@ -32,12 +32,4 @@ export class Company extends BaseEntity {
 
       @Column({ name: "pinCode" })
       pinCode: string;
-
-      @OneToMany(() => Client, client => client)
-
-      clients: Client[]
-
-      @OneToMany(() => product, product => product)
-
-      products: product[]
 } 

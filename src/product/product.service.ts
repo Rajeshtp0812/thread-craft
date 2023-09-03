@@ -36,7 +36,10 @@ export class productServices {
 
   async createProduct(file, data) {
     try {
-      return await this.product.save({ ...data, image: `https://backend.services.sabafashion.in/product/uploads/${file.filename}` });
+      if (file?.filename) {
+        return await this.product.save({ ...data, image: `https://backend.services.sabafashion.in/product/uploads/${file.filename}` });
+      }
+      return await this.product.save({ ...data, image: '' });
     } catch (err) {
       throw err;
     }
@@ -44,7 +47,10 @@ export class productServices {
 
   async updateProduct(id: number, data: Partial<updateProductDto>, file) {
     try {
-      return this.product.update({ productId: id }, { ...data, image: file.originalname });
+      if (file?.filename) {
+        return this.product.update({ productId: id }, { ...data, image: `https://backend.services.sabafashion.in/product/uploads/${file.filename}` });
+      }
+      return this.product.update({ productId: id }, { ...data  });
     } catch (err) {
       throw err;
     }

@@ -45,8 +45,4 @@ export class createProductAllotmentDto {
     @IsNumber()
     @IsNotEmpty()
     product: number
-
-    @IsNumber()
-    @IsNotEmpty()
-    company: number
 }

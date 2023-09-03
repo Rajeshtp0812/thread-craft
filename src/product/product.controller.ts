@@ -43,12 +43,19 @@ export class productController {
     @Param('id', ParseIntPipe) id: number,
     @Body() data: updateProductDto,
   ) {
+    
     const { image } = await this.productServices.getProduct(id);
-    unlink(`uploads/${image}`, (err) => {
-      if (err) {
-        return;
-      }
-    });
+        const urlArr=image.split("/")
+        const url=urlArr[urlArr.length-1]
+    if (file.filename) {
+              
+      unlink(`uploads/${url}`, (err) => {
+        if (err) {
+          return;
+        }
+      });
+      return await this.productServices.updateProduct(id, data, file);
+    }
 
     return await this.productServices.updateProduct(id, data, file);
   }
@@ -56,8 +63,9 @@ export class productController {
   @Delete('/:id')
   async delete(@Param('id', ParseIntPipe) id: number) {
     const { image } = await this.productServices.getProduct(id);
-
-    unlink(`uploads/${image}`, (err) => {
+    const urlArr=image.split("/")
+    const url=urlArr[urlArr.length-1]
+    unlink(`uploads/${url}`, (err) => {
       if (err) {
         return;
       }
