@@ -20,7 +20,7 @@ export class product {
   @Column({ name: "code" })
   code: string
 
-  @Column({ name: "size", nullable: true })
+  @Column({ name: "size", nullable: true, default: "" })
   size: string
 
   @Column({ name: "runNo" })
@@ -29,43 +29,43 @@ export class product {
   @Column({ name: "billNo" })
   billNo: string
 
-  @Column({ name: "average", nullable: true })
+  @Column({ name: "average", nullable: true, default: "" })
   average: string
 
-  @Column({ name: "embroidary", nullable: true })
+  @Column({ name: "embroidary", nullable: true, default: "" })
   embroidary: string
 
-  @Column({ name: "fittingStich", nullable: true })
+  @Column({ name: "fittingStich", nullable: true, default: "" })
   fittingStich: string
 
-  @Column({ name: 'buttonStich', nullable: true })
+  @Column({ name: 'buttonStich', nullable: true, default: "" })
   buttonStich: string
 
-  @Column({ name: "print", nullable: true })
+  @Column({ name: "print", nullable: true, default: "" })
   print: string
 
-  @Column({ name: "pintex", nullable: true })
+  @Column({ name: "pintex", nullable: true, default: "" })
   pintex: string
 
-  @Column({ name: "kMaking", nullable: true })
+  @Column({ name: "kMaking", nullable: true, default: "" })
   kMaking: string
 
-  @Column({ name: "tag", nullable: true })
+  @Column({ name: "tag", nullable: true, default: "" })
   tag: string
 
-  @Column({ name: "label", nullable: true })
+  @Column({ name: "label", nullable: true, default: "" })
   label: string
 
-  @Column({ name: "making", nullable: true })
+  @Column({ name: "making", nullable: true, default: "" })
   making: string
 
-  @Column({ name: "canvas", nullable: true })
+  @Column({ name: "canvas", nullable: true, default: "" })
   canvas: string
 
-  @Column({ name: "totalAmount", nullable: true })
+  @Column({ name: "totalAmount", nullable: true, default: "" })
   totalAmount: string
 
-  @Column({ name: "image", nullable: true })
+  @Column({ name: "image", nullable: true, default: "" })
   image: string
 
   @ManyToOne(() => Company, company => company, { onDelete: "CASCADE" })
