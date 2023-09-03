@@ -20,13 +20,11 @@ import { FileInterceptor } from '@nestjs/platform-express';
 import { storage } from './storage.config';
 import { ApiTags } from '@nestjs/swagger';
 import { Public } from 'src/auth/public.decorator';
-import { unlink } from 'fs'
-
+import { unlink } from 'fs';
 @ApiTags('product')
 @Controller('product')
 export class productController {
-
-  constructor(private productServices: productServices) { }
+  constructor(private productServices: productServices) {}
 
   @Get(':id')
   async getProduct(@Param('id', ParseIntPipe) id: number): Promise<product> {
@@ -45,29 +43,33 @@ export class productController {
     @Param('id', ParseIntPipe) id: number,
     @Body() data: updateProductDto,
   ) {
-
+    
     const { image } = await this.productServices.getProduct(id);
-    unlink(`uploads/${image}`, (err) => {
-      if (err) {
-        return
-      }
+        const urlArr=image.split("/")
+        const url=urlArr[urlArr.length-1]
+    if (file.filename) {
+              
+      unlink(`uploads/${url}`, (err) => {
+        if (err) {
+          return;
+        }
+      });
+      return await this.productServices.updateProduct(id, data, file);
+    }
 
-    })
     return await this.productServices.updateProduct(id, data, file);
   }
 
   @Delete('/:id')
-  async delete(
-    @Param('id', ParseIntPipe) id: number
-  ) {
-
+  async delete(@Param('id', ParseIntPipe) id: number) {
     const { image } = await this.productServices.getProduct(id);
-    unlink(`uploads/${image}`, (err) => {
+    const urlArr=image.split("/")
+    const url=urlArr[urlArr.length-1]
+    unlink(`uploads/${url}`, (err) => {
       if (err) {
-        return
+        return;
       }
-
-    })
+    });
     return this.productServices.deleteProduct(id);
   }
 
@@ -78,7 +80,6 @@ export class productController {
     @Body() data: createProductDto,
     @Query('companyId', ParseIntPipe) companyId: number,
   ) {
-
     return await this.productServices.createProduct(file, {
       ...data,
       company: companyId,

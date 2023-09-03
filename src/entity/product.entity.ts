@@ -20,8 +20,8 @@ export class product {
   @Column({ name: "code" })
   code: string
 
-  @Column({ name: "size", nullable: true, default: "" })
-  size: string
+    @Column({ name: "size", default:" " })
+    size: string
 
   @Column({ name: "runNo" })
   runNo: string
@@ -29,10 +29,10 @@ export class product {
   @Column({ name: "billNo" })
   billNo: string
 
-  @Column({ name: "average", nullable: true, default: "" })
+  @Column({ name: "average",   default: "" })
   average: string
 
-  @Column({ name: "embroidary", nullable: true, default: "" })
+  @Column({ name: "embroidary", nullable: true,  })
   embroidary: string
 
   @Column({ name: "fittingStich", nullable: true, default: "" })

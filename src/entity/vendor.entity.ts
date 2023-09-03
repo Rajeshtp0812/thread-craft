@@ -6,7 +6,7 @@ export class vendor {
     @PrimaryGeneratedColumn()
     vendorId: number
 
-    @Column({ name: "owner", nullable: true })
+    @Column({ name: "owner", default:" " })
     ownerName: string
 
     @Column({ name: "company", })
@@ -15,22 +15,22 @@ export class vendor {
     @Column({ name: "contact" })
     contact: string
 
-    @Column({ name: "email", nullable: true })
+    @Column({ name: "email", default:" " })
     email: string
 
-    @Column({ nullable: true, name: "address" })
+    @Column({ default:" ", name: "address" })
     address: string;
 
-    @Column({ nullable: true, name: "gst" })
+    @Column({ default:" ", name: "gst" })
     gst: string;
 
-    @Column({ name: "pinCode", nullable: true })
+    @Column({ name: "pinCode", default:" " })
     pinCode: string;
 
-    @Column({ name: "state", nullable: true })
+    @Column({ name: "state", default:" " })
     state: string;
 
-    @Column({ name: "city", nullable: true })
+    @Column({ name: "city", default:" " })
     city: string;
 
     @ManyToOne(() => Company, company => company, { onDelete: "CASCADE" })

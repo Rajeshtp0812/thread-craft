@@ -4,12 +4,16 @@ import { InjectRepository } from '@nestjs/typeorm';
  
 import { updateInvoiceDto } from 'src/dtos/invoice/update.dto';
 import { Invoice } from 'src/entity/invoice.entity';
+import { invoiceItems } from 'src/entity/invoiceItems';
 import { Repository } from 'typeorm';
 
 @Injectable()
 export class invoiceServices {
 
-  constructor(@InjectRepository(Invoice) private readonly invoice: Repository<Invoice>) { }
+  constructor(
+    @InjectRepository(Invoice) private readonly invoice: Repository<Invoice>,
+    @InjectRepository(invoiceItems) private readonly invoiceItem:Repository<invoiceItems>
+    ) { }
 
   async getInvoice(id: number) {
     return await this.invoice.findOne({
@@ -30,11 +34,16 @@ export class invoiceServices {
 
   async createInvoice(data) {
     try {
-      if(!data){
-        throw  new HttpException('not found',400)
-      }
+       const {invoiceItems,...invoice}=data
  
-      return await this.invoice.save(data);
+     const newInvoice= await this.invoice.save(invoice);
+     const newInvoiceItem= await this.invoiceItem.save(invoiceItems)
+
+      return {
+        ...newInvoice,
+        ...newInvoiceItem
+      }
+
     } catch (err) {
       throw (err);
     }

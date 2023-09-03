@@ -24,7 +24,7 @@ export class invoiceItems extends BaseEntity {
   @Column({ name: 'Amount' })
   amount: number;
 
-  @OneToOne((type) => Invoice, { onDelete: "CASCADE" })
-  @JoinColumn({ name: "invoiceInvoiceId" })
-  invoice: Invoice;
+  // @OneToOne((type) => Invoice, { onDelete: "CASCADE" })
+  // @JoinColumn({ name: "invoiceInvoiceId" })
+  // invoice: Invoice;
 }

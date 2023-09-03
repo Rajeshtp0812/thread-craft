@@ -12,13 +12,13 @@ export class Company extends BaseEntity {
       @Column()
       companyName: string
 
-      @Column({ nullable: true })
+      @Column({ default:" " })
       gst: string
 
-      @Column({ nullable: true })
+      @Column({ default:" " })
       contact: string
 
-      @Column({ nullable: true })
+      @Column({ default:" " })
       email: string
 
       @Column()

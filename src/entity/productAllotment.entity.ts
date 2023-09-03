@@ -10,31 +10,31 @@ export class productAllotment extends BaseEntity {
   @PrimaryGeneratedColumn()
   productAllotmentId: number
 
-  @Column({ name: "Date", nullable: true })
+  @Column({ name: "Date", default:" " })
   date: string
 
-  @Column({ name: "Size", nullable: true })
+  @Column({ name: "Size", default:" " })
   size: string
 
-  @Column({ name: "ProductQuantity", nullable: true })
+  @Column({ name: "ProductQuantity",nullable:true })
   productQuantity: number
 
-  @Column({ name: "VendorRate", nullable: true })
+  @Column({ name: "VendorRate", nullable:true })
   vendorRate: number
 
-  @Column({ name: "DeliveryDate", nullable: true })
+  @Column({ name: "DeliveryDate", default:" " })
   deliveryDate: string
 
-  @Column({ name: "Amount", nullable: true })
+  @Column({ name: "Amount", nullable:true })
   totalAmount: number
 
-  @Column({ name: "AdvancePayment", nullable: true })
+  @Column({ name: "AdvancePayment", nullable:true })
   advancePayment: number
 
-  @Column({ name: "balanceAmmount", nullable: true })
+  @Column({ name: "balanceAmmount", nullable:true })
   balanceAmount: number
 
-  @Column({ name: "Description", nullable: true })
+  @Column({ name: "Description", default:" " })
   description: string
 
   @ManyToOne(type => product, product => product, { onDelete: "CASCADE" })
