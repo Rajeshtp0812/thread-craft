@@ -37,15 +37,15 @@ export class productAllotment extends BaseEntity {
   @Column({ name: "Description", nullable: true })
   description: string
 
-  @ManyToOne(type => product, product => product, { cascade: true })
+  @ManyToOne(type => product, product => product, { onDelete: "CASCADE" })
   @JoinColumn({ name: 'productProductId' })
   product: product
 
-  @ManyToOne(type => vendor, vendor => vendor, { cascade: true })
+  @ManyToOne(type => vendor, vendor => vendor, { onDelete: "CASCADE" })
   @JoinColumn({ name: 'vendorVendorId' })
   vendor: vendor
 
-  @ManyToOne(type => Company, Company => Company, { cascade: true })
+  @ManyToOne(type => Company, Company => Company, { onDelete: "CASCADE" })
   @JoinColumn({ name: 'companyCompanyId' })
   company: Company
 }

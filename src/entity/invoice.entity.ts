@@ -54,11 +54,11 @@ export class Invoice extends BaseEntity {
   @Column({ name: 'CompanyId' })
   companyId: number;
 
-  @ManyToOne(type => Company, Company => Company)
+  @ManyToOne(type => Company, Company => Company, { onDelete: "CASCADE" })
   @JoinColumn({ name: 'companyCompanyId' })
   company: Company
 
-  @OneToOne(type => invoiceItems)
+  @OneToOne(type => invoiceItems, { onDelete: "CASCADE" })
   invoice: invoiceItems[]
 
 }

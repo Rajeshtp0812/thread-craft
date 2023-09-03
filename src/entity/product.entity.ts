@@ -68,7 +68,7 @@ export class product {
   @Column({ name: "image", nullable: true })
   image: string
 
-  @ManyToOne(() => Company, company => company, { cascade: true })
+  @ManyToOne(() => Company, company => company, { onDelete: "CASCADE" })
   @JoinColumn({ name: "companyCompanyId" })
   company: Company
 
