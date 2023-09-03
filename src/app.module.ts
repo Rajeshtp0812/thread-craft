@@ -40,6 +40,7 @@ import { invoiceItems } from './entity/invoiceItems';
         port: configService.get('dbPort'),
         database: configService.get('database'),
         autoLoadEntities: true,
+        synchronize: true,
         entities: [User, Company, Client, vendor, Invoice, invoiceItems, productAllotment],
       }),
     }),
