@@ -1,4 +1,6 @@
-import { IsArray, IsNotEmpty, IsNumber, IsOptional, IsPort, IsString } from 'class-validator';
+import { Type } from 'class-transformer';
+import { IsArray,  IsNotEmpty, IsNumber, IsOptional, IsPort, IsString } from 'class-validator';
+import { createInvoiceItemDto } from '../invoiceitem/create.dto';
 
 export class createInvoiceDto {
   @IsString()
@@ -53,8 +55,14 @@ export class createInvoiceDto {
   @IsString()
   @IsOptional()
   amountInWords: string;
+
+  @IsNumber()
+ @IsNotEmpty()
+   clientId:number;
   
   @IsArray()
   @IsNotEmpty()
-  invoiceItems:[]
+  @Type(()=>createInvoiceItemDto)
+  invoiceItems:createInvoiceItemDto[]
+
 }
