@@ -19,7 +19,8 @@ import { productAllotment } from './entity/productAllotment.entity';
 import { productAllotmentModule } from './productAlllotment/productAllotment.module';
 import { invoiceModule } from './invoice/invoice.module';
 import { Invoice } from './entity/invoice.entity';
-import { invoiceItems } from './entity/invoiceItems';
+import { InvoiceItems } from './entity/invoiceItems';
+import { product } from './entity/product.entity';
 
 
 
@@ -39,9 +40,9 @@ import { invoiceItems } from './entity/invoiceItems';
         host: configService.get('host'),
         port: configService.get('dbPort'),
         database: configService.get('database'),
-        autoLoadEntities: true,
-        synchronize: true,
-        entities: [User, Company, Client, vendor, Invoice, invoiceItems, productAllotment],
+       synchronize:true,
+        autoLoadEntities:true,
+              entities: [User, Company, Client, vendor, Invoice, InvoiceItems, productAllotment,product],
       }),
     }),
     companyModule,
@@ -56,4 +57,4 @@ import { invoiceItems } from './entity/invoiceItems';
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule { }
+export class AppModule {}

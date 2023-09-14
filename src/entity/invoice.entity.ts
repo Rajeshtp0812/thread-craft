@@ -1,7 +1,7 @@
 
-import { BaseEntity, Column, Entity, JoinColumn, ManyToOne, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { BaseEntity, Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { Company } from './company.entity';
-import { invoiceItems } from './invoiceItems';
+import { InvoiceItems } from './invoiceItems';
 import { Client } from './client.entity';
 
 @Entity({ name: 'invoice' })
@@ -50,11 +50,8 @@ export class Invoice extends BaseEntity {
   totalAmount: number;
 
   @Column({ name: 'AmountInWords' })
-  amountInWords: string;
+  amountInWords: string
   
-  @Column({ name: 'CompanyId' })
-  companyId: number;
-
   @ManyToOne(type => Company, Company => Company, { onDelete: "CASCADE" })
   @JoinColumn({ name: 'companyCompanyId' })
   company: Company
@@ -63,7 +60,7 @@ export class Invoice extends BaseEntity {
   @JoinColumn({ name: 'clientClientId' })
    client:Client
   
-  @OneToOne(type => invoiceItems ,{ onDelete: "CASCADE",cascade:true })
-  invoice: invoiceItems
+  @OneToMany(type => InvoiceItems ,InvoiceItems=>InvoiceItems.invoice,{ cascade:true  })
+  invoiceItems: InvoiceItems[]
 
 }
