@@ -29,7 +29,10 @@ export class invoiceController {
     return await this.invoiceServices.getInvoice(id);
   }
 
-   
+   @Get()
+   async getInvoices(@Query('companyId', ParseIntPipe) companyId: number){
+    return await this.invoiceServices.getInvoices(companyId)
+   }
 
   @Post()
   async create(@Body() data: createInvoiceDto,@Query('companyId',ParseIntPipe) companyId:number) {
