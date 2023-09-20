@@ -48,9 +48,9 @@ export class productServices {
   async updateProduct(id: number, data: Partial<updateProductDto>, file) {
     try {
       if (file?.filename) {
-        return this.product.update({ productId: id }, { ...data, image: `https://backend.services.sabafashion.in/product/uploads/${file.filename}` });
+        return this.product.update({ productId: id }, { ...data, image: `https://backend.services.sabafashion.in/product/uploads/${file?.filename}` });
       }
-      return this.product.update({ productId: id }, { ...data  });
+      return this.product.update({ productId: id }, { ...data });
     } catch (err) {
       throw err;
     }
