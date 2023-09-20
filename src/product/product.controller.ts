@@ -24,7 +24,7 @@ import { unlink } from 'fs';
 @ApiTags('product')
 @Controller('product')
 export class productController {
-  constructor(private productServices: productServices) {}
+  constructor(private productServices: productServices) { }
 
   @Get(':id')
   async getProduct(@Param('id', ParseIntPipe) id: number): Promise<product> {
@@ -43,12 +43,12 @@ export class productController {
     @Param('id', ParseIntPipe) id: number,
     @Body() data: updateProductDto,
   ) {
-    
+
     const { image } = await this.productServices.getProduct(id);
-        const urlArr=image.split("/")
-        const url=urlArr[urlArr.length-1]
-    if (file.filename) {
-              
+    const urlArr = image.split("/")
+    const url = urlArr[urlArr.length - 1]
+    if (file?.filename) {
+
       unlink(`uploads/${url}`, (err) => {
         if (err) {
           return;
@@ -63,8 +63,8 @@ export class productController {
   @Delete('/:id')
   async delete(@Param('id', ParseIntPipe) id: number) {
     const { image } = await this.productServices.getProduct(id);
-    const urlArr=image.split("/")
-    const url=urlArr[urlArr.length-1]
+    const urlArr = image.split("/")
+    const url = urlArr[urlArr.length - 1]
     unlink(`uploads/${url}`, (err) => {
       if (err) {
         return;

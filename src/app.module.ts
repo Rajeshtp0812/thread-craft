@@ -40,9 +40,9 @@ import { product } from './entity/product.entity';
         host: configService.get('host'),
         port: configService.get('dbPort'),
         database: configService.get('database'),
-        synchronize:true,
-        autoLoadEntities:true,
-        entities: [User, Company, Client, vendor, Invoice, InvoiceItems, productAllotment,product],
+        synchronize: true,
+        autoLoadEntities: true,
+        entities: [User, Company, Client, vendor, Invoice, InvoiceItems, productAllotment, product],
       }),
     }),
     companyModule,
@@ -57,4 +57,4 @@ import { product } from './entity/product.entity';
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule {}
+export class AppModule { }
