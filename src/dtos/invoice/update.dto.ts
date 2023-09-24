@@ -7,7 +7,7 @@ import { updateInvoiceItemDto } from '../invoiceitem/update.dto';
 export class updateInvoiceDto {
   @IsString()
   @IsOptional()
-  invoiceNo: number;
+  invoiceNumber: number;
 
   @IsString()
   @IsOptional()
