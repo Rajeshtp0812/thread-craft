@@ -34,16 +34,16 @@ export class Invoice extends BaseEntity {
   @Column({ name: 'GstNumber', default: "" })
   gstNumber: string;
 
-  @Column({ name: 'CgstAmount', default: "" })
+  @Column({ name: 'CgstAmount' })
   cgstAmount: number;
 
-  @Column({ name: 'CgstPercent', default: "" })
+  @Column({ name: 'CgstPercent' })
   cgstPercent: number;
 
-  @Column({ name: 'SgstAmount', default: "" })
+  @Column({ name: 'SgstAmount' })
   sgstAmount: number;
 
-  @Column({ name: 'SgstPercent', default: "" })
+  @Column({ name: 'SgstPercent' })
   sgstPercent: number;
 
   @Column({ name: 'TotalAmount' })
