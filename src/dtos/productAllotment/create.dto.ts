@@ -11,7 +11,7 @@ export class createProductAllotmentDto {
     totalAmount: number
 
     @IsNumber()
-    @IsOptional()
+    @IsNotEmpty()
     productQuantity: number
 
     @IsNumber()
@@ -19,7 +19,7 @@ export class createProductAllotmentDto {
     balanceAmount: number
 
     @IsNumber()
-    @IsOptional()
+    @IsNotEmpty()
     vendorRate: number
 
     @IsString()
@@ -35,14 +35,14 @@ export class createProductAllotmentDto {
     deliveryDate: string
 
     @IsString()
-    @IsOptional()
+    @IsNotEmpty()
     description: string
 
     @IsNumber()
     @IsNotEmpty()
     vendor: number
 
-    @IsNumber()
+    @IsString()
     @IsNotEmpty()
-    product: number
+    product: string
 }

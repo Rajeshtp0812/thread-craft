@@ -21,25 +21,21 @@ export class createVendorDto {
 
   @IsString()
   @IsOptional()
-  gst: string;
+  alternateContact: string;
 
   @IsString()
-  @IsOptional()
+  @IsNotEmpty()
   address: string;
 
-  @IsOptional()
-  @IsEmail()
-  email: string;
-
   @IsString()
-  @IsOptional()
+  @IsNotEmpty()
   pinCode: string;
 
   @IsString()
-  @IsOptional()
+  @IsNotEmpty()
   state: string;
 
   @IsString()
-  @IsOptional()
+  @IsNotEmpty()
   city: string;
 }

@@ -13,8 +13,7 @@ export class companyServices {
     return await this.company.findOne({
       where: {
         companyId: id,
-      },
-      relations: ['clients', 'products'],
+      }
     });
   }
 

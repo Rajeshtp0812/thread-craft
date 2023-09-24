@@ -12,7 +12,7 @@ export class createClientDto {
   companyName: string;
 
   @IsString()
-  @IsNotEmpty()
+  @IsOptional()
   gst: string;
 
   @IsString()
@@ -28,14 +28,14 @@ export class createClientDto {
   email: string;
 
   @IsString()
-  @IsNotEmpty()
+  @IsOptional()
   pinCode: string;
 
   @IsString()
-  @IsNotEmpty()
+  @IsOptional()
   state: string;
 
   @IsString()
-  @IsNotEmpty()
+  @IsOptional()
   city: string;
 }

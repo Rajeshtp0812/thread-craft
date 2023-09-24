@@ -9,27 +9,27 @@ export class Company extends BaseEntity {
       @PrimaryGeneratedColumn()
       companyId: number
 
-      @Column()
+      @Column({name:"company"})
       companyName: string
 
-      @Column({ default:" " })
+      @Column({ name:"GST"  })
       gst: string
 
-      @Column({ default:" " })
+      @Column({ name:"Contact" })
       contact: string
 
-      @Column({ default:" " })
+      @Column({ name:"Email" })
       email: string
 
-      @Column()
+      @Column({name:"Address"})
       address: string
 
-      @Column()
+      @Column({name:"State"})
       state: string
 
-      @Column()
+      @Column({name:"city"})
       city: string
 
-      @Column({ name: "pinCode" })
+      @Column({ name: "PinCode" })
       pinCode: string;
 } 
