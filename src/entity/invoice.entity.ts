@@ -13,54 +13,54 @@ export class Invoice extends BaseEntity {
   @Column({ name: 'invoiceNumber' })
   invoiceNumber: number;
 
-  @Column({ name: 'SupplyDate' ,default:""})
+  @Column({ name: 'SupplyDate', default: "" })
   supplyDate: string;
 
-  @Column({ name: 'State' ,default: ""})
+  @Column({ name: 'State', default: "" })
   state: string;
 
-  @Column({ name: 'TransportMode' ,default:""})
+  @Column({ name: 'TransportMode', default: "" })
   transportMode: string;
 
-  @Column({ name: 'Contact',default:"" })
-  contact:string;
+  @Column({ name: 'Contact', default: "" })
+  contact: string;
 
-  @Column({ name: 'City',default:"" })
-  city:string;
+  @Column({ name: 'City', default: "" })
+  city: string;
 
-  @Column({ name: 'Address',default:"" })
+  @Column({ name: 'Address', default: "" })
   address: string;
 
-  @Column({ name: 'GstNumber',default:"" })
+  @Column({ name: 'GstNumber', default: "" })
   gstNumber: string;
 
-  @Column({ name: 'CgstAmount' ,default:""})
-  cgstAmount: string;
+  @Column({ name: 'CgstAmount', default: "" })
+  cgstAmount: number;
 
-  @Column({ name: 'CgstPercent' ,default:""})
-  cgstPercent: string;
+  @Column({ name: 'CgstPercent', default: "" })
+  cgstPercent: number;
 
-  @Column({ name: 'SgstAmount' ,default:""})
-  sgstAmount: string;
+  @Column({ name: 'SgstAmount', default: "" })
+  sgstAmount: number;
 
-  @Column({ name: 'SgstPercent',default:"" })
-  sgstPercent: string;
+  @Column({ name: 'SgstPercent', default: "" })
+  sgstPercent: number;
 
   @Column({ name: 'TotalAmount' })
   totalAmount: number;
 
   @Column({ name: 'AmountInWords' })
   amountInWords: string
-  
+
   @ManyToOne(type => Company, Company => Company, { onDelete: "CASCADE" })
   @JoinColumn({ name: 'companyCompanyId' })
   company: Company
 
-  @ManyToOne(type => Client, client=>client, { onDelete: "CASCADE" })
+  @ManyToOne(type => Client, client => client, { onDelete: "CASCADE" })
   @JoinColumn({ name: 'clientClientId' })
-   client:Client
-  
-  @OneToMany(type => InvoiceItems ,InvoiceItems=>InvoiceItems.invoice,{ cascade:true  })
+  client: Client
+
+  @OneToMany(type => InvoiceItems, InvoiceItems => InvoiceItems.invoice, { cascade: true })
   invoiceItems: InvoiceItems[]
 
 }

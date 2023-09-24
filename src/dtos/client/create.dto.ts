@@ -23,7 +23,7 @@ export class createClientDto {
   address: string;
 
   @IsOptional()
-   @IsString()
+  @IsString()
   email: string;
 
   @IsString()

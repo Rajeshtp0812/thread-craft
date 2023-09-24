@@ -1,13 +1,11 @@
 import { Type } from 'class-transformer';
 import { IsNumber, IsString, IsOptional, IsArray } from 'class-validator';
- 
- 
 import { updateInvoiceItemDto } from '../invoiceitem/update.dto';
 
 export class updateInvoiceDto {
   @IsString()
   @IsOptional()
-  invoiceNumber: number;
+  invoiceNumber: string;
 
   @IsString()
   @IsOptional()
@@ -19,11 +17,15 @@ export class updateInvoiceDto {
 
   @IsString()
   @IsOptional()
+  city: string;
+
+  @IsString()
+  @IsOptional()
   transportMode: string;
 
   @IsString()
   @IsOptional()
-  contact: number;
+  contact: string;
 
   @IsString()
   @IsOptional()
@@ -31,27 +33,23 @@ export class updateInvoiceDto {
 
   @IsString()
   @IsOptional()
-  gstNo: number;
+  gstNumber: string;
 
-  @IsString()
+  @IsNumber()
   @IsOptional()
-  supplyPlace: string;
+  cgstAmount: number;
 
-  @IsString()
+  @IsNumber()
   @IsOptional()
-  cgst: string;
+  cgstPercent: number;
 
-  @IsString()
+  @IsNumber()
   @IsOptional()
-  cgstPercentage: string;
+  sgstAmount: number;
 
-  @IsString()
+  @IsNumber()
   @IsOptional()
-  sgst: string;
-
-  @IsString()
-  @IsOptional()
-  sgstPercentage: string;
+  sgstPercent: number;
 
   @IsNumber()
   @IsOptional()
@@ -61,9 +59,13 @@ export class updateInvoiceDto {
   @IsOptional()
   amountInWords: string;
 
+  @IsNumber()
+  @IsOptional()
+  clientId: number;
+
   @IsArray()
   @IsOptional()
-  @Type(()=>updateInvoiceItemDto)
+  @Type(() => updateInvoiceItemDto)
   invoiceItems: updateInvoiceItemDto[]
 
 

@@ -1,16 +1,16 @@
-import { IsString, IsNotEmpty, IsNumber } from 'class-validator';
+import { IsString, IsNotEmpty, IsNumber, IsOptional } from 'class-validator';
 
 export class createInvoiceItemDto {
   @IsString()
   @IsNotEmpty()
   code: string;
-  
+
   @IsString()
-  @IsNotEmpty()
+  @IsOptional()
   description: string;
 
   @IsString()
-  @IsNotEmpty()
+  @IsOptional()
   hsnCode: string;
 
   @IsNumber()

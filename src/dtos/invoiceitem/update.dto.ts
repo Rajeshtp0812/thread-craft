@@ -24,6 +24,4 @@ export class updateInvoiceItemDto {
   @IsNumber()
   @IsOptional()
   amount: number;
-
- 
 }

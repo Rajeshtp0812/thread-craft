@@ -4,7 +4,6 @@ import {
   IsNotEmpty,
   IsNumber,
   IsOptional,
-  IsPort,
   IsString,
 } from 'class-validator';
 import { createInvoiceItemDto } from '../invoiceitem/create.dto';
@@ -12,7 +11,7 @@ import { createInvoiceItemDto } from '../invoiceitem/create.dto';
 export class createInvoiceDto {
   @IsString()
   @IsNotEmpty()
-  invoiceNumber: number;
+  invoiceNumber: string;
 
   @IsString()
   @IsOptional()
@@ -23,12 +22,16 @@ export class createInvoiceDto {
   state: string;
 
   @IsString()
+  @IsNotEmpty()
+  city: string;
+
+  @IsString()
   @IsOptional()
   transportMode: string;
 
   @IsString()
   @IsOptional()
-  contact: number;
+  contact: string;
 
   @IsString()
   @IsOptional()
@@ -36,23 +39,23 @@ export class createInvoiceDto {
 
   @IsString()
   @IsOptional()
-  gstNumber: number;
+  gstNumber: string;
 
-  @IsString()
+  @IsNumber()
   @IsOptional()
-  cgstAmount: string;
+  cgstAmount: number;
 
-  @IsString()
+  @IsNumber()
   @IsOptional()
-  cgstPercent: string;
+  cgstPercent: number;
 
-  @IsString()
+  @IsNumber()
   @IsOptional()
-  sgstAmount: string;
+  sgstAmount: number;
 
-  @IsString()
+  @IsNumber()
   @IsOptional()
-  sgstPercent: string;
+  sgstPercent: number;
 
   @IsNumber()
   @IsNotEmpty()
