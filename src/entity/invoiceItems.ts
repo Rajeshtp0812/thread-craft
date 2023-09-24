@@ -18,8 +18,8 @@ export class InvoiceItems extends BaseEntity {
   @Column({ name: 'description' })
   description: string;
 
-  @Column({ name: 'hasCode' })
-  hasCode: string;
+  @Column({ name: 'hasCode' ,default:''})
+  hsnCode: string;
 
   @Column({ name: 'Rate' })
   rate: number;

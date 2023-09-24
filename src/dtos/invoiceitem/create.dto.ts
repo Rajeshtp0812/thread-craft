@@ -11,7 +11,7 @@ export class createInvoiceItemDto {
 
   @IsString()
   @IsNotEmpty()
-  hasCode: string;
+  hsnCode: string;
 
   @IsNumber()
   @IsNotEmpty()

@@ -24,7 +24,7 @@ export class createClientDto {
   address: string;
 
   @IsOptional()
-  @IsEmail()
+   @IsString()
   email: string;
 
   @IsString()

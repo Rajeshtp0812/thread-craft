@@ -40,12 +40,10 @@ import { product } from './entity/product.entity';
         host: configService.get('host'),
         port: configService.get('dbPort'),
         database: configService.get('database'),
-<<<<<<< Updated upstream
-        dropSchema: false,
-=======
-        dropSchema:true,
->>>>>>> Stashed changes
+        autoLoadEntities:true,
         synchronize:true,
+        dropSchema:true,
+        
         entities: [User, Company, Client, vendor, Invoice, InvoiceItems, productAllotment, product],
       }),
     }),
@@ -61,4 +59,4 @@ import { product } from './entity/product.entity';
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule { }
+export class AppModule {}

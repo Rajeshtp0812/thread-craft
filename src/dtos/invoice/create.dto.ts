@@ -12,7 +12,7 @@ import { createInvoiceItemDto } from '../invoiceitem/create.dto';
 export class createInvoiceDto {
   @IsString()
   @IsNotEmpty()
-  invoiceNo: number;
+  invoiceNumber: number;
 
   @IsString()
   @IsOptional()
@@ -36,27 +36,23 @@ export class createInvoiceDto {
 
   @IsString()
   @IsOptional()
-  gstNo: number;
+  gstNumber: number;
 
   @IsString()
   @IsOptional()
-  supplyPlace: string;
+  cgstAmount: string;
 
   @IsString()
   @IsOptional()
-  cgst: string;
+  cgstPercent: string;
 
   @IsString()
   @IsOptional()
-  cgstPercentage: string;
+  sgstAmount: string;
 
   @IsString()
   @IsOptional()
-  sgst: string;
-
-  @IsString()
-  @IsOptional()
-  sgstPercentage: string;
+  sgstPercent: string;
 
   @IsNumber()
   @IsNotEmpty()

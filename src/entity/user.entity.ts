@@ -14,7 +14,7 @@ export class User {
   @Column({ name: 'firstName' })
   firstName: string;
 
-  @Column({ default:" ", name: 'lastName' })
+  @Column({ default:"", name: 'lastName' })
   lastName: string;
   @Column({   name: 'refreshToken',default:'' })
   refreshToken: string;

@@ -34,37 +34,35 @@ export class invoiceServices {
   async createInvoice(data) {
     try {
       const {
-        invoiceNo,
+        invoiceNumber,
         supplyDate,
         state,
         transportMode,
         contact,
         address,
-        gstNo,
-        supplyPlace,
-        cgst,
-        cgstPercentage,
-        sgst,
-        sgstPercentage,
+        gstNumber,
+        cgstAmount,
+        cgstPercent,
+        sgstAmount,
+        sgstPercent,
         totalAmount,
         amountInWords,
         companyId,
         clientId,
       } = data;
       const invoice = new Invoice();
-      invoice.invoiceNo = invoiceNo;
+      invoice.invoiceNumber = invoiceNumber;
       invoice.address = address;
       invoice.supplyDate = supplyDate;
-      invoice.gstNo = gstNo;
+      invoice.gstNumber = gstNumber;
       invoice.amountInWords = amountInWords;
-      invoice.cgst = cgst;
-      invoice.cgstPercentage = cgstPercentage;
-      invoice.supplyPlace = supplyPlace;
+      invoice.cgstAmount = cgstAmount;
+      invoice.cgstPercent = cgstPercent;
       invoice.contact = contact;
       invoice.transportMode = transportMode;
       invoice.state = state;
-      invoice.sgst = sgst;
-      invoice.sgstPercentage = sgstPercentage;
+      invoice.sgstAmount = sgstAmount;
+      invoice.sgstPercent = sgstPercent;
       invoice.totalAmount = totalAmount;
       invoice.company = companyId;
       invoice.client = clientId;
@@ -73,7 +71,7 @@ export class invoiceServices {
         const { amount, code, hasCode, description, quantity, rate } = itemData;
         item.amount = amount;
         item.code = code;
-        item.hasCode = hasCode;
+        item.hsnCode = hasCode;
         item.description = description;
         item.quantity = quantity;
         item.rate = rate;
@@ -110,7 +108,7 @@ export class invoiceServices {
             itemData;
           item.amount = amount;
           item.code = code;
-          item.hasCode = hasCode;
+          item.hsnCode = hasCode;
           item.description = description;
           item.quantity = quantity;
           item.rate = rate;
