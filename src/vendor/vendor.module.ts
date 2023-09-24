@@ -12,7 +12,8 @@ import { vendor } from "src/entity/vendor.entity";
         
     ],
     providers:[vendorServices],
-    controllers:[vendorController]
+    controllers:[vendorController],
+    exports:[vendorServices]
     
 })
 

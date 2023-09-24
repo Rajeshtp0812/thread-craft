@@ -12,7 +12,8 @@ import { v2 } from "cloudinary";
         TypeOrmModule.forFeature([product]),   
     ],
     providers:[productServices],
-    controllers:[productController]
+    controllers:[productController],
+    exports:[productServices]
     
 })
 

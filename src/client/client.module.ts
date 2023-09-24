@@ -12,7 +12,8 @@ import { Client } from "src/entity/client.entity";
 
     ],
     providers: [clientServices],
-    controllers: [clientController]
+    controllers: [clientController],
+    exports:[clientServices]
 
 })
 

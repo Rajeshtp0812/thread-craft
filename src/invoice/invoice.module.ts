@@ -12,7 +12,9 @@ import { InvoiceItems  } from "src/entity/invoiceItems";
 
     ],
     providers: [invoiceServices],
-    controllers: [invoiceController]
+    controllers: [invoiceController],
+    exports:[invoiceServices]
+     
 
 })
 

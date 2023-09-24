@@ -48,4 +48,8 @@ export class companyServices {
       throw (err);
     }
   }
+  async count(){
+    const [,company]= await this.company.findAndCount()
+    return company
+  }
 }

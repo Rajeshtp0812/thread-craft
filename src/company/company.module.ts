@@ -11,7 +11,8 @@ import { Company } from "src/entity/company.entity";
 
     ],
     providers: [companyServices],
-    controllers: [companyController]
+    controllers: [companyController],
+    exports:[companyServices]
 
 })
 

@@ -39,7 +39,7 @@ export class productAllotment extends BaseEntity {
   description: string
 
   
- @Column({name:"product",default:" "})
+  @Column({name:"product",default:" "})
   product:  string
 
   @ManyToOne(type => vendor, vendor => vendor, { onDelete: "CASCADE" })
