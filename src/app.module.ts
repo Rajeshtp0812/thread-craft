@@ -40,7 +40,7 @@ import { product } from './entity/product.entity';
         host: configService.get('host'),
         port: configService.get('dbPort'),
         database: configService.get('database'),
-       dropSchema:true,
+        dropSchema: false,
         synchronize:true,
         entities: [User, Company, Client, vendor, Invoice, InvoiceItems, productAllotment, product],
       }),
