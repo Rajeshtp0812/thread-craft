@@ -63,4 +63,9 @@ export class productServices {
       throw err;
     }
   }
+
+  async count(){
+    const [,number]= await this.product.findAndCount()
+    return number
+  }
 }

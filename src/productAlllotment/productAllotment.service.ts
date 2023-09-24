@@ -52,4 +52,8 @@ export class productAllotmentServices {
   async deleteAllotedProduct(id: number) {
     return await this.productAllotment.delete({ productAllotmentId: id });
   }
+  async count(){
+    const [,product]= await this.productAllotment.findAndCount()
+    return product
+  }
 }

@@ -54,5 +54,8 @@ export class vendorServices {
       throw (err);
     }
   }
-
+  async count(){
+    const [,vendor]= await this.vendor.findAndCount()
+    return vendor
+  }
 }

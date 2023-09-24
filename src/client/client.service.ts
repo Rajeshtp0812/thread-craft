@@ -55,4 +55,8 @@ export class clientServices {
       throw (err)
     }
   }
+  async count(){
+    const [,client]= await this.client.findAndCount()
+    return client
+  }
 }
