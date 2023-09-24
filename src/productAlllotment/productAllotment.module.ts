@@ -11,7 +11,8 @@ import { productAllotment } from "src/entity/productAllotment.entity";
         
     ],
     providers:[productAllotmentServices],
-    controllers:[productAllotmentController]
+    controllers:[productAllotmentController],
+    exports:[productAllotmentServices]
     
 })
 

@@ -24,7 +24,7 @@ export class product {
   @Column({ name: 'code' })
   code: string;
 
-  @Column({ name: 'size', default: ' ' })
+  @Column({ name: 'size', default: '' })
   size: string;
 
   @Column({ name: 'runNo' })

@@ -11,10 +11,10 @@ export class productAllotment extends BaseEntity {
   @PrimaryGeneratedColumn()
   productAllotmentId: number
 
-  @Column({ name: "Date", default:" " })
+  @Column({ name: "Date", default:"" })
   date: string
 
-  @Column({ name: "Size", default:" " })
+  @Column({ name: "Size", default:"" })
   size: string
 
   @Column({ name: "ProductQuantity"})
@@ -23,7 +23,7 @@ export class productAllotment extends BaseEntity {
   @Column({ name: "VendorRate"  })
   vendorRate: number
 
-  @Column({ name: "DeliveryDate", default:" " })
+  @Column({ name: "DeliveryDate", default:"" })
   deliveryDate: string
 
   @Column({ name: "Amount",  nullable:true})
@@ -39,7 +39,7 @@ export class productAllotment extends BaseEntity {
   description: string
 
   
-  @Column({name:"product",default:" "})
+  @Column({name:"product",default:""})
   product:  string
 
   @ManyToOne(type => vendor, vendor => vendor, { onDelete: "CASCADE" })

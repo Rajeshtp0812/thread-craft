@@ -20,7 +20,7 @@ export class updateCompanyDto {
   contact: string;
 
   @IsOptional()
-  @IsEmail()
+  @IsString()
   email: string;
 
   @IsString()

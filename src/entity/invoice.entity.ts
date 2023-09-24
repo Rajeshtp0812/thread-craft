@@ -10,41 +10,41 @@ export class Invoice extends BaseEntity {
   @PrimaryGeneratedColumn({ name: 'invoiceId' })
   invoiceId: number
 
-  @Column({ name: 'invoiceNo' })
-  invoiceNo: number;
+  @Column({ name: 'invoiceNumber' })
+  invoiceNumber: number;
 
-  @Column({ name: 'SupplyDate' ,default:" "})
+  @Column({ name: 'SupplyDate' ,default:""})
   supplyDate: string;
 
-  @Column({ name: 'State'  })
+  @Column({ name: 'State' ,default: ""})
   state: string;
 
-  @Column({ name: 'TransportMode' ,default:" "})
+  @Column({ name: 'TransportMode' ,default:""})
   transportMode: string;
 
-  @Column({ name: 'Contact',default:0  })
-  contact: number;
+  @Column({ name: 'Contact',default:"" })
+  contact:string;
 
-  @Column({ name: 'Address',default:" " })
+  @Column({ name: 'City',default:"" })
+  city:string;
+
+  @Column({ name: 'Address',default:"" })
   address: string;
 
-  @Column({ name: 'GstNo',default:0 })
-  gstNo: number;
+  @Column({ name: 'GstNumber',default:"" })
+  gstNumber: string;
 
-  @Column({ name: 'SupplyPlace' ,default:" "})
-  supplyPlace: string;
+  @Column({ name: 'CgstAmount' ,default:""})
+  cgstAmount: string;
 
-  @Column({ name: 'Cgst' ,default:" "})
-  cgst: string;
+  @Column({ name: 'CgstPercent' ,default:""})
+  cgstPercent: string;
 
-  @Column({ name: 'CgstPercentage' ,default:" "})
-  cgstPercentage: string;
+  @Column({ name: 'SgstAmount' ,default:""})
+  sgstAmount: string;
 
-  @Column({ name: 'Sgst' ,default:" "})
-  sgst: string;
-
-  @Column({ name: 'SgstPercentage',default:" " })
-  sgstPercentage: string;
+  @Column({ name: 'SgstPercent',default:"" })
+  sgstPercent: string;
 
   @Column({ name: 'TotalAmount' })
   totalAmount: number;
