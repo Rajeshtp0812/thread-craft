@@ -12,7 +12,7 @@ import { createInvoiceItemDto } from '../invoiceitem/create.dto';
 export class createInvoiceDto {
   @IsString()
   @IsNotEmpty()
-  invoiceNo: number;
+  invoiceNumber: number;
 
   @IsString()
   @IsOptional()
