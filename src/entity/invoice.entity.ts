@@ -11,7 +11,7 @@ export class Invoice extends BaseEntity {
   invoiceId: number
 
   @Column({ name: 'invoiceNumber' })
-  invoiceNumber: number;
+  invoiceNumber: string;
 
   @Column({ name: 'SupplyDate', default: "" })
   supplyDate: string;

@@ -18,11 +18,11 @@ export class createInvoiceDto {
   supplyDate: string;
 
   @IsString()
-  @IsNotEmpty()
+  @IsOptional()
   state: string;
 
   @IsString()
-  @IsNotEmpty()
+  @IsOptional()
   city: string;
 
   @IsString()
