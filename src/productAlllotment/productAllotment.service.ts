@@ -15,7 +15,7 @@ export class productAllotmentServices {
         where: {
           productAllotmentId: id,
         },
-        relations:["company","vendor","product"]
+        relations:["company","vendor"]
       });
     } catch (err) {
       throw (err);
@@ -25,7 +25,7 @@ export class productAllotmentServices {
   async getAllotedProducts(id:number): Promise<productAllotment[]> {
     try {
       return await (await this.productAllotment.find({
-        relations: ['company', "product", "vendor"]
+        relations: ['company',  "vendor"]
       })).filter(company=>company.company.companyId==id);
     } catch (err) {
       throw (err)

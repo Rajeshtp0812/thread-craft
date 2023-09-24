@@ -13,37 +13,37 @@ export class Invoice extends BaseEntity {
   @Column({ name: 'invoiceNo' })
   invoiceNo: number;
 
-  @Column({ name: 'SupplyDate' ,nullable:true})
+  @Column({ name: 'SupplyDate' ,default:" "})
   supplyDate: string;
 
   @Column({ name: 'State'  })
   state: string;
 
-  @Column({ name: 'TransportMode' ,nullable:true})
+  @Column({ name: 'TransportMode' ,default:" "})
   transportMode: string;
 
-  @Column({ name: 'Conatact',nullable:true })
+  @Column({ name: 'Contact',default:0  })
   contact: number;
 
-  @Column({ name: 'Address',nullable:true })
+  @Column({ name: 'Address',default:" " })
   address: string;
 
-  @Column({ name: 'GstNo',nullable:true })
+  @Column({ name: 'GstNo',default:0 })
   gstNo: number;
 
-  @Column({ name: 'SupplyPlace' ,nullable:true})
+  @Column({ name: 'SupplyPlace' ,default:" "})
   supplyPlace: string;
 
-  @Column({ name: 'Cgst' ,nullable:true})
+  @Column({ name: 'Cgst' ,default:" "})
   cgst: string;
 
-  @Column({ name: 'CgstPercentage' ,nullable:true})
+  @Column({ name: 'CgstPercentage' ,default:" "})
   cgstPercentage: string;
 
-  @Column({ name: 'Sgst' ,nullable:true})
+  @Column({ name: 'Sgst' ,default:" "})
   sgst: string;
 
-  @Column({ name: 'SgstPercentage',nullable:true })
+  @Column({ name: 'SgstPercentage',default:" " })
   sgstPercentage: string;
 
   @Column({ name: 'TotalAmount' })

@@ -12,14 +12,14 @@ export class createCompanyDto {
   companyName: string;
 
   @IsString()
-  @IsOptional()
+  @IsNotEmpty()
   gst: string;
 
   @IsString()
-  @IsOptional()
+  @IsNotEmpty()
   contact: string;
 
-  @IsOptional()
+  @IsNotEmpty()
   @IsEmail()
   email: string;
 

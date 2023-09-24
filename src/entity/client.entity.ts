@@ -18,10 +18,10 @@ export class Client extends BaseEntity {
   @Column({ name: "company" })
   companyName: string;
 
-  @Column({ name: "gst" })
+  @Column({ name: "gst",default:" " })
   gst: string;
 
-  @Column({ name: "contact" })
+  @Column({ name: "contact",default:" " })
   contact: string;
 
   @Column({ default:" ", name: "address" })
@@ -30,13 +30,13 @@ export class Client extends BaseEntity {
   @Column({ default:" ", name: "email" })
   email: string;
 
-  @Column({ name: "pinCode" })
+  @Column({ name: "pinCode" ,default:" "})
   pinCode: string;
 
-  @Column({ name: "state" })
+  @Column({ name: "state",default:" " })
   state: string;
 
-  @Column({ name: "city" })
+  @Column({ name: "city",default:" " })
   city: string;
 
   @ManyToOne(() => Company, company => company, { onDelete: "CASCADE" })

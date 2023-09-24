@@ -21,15 +21,11 @@ export class updateVendorDto {
 
   @IsString()
   @IsOptional()
-  gst: string;
+  alternateContact: string;
 
   @IsString()
   @IsOptional()
   address: string;
-
-  @IsOptional()
-  @IsEmail()
-  email: string;
 
   @IsString()
   @IsOptional()

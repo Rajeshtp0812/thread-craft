@@ -35,7 +35,7 @@ export class productAllotmentController {
     return await this.productAllotmentServices.getAllotedProducts(companyId);
   }
 
-  @Post()
+  @Post('create')
   async create(@Query("companyId", ParseIntPipe) companyId: number, @Body() data: createProductAllotmentDto) {
     data['company'] = companyId;
     return await this.productAllotmentServices.createAllotedProduct(data);

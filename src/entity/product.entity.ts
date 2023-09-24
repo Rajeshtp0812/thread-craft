@@ -1,75 +1,78 @@
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { Company } from './company.entity';
 
-import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
-import { Company } from "./company.entity";
-
-@Entity({ name: "product" })
+@Entity({ name: 'product' })
 export class product {
-
   @PrimaryGeneratedColumn()
-  productId: number
+  productId: number;
 
-  @Column({ name: "date" })
-  date: string
+  @Column({ name: 'date' })
+  date: string;
 
-  @Column({ name: "details" })
-  details: string
+  @Column({ name: 'details' })
+  details: string;
 
-  @Column({ name: "rate" })
-  rate: string
+  @Column({ name: 'rate' })
+  rate: string;
 
-  @Column({ name: "code" })
-  code: string
+  @Column({ name: 'code' })
+  code: string;
 
-    @Column({ name: "size", default:" " })
-    size: string
+  @Column({ name: 'size', default: ' ' })
+  size: string;
 
-  @Column({ name: "runNo" })
-  runNo: string
+  @Column({ name: 'runNo' })
+  runNo: string;
 
-  @Column({ name: "billNo" })
-  billNo: string
+  @Column({ name: 'billNo' })
+  billNo: string;
 
-  @Column({ name: "average",   default: "" })
-  average: string
+  @Column({ name: 'average', default: '' })
+  average: string;
 
-  @Column({ name: "embroidary", nullable: true,  })
-  embroidary: string
+  @Column({ name: 'embroidary', nullable: true })
+  embroidary: string;
 
-  @Column({ name: "fittingStich", nullable: true, default: "" })
-  fittingStich: string
+  @Column({ name: 'fittingStich', default: '' })
+  fittingStich: string;
 
-  @Column({ name: 'buttonStich', nullable: true, default: "" })
-  buttonStich: string
+  @Column({ name: 'buttonStich', default: '' })
+  buttonStich: string;
 
-  @Column({ name: "print", nullable: true, default: "" })
-  print: string
+  @Column({ name: 'print', default: '' })
+  print: string;
 
-  @Column({ name: "pintex", nullable: true, default: "" })
-  pintex: string
+  @Column({ name: 'pintex', default: '' })
+  pintex: string;
 
-  @Column({ name: "kMaking", nullable: true, default: "" })
-  kMaking: string
+  @Column({ name: 'kMaking', default: '' })
+  kMaking: string;
 
-  @Column({ name: "tag", nullable: true, default: "" })
-  tag: string
+  @Column({ name: 'tag', default: '' })
+  tag: string;
 
-  @Column({ name: "label", nullable: true, default: "" })
-  label: string
+  @Column({ name: 'label', default: '' })
+  label: string;
 
-  @Column({ name: "making", nullable: true, default: "" })
-  making: string
+  @Column({ name: 'making', default: '' })
+  making: string;
 
-  @Column({ name: "canvas", nullable: true, default: "" })
-  canvas: string
+  @Column({ name: 'canvas', default: '' })
+  canvas: string;
 
-  @Column({ name: "totalAmount", nullable: true, default: "" })
-  totalAmount: string
+  @Column({ name: 'totalAmount', default: '' })
+  totalAmount: string;
 
-  @Column({ name: "image", nullable: true, default: "" })
-  image: string
+  @Column({ name: 'image', default: '' })
+  image: string;
 
-  @ManyToOne(() => Company, company => company, { onDelete: "CASCADE" })
-  @JoinColumn({ name: "companyCompanyId" })
-  company: Company
-
+  @ManyToOne(() => Company, (company) => company, { onDelete: 'CASCADE' })
+  @JoinColumn({ name: 'companyCompanyId' })
+  company: Company;
 }

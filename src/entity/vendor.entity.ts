@@ -1,39 +1,42 @@
-import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
-import { Company } from "./company.entity";
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { Company } from './company.entity';
 
-@Entity({ name: "vendor" })
+@Entity({ name: 'vendor' })
 export class vendor {
-    @PrimaryGeneratedColumn()
-    vendorId: number
+  @PrimaryGeneratedColumn()
+  vendorId: number;
 
-    @Column({ name: "owner", default:" " })
-    ownerName: string
+  @Column({ name: 'owner' })
+  ownerName: string;
 
-    @Column({ name: "company", })
-    companyName: string
+  @Column({ name: 'company' })
+  companyName: string;
 
-    @Column({ name: "contact" })
-    contact: string
+  @Column({ name: 'contact' })
+  contact: string;
 
-    @Column({ name: "email", default:" " })
-    email: string
+  @Column({ name: 'address' })
+  address: string;
 
-    @Column({ default:" ", name: "address" })
-    address: string;
+  @Column({ default: ' ', name: 'gst' })
+  alternateContact: string;
 
-    @Column({ default:" ", name: "gst" })
-    gst: string;
+  @Column({ name: 'pinCode' })
+  pinCode: string;
 
-    @Column({ name: "pinCode", default:" " })
-    pinCode: string;
+  @Column({ name: 'state' })
+  state: string;
 
-    @Column({ name: "state", default:" " })
-    state: string;
+  @Column({ name: 'city' })
+  city: string;
 
-    @Column({ name: "city", default:" " })
-    city: string;
-
-    @ManyToOne(() => Company, company => company, { onDelete: "CASCADE" })
-    @JoinColumn({ name: "companyCompanyId" })
-    company: Company;
+  @ManyToOne(() => Company, (company) => company, { onDelete: 'CASCADE' })
+  @JoinColumn({ name: 'companyCompanyId' })
+  company: Company;
 }
