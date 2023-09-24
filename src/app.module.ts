@@ -7,7 +7,6 @@ import { User } from './entity/user.entity';
 import { userModule } from './user/user.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { config } from '../config';
-
 import { Company } from './entity/company.entity';
 import { companyModule } from './company/company.module';
 import { clientModule } from './client/client.module';
@@ -22,11 +21,8 @@ import { Invoice } from './entity/invoice.entity';
 import { InvoiceItems } from './entity/invoiceItems';
 import { product } from './entity/product.entity';
 
-
-
 @Module({
   imports: [
-
     ConfigModule.forRoot({
       isGlobal: true,
       load: [config],
@@ -40,15 +36,14 @@ import { product } from './entity/product.entity';
         host: configService.get('host'),
         port: configService.get('dbPort'),
         database: configService.get('database'),
-        autoLoadEntities:true,
-        synchronize:true,
-        dropSchema:true,
-        
+        autoLoadEntities: true,
+        dropSchema: false,
+        synchronize: true,
         entities: [User, Company, Client, vendor, Invoice, InvoiceItems, productAllotment, product],
       }),
     }),
     companyModule,
-    AuthModule, 
+    AuthModule,
     userModule,
     clientModule,
     vendorModule,
@@ -59,4 +54,4 @@ import { product } from './entity/product.entity';
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule {}
+export class AppModule { }
