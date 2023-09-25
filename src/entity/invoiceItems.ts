@@ -3,14 +3,14 @@ import {
   Column,
   Entity,
   JoinColumn,
-   ManyToOne,
+  ManyToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { Invoice } from './invoice.entity';
 @Entity({ name: "invoiceItem" })
 export class InvoiceItems extends BaseEntity {
   @PrimaryGeneratedColumn()
-  invoiceItemId:number;
+  invoiceItemId: number;
 
   @Column({ name: 'code' })
   code: string;
@@ -18,7 +18,7 @@ export class InvoiceItems extends BaseEntity {
   @Column({ name: 'description' })
   description: string;
 
-  @Column({ name: 'hasCode' ,default:''})
+  @Column({ name: 'hsnCode', default: '' })
   hsnCode: string;
 
   @Column({ name: 'Rate' })
@@ -30,7 +30,7 @@ export class InvoiceItems extends BaseEntity {
   @Column({ name: 'Amount' })
   amount: number;
 
-  @ManyToOne((type) => Invoice,invoice=>invoice.invoiceItems, { onDelete: "CASCADE" })
-  @JoinColumn({name:"invoiceInvoiceId"})
+  @ManyToOne((type) => Invoice, invoice => invoice.invoiceItems, { onDelete: "CASCADE" })
+  @JoinColumn({ name: "invoiceInvoiceId" })
   invoice: Invoice;
 }

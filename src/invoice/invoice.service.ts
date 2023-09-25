@@ -10,7 +10,7 @@ export class invoiceServices {
     @InjectRepository(Invoice) private readonly invoice: Repository<Invoice>,
     @InjectRepository(InvoiceItems)
     private readonly invoiceItem: Repository<InvoiceItems>,
-  ) {}
+  ) { }
 
   async getInvoice(id: number) {
     return await this.invoice.findOne({
@@ -68,10 +68,10 @@ export class invoiceServices {
       invoice.client = clientId;
       const items = data.invoiceItems.map((itemData) => {
         const item = new InvoiceItems();
-        const { amount, code, hasCode, description, quantity, rate } = itemData;
+        const { amount, code, hsnCode, description, quantity, rate } = itemData;
         item.amount = amount;
         item.code = code;
-        item.hsnCode = hasCode;
+        item.hsnCode = hsnCode;
         item.description = description;
         item.quantity = quantity;
         item.rate = rate;
@@ -104,11 +104,11 @@ export class invoiceServices {
         await this.invoiceItem.remove(getInvoice.invoiceItems);
         const newInvoiceItems = invoiceItems.map((itemData) => {
           const item = new InvoiceItems();
-          const { amount, code, hasCode, description, quantity, rate } =
+          const { amount, code, hsnCode, description, quantity, rate } =
             itemData;
           item.amount = amount;
           item.code = code;
-          item.hsnCode = hasCode;
+          item.hsnCode = hsnCode;
           item.description = description;
           item.quantity = quantity;
           item.rate = rate;
@@ -130,8 +130,8 @@ export class invoiceServices {
       throw err;
     }
   }
-  async count(){
-    const [,invoice]= await this.invoice.findAndCount()
+  async count() {
+    const [, invoice] = await this.invoice.findAndCount()
     return invoice
   }
 }
