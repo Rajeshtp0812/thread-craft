@@ -11,7 +11,7 @@ export class updateInvoiceItemDto {
 
   @IsString()
   @IsOptional()
-  hasCode: string;
+  hsnCode: string;
 
   @IsNumber()
   @IsOptional()
