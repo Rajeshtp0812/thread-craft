@@ -34,19 +34,19 @@ export class Invoice extends BaseEntity {
   @Column({ name: 'GstNumber', default: "" })
   gstNumber: string;
 
-  @Column({ name: 'CgstAmount' })
+  @Column({ name: 'CgstAmount',type:'decimal',precision:10,scale:2 })
   cgstAmount: number;
 
-  @Column({ name: 'CgstPercent' })
+  @Column({ name: 'CgstPercent',type:'decimal' ,precision:10,scale:2})
   cgstPercent: number;
 
-  @Column({ name: 'SgstAmount' })
-  sgstAmount: number;
+  @Column({ name: 'SgstAmount' ,type:'decimal',precision:10,scale:2})
+  sgstAmount: number
 
-  @Column({ name: 'SgstPercent' })
+  @Column({ name: 'SgstPercent' ,type:'decimal'})
   sgstPercent: number;
 
-  @Column({ name: 'TotalAmount' })
+  @Column({ name: 'TotalAmount',type:'decimal' })
   totalAmount: number;
 
   @Column({ name: 'AmountInWords' })

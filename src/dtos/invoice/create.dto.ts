@@ -41,23 +41,22 @@ export class createInvoiceDto {
   @IsOptional()
   gstNumber: string;
 
-  @IsNumber()
-  @IsOptional()
+  @IsNotEmpty()
   cgstAmount: number;
 
-  @IsNumber()
-  @IsOptional()
+   
+  @IsNotEmpty()
   cgstPercent: number;
 
-  @IsNumber()
-  @IsOptional()
+   
+  @IsNotEmpty()
   sgstAmount: number;
 
-  @IsNumber()
-  @IsOptional()
+  
+  @IsNotEmpty()
   sgstPercent: number;
 
-  @IsNumber()
+   
   @IsNotEmpty()
   totalAmount: number;
 

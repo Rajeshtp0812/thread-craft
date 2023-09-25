@@ -1,4 +1,4 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, ParseIntPipe, Query } from '@nestjs/common';
 import { AppService } from './app.service';
 import { Public } from './auth/public.decorator';
 
@@ -8,8 +8,8 @@ export class AppController {
   
   @Get()
   @Public()
-  Count(){
-    return this.appService.count()
+  Count(@Query("companyId" ,ParseIntPipe) companyId:number){
+    return this.appService.count(companyId)
   }
     
 }

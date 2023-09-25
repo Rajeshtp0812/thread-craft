@@ -10,7 +10,7 @@ export class invoiceServices {
     @InjectRepository(Invoice) private readonly invoice: Repository<Invoice>,
     @InjectRepository(InvoiceItems)
     private readonly invoiceItem: Repository<InvoiceItems>,
-  ) { }
+  ) {}
 
   async getInvoice(id: number) {
     return await this.invoice.findOne({
@@ -130,8 +130,5 @@ export class invoiceServices {
       throw err;
     }
   }
-  async count() {
-    const [, invoice] = await this.invoice.findAndCount()
-    return invoice
-  }
+   
 }

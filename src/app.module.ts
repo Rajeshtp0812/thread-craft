@@ -37,7 +37,7 @@ import { product } from './entity/product.entity';
         port: configService.get('dbPort'),
         database: configService.get('database'),
         autoLoadEntities: true,
-        dropSchema: false,
+        dropSchema: true,
         synchronize: true,
         entities: [User, Company, Client, vendor, Invoice, InvoiceItems, productAllotment, product],
       }),
