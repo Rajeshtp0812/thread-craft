@@ -17,15 +17,15 @@ export class AppService {
 
   }
    
-  async count(){
+  async count(companyId:number){
        const [product,company,vendor,client,invoice]=await Promise.all([
-         this.productService.count(),
-         this.companyService.count(),
-         this.vendorService.count(),
-         this.clientService.count(),
-         this.invoiceService.count()
+         this.productService.getProducts(companyId),
+         this.companyService.getCompanies(),
+         this.vendorService.getVendors(companyId),
+         this.clientService.getClients(companyId),
+         this.invoiceService.getInvoices(companyId)
        ])
 
-       return {product,company,vendor,client,invoice}
+       return {product:product.length,company:company.length,vendor:vendor.length,client:client.length,invoice:invoice.length}
   }
 }

@@ -6,8 +6,9 @@ import { Repository } from 'typeorm';
 
 @Injectable()
 export class vendorServices {
-
-  constructor(@InjectRepository(vendor) private readonly vendor: Repository<vendor>) { }
+  constructor(
+    @InjectRepository(vendor) private readonly vendor: Repository<vendor>,
+  ) {}
 
   async getOnevendor(id: number) {
     try {
@@ -17,15 +18,17 @@ export class vendorServices {
         },
       });
     } catch (err) {
-      throw (err);
+      throw err;
     }
   }
 
   async getVendors(companyId: number): Promise<vendor[]> {
     try {
-      return (await this.vendor.find({ relations: ["company"] })).filter(vendor => vendor.company.companyId === companyId);
+      return (await this.vendor.find({ relations: ['company'] })).filter(
+        (vendor) => vendor.company.companyId === companyId,
+      );
     } catch (err) {
-      throw (err);
+      throw err;
     }
   }
 
@@ -34,7 +37,7 @@ export class vendorServices {
       data['company'] = companyId;
       return await this.vendor.save(data);
     } catch (err) {
-      throw (err);
+      throw err;
     }
   }
 
@@ -42,20 +45,16 @@ export class vendorServices {
     try {
       return this.vendor.update({ vendorId: id }, data);
     } catch (err) {
-      throw (err);
+      throw err;
     }
-
   }
 
   async deleteVendor(id: number) {
     try {
-      return await this.vendor.delete({ vendorId: id })
+      return await this.vendor.delete({ vendorId: id });
     } catch (err) {
-      throw (err);
+      throw err;
     }
   }
-  async count(){
-    const [,vendor]= await this.vendor.findAndCount()
-    return vendor
-  }
+  
 }

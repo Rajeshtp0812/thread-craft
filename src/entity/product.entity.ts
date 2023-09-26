@@ -36,7 +36,7 @@ export class product {
   @Column({ name: 'average', default: '' })
   average: string;
 
-  @Column({ name: 'embroidary', nullable: true })
+  @Column({ name: 'embroidary', default: '' })
   embroidary: string;
 
   @Column({ name: 'fittingStich', default: '' })

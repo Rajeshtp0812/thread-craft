@@ -27,7 +27,7 @@ export class productServices {
   async getProducts(companyId: number): Promise<product[]> {
     try {
       return (await this.product.find({ relations: ['company'] })).filter(
-        (client) => client.company.companyId === companyId,
+        (product) => product.company.companyId === companyId,
       );
     } catch (err) {
       throw err;
@@ -64,8 +64,5 @@ export class productServices {
     }
   }
 
-  async count(){
-    const [,number]= await this.product.findAndCount()
-    return number
-  }
+   
 }

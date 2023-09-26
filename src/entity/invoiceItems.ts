@@ -21,13 +21,13 @@ export class InvoiceItems extends BaseEntity {
   @Column({ name: 'hsnCode', default: '' })
   hsnCode: string;
 
-  @Column({ name: 'Rate' })
+  @Column({ name: 'Rate', type:"decimal",precision:10,scale:2})
   rate: number;
 
   @Column({ name: 'Quantity' })
   quantity: number;
 
-  @Column({ name: 'Amount' })
+  @Column({ name: 'Amount', type:"decimal",precision:10,scale:2 })
   amount: number;
 
   @ManyToOne((type) => Invoice, invoice => invoice.invoiceItems, { onDelete: "CASCADE" })

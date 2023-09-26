@@ -22,7 +22,7 @@ export class productAllotmentServices {
     }
   }
 
-  async getAllotedProducts(id:number): Promise<productAllotment[]> {
+  async getAllotedProducts(id:number): Promise<productAllotment[] > {
     try {
       return await (await this.productAllotment.find({
         relations: ['company',  "vendor"]
@@ -52,8 +52,5 @@ export class productAllotmentServices {
   async deleteAllotedProduct(id: number) {
     return await this.productAllotment.delete({ productAllotmentId: id });
   }
-  async count(){
-    const [,product]= await this.productAllotment.findAndCount()
-    return product
-  }
+ 
 }
