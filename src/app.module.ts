@@ -38,7 +38,7 @@ import { product } from './entity/product.entity';
         database: configService.get('database'),
         autoLoadEntities: true,
         dropSchema: false,
-        synchronize: true,
+        // synchronize: true,
         entities: [User, Company, Client, vendor, Invoice, InvoiceItems, productAllotment, product],
       }),
     }),

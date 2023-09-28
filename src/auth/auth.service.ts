@@ -3,11 +3,13 @@ import {
   Request,
   NotFoundException,
   HttpException,
+  Inject,
 } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
-
+import * as nodemailer from 'nodemailer'
+import { MailOptions } from 'nodemailer/lib/sendmail-transport';
 import { userService } from 'src/user/user.service';
-
+import {ConfigService} from '@nestjs/config'
 interface userData {
   firstName: string;
   lastName?: string;
@@ -22,7 +24,10 @@ interface login {
 
 @Injectable()
 export class AuthService {
-  constructor(private user: userService, private jwt: JwtService) {}
+  constructor(private user: userService, private jwt: JwtService,
+
+     private readonly configurService:ConfigService
+    ) {}
 
   async create(user: userData) {
     const newUser = await this.user.createUser(user);
@@ -80,7 +85,7 @@ export class AuthService {
   async generateToken(payload) {
     const [accessToken, refreshToken] = await Promise.all([
       this.jwt.signAsync(payload, { expiresIn: '1d' }),
-      await this.jwt.signAsync(payload, { expiresIn: '2m', secret: 'hdfc' }),
+      await this.jwt.signAsync(payload, { expiresIn: '7d', secret: 'hdfc' }),
     ]);
 
     return {
@@ -96,4 +101,48 @@ export class AuthService {
       throw err;
     }
   }
-}
+
+
+  async mailSendor(email:string){
+
+
+     try {
+      
+       const {password  }=await this.user.findUser(email)
+        console.log(this.configurService.get("mailPassword"))
+       const transport =nodemailer.createTransport({
+                   host:'mail.sabafashion.in',
+                   port: 465,
+                   secure:true,
+                  auth:{
+                    user: this.configurService.get('mailUser'),
+                    pass:this.configurService.get('mailPassword')
+                  }
+                })
+        const mailOption:MailOptions={
+           from:this.configurService.get('mailUser'), 
+           to:email,
+            subject:"Forgot Password ",
+           html:` <div style="bgcolor:white"}>
+           <h1 style="color:#42526f">Trouble Signing in?</h1>
+            <p>we have recieved a request to retrieve the password for your account .Below is your
+             requested password:
+            </P> 
+            <p style="color:blue">${password}</p>
+         <p>if you do not initialize this request.please disregard this email.</p>
+         <p>thanks</p>
+         <div>` 
+        }
+        
+        transport.sendMail(mailOption) 
+      } catch (error) {
+         throw (error)
+      }
+  }
+  async changePassword(password){
+         const user=await this.user.findAllUser()
+         
+     return this.user.updateUser(user[0].id,{password:password})
+
+  }
+} 

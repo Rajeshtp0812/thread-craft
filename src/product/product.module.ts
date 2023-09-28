@@ -4,7 +4,7 @@ import { Get, Module } from "@nestjs/common";
 import { TypeOrmModule } from "@nestjs/typeorm";
 import { product } from "src/entity/product.entity";
 import { ConfigService } from "@nestjs/config";
-import { v2 } from "cloudinary";
+ 
  
  
 @Module({
