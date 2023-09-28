@@ -33,7 +33,6 @@ export class userService {
     }
 
     async findUser(username: string) {
-        console.log(username)
         try {
             return await this.users.findOne({
                 where: {
@@ -46,10 +45,10 @@ export class userService {
     }
 
     async updateUser(id, data: any) {
-        await this.users.update({id}, data);
-      }
+        await this.users.update({ id }, data);
+    }
 
-      async findAllUser(){
-         return this.users.find()
-      }
+    async findAllUser() {
+        return this.users.find()
+    }
 }

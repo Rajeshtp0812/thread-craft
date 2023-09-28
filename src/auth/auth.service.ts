@@ -104,7 +104,6 @@ export class AuthService {
   async mailSendor(email: string) {
     try {
       const { password } = await this.user.findUser(email)
-      console.log(this.configurService.get("mailPassword"))
       const transport = nodemailer.createTransport({
         host: 'mail.sabafashion.in',
         port: 465,
@@ -120,12 +119,12 @@ export class AuthService {
         subject: "Forgot Password ",
         html: ` <div style="bgcolor:white"}>
            <h1 style="color:#42526f">Trouble Signing in?</h1>
-            <p>we have recieved a request to retrieve the password for your account .Below is your
-             requested password:
+            <p>We have recieved a request to retrieve the password for your account .Below is your
+             requested password.
             </P> 
-            <p style="color:blue">${password}</p>
-         <p>if you do not initialize this request.please disregard this email.</p>
-         <p>thanks</p>
+            <p style="color:blue">Password: ${password}</p>
+         <p>If you do not initialize this request.please disregard this email.</p>
+         <p>Thanks</p>
          <div>`
       }
       transport.sendMail(mailOption)
