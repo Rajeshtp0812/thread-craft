@@ -9,7 +9,7 @@ import { JwtService } from '@nestjs/jwt';
 import * as nodemailer from 'nodemailer'
 import { MailOptions } from 'nodemailer/lib/sendmail-transport';
 import { userService } from 'src/user/user.service';
-import {ConfigService} from '@nestjs/config'
+import { ConfigService } from '@nestjs/config'
 interface userData {
   firstName: string;
   lastName?: string;
@@ -26,8 +26,8 @@ interface login {
 export class AuthService {
   constructor(private user: userService, private jwt: JwtService,
 
-     private readonly configurService:ConfigService
-    ) {}
+    private readonly configurService: ConfigService
+  ) { }
 
   async create(user: userData) {
     const newUser = await this.user.createUser(user);
@@ -66,7 +66,7 @@ export class AuthService {
 
   async refresh(id) {
     try {
-      const [isUser ]= await this.user.findById(id);
+      const [isUser] = await this.user.findById(id);
 
       const { accessToken, refreshToken } = await this.generateToken({
         id: id,
@@ -87,7 +87,6 @@ export class AuthService {
       this.jwt.signAsync(payload, { expiresIn: '1d' }),
       await this.jwt.signAsync(payload, { expiresIn: '7d', secret: 'hdfc' }),
     ]);
-
     return {
       accessToken,
       refreshToken,
@@ -102,28 +101,24 @@ export class AuthService {
     }
   }
 
-
-  async mailSendor(email:string){
-
-
-     try {
-      
-       const {password  }=await this.user.findUser(email)
-        console.log(this.configurService.get("mailPassword"))
-       const transport =nodemailer.createTransport({
-                   host:'mail.sabafashion.in',
-                   port: 465,
-                   secure:true,
-                  auth:{
-                    user: this.configurService.get('mailUser'),
-                    pass:this.configurService.get('mailPassword')
-                  }
-                })
-        const mailOption:MailOptions={
-           from:this.configurService.get('mailUser'), 
-           to:email,
-            subject:"Forgot Password ",
-           html:` <div style="bgcolor:white"}>
+  async mailSendor(email: string) {
+    try {
+      const { password } = await this.user.findUser(email)
+      console.log(this.configurService.get("mailPassword"))
+      const transport = nodemailer.createTransport({
+        host: 'mail.sabafashion.in',
+        port: 465,
+        secure: true,
+        auth: {
+          user: this.configurService.get('mailUser'),
+          pass: this.configurService.get('mailPassword')
+        }
+      })
+      const mailOption: MailOptions = {
+        from: this.configurService.get('mailUser'),
+        to: email,
+        subject: "Forgot Password ",
+        html: ` <div style="bgcolor:white"}>
            <h1 style="color:#42526f">Trouble Signing in?</h1>
             <p>we have recieved a request to retrieve the password for your account .Below is your
              requested password:
@@ -131,18 +126,16 @@ export class AuthService {
             <p style="color:blue">${password}</p>
          <p>if you do not initialize this request.please disregard this email.</p>
          <p>thanks</p>
-         <div>` 
-        }
-        
-        transport.sendMail(mailOption) 
-      } catch (error) {
-         throw (error)
+         <div>`
       }
+      transport.sendMail(mailOption)
+    } catch (error) {
+      throw (error)
+    }
   }
-  async changePassword(password){
-         const user=await this.user.findAllUser()
-         
-     return this.user.updateUser(user[0].id,{password:password})
 
+  async changePassword(password) {
+    const user = await this.user.findAllUser();
+    return this.user.updateUser(user[0].id, password);
   }
 } 
