@@ -9,7 +9,11 @@ export const config=()=>({
     database:process.env.DB_NAME,
     port: process.env.PORT,
     jwtSecret:process.env.JWT_SECRET,
-    cloud_name:process.env.Cloud_Name,
-    api_key:  process.env.Api_Key,
-    api_secret:  process.env.Api_Secret
+    mailHost:process.env.MAIL_HOST,
+    mailPort:process.env.MAIL_PORT,
+    mailUser:process.env.MAIL_USER,
+    mailPassword:process.env.MAIL_PASSWORD
+
+    
+   
 })
