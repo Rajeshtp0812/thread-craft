@@ -2,9 +2,6 @@ import { BaseEntity, Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColu
 import { Company } from "./company.entity";
 import { vendor } from "./vendor.entity";
  
-  
-
-
 @Entity({ name: "productallotment" })
 export class productAllotment extends BaseEntity {
 
@@ -20,25 +17,24 @@ export class productAllotment extends BaseEntity {
   @Column({ name: "ProductQuantity"})
   productQuantity: number
 
-  @Column({ name: "VendorRate"  })
+  @Column({ name: "VendorRate",type:"decimal" ,precision:10,scale:2 })
   vendorRate: number
 
   @Column({ name: "DeliveryDate", default:"" })
   deliveryDate: string
 
-  @Column({ name: "Amount",  nullable:true})
+  @Column({ name: "Amount",  nullable:true,type:"decimal",precision:10,scale:2})
   totalAmount: number
 
-  @Column({ name: "AdvancePayment",  nullable:true })
+  @Column({ name: "AdvancePayment",  nullable:true ,type:"decimal",precision:10,scale:2})
   advancePayment: number
 
-  @Column({ name: "balanceAmmount",  nullable:true })
+  @Column({ name: "balanceAmmount",  nullable:true ,type:"decimal",precision:10,scale:2})
   balanceAmount: number
 
   @Column({ name: "Description" })
   description: string
 
-  
   @Column({name:"product",default:""})
   product:  string
 
