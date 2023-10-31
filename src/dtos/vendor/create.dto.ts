@@ -11,8 +11,12 @@ export class createVendorDto {
   ownerName: string;
 
   @IsString()
-  @IsNotEmpty()
+  @IsNotEmpty() 
   companyName: string;
+
+  @IsString()
+  @IsNotEmpty()
+   gst: string;
 
   @IsString()
   @IsNotEmpty()

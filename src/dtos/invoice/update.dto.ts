@@ -53,6 +53,10 @@ export class updateInvoiceDto {
 
   @IsNumber()
   @IsOptional()
+  grossAmount: number;
+
+  @IsNumber()
+  @IsOptional()
   totalAmount: number;
 
   @IsString()

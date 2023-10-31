@@ -24,7 +24,7 @@ import {
     @Column({ name: 'address' })
     address: string;
   
-    @Column({ default: '', name: 'gst' })
+    @Column({ default: '', name: 'alternateContact' })
     alternateContact: string;
   
     @Column({ name: 'pinCode' })
@@ -35,6 +35,9 @@ import {
   
     @Column({ name: 'city' })
     city: string;
+
+    @Column({ name: 'gst' })
+    gst: string;
   
     @ManyToOne(() => Company, (company) => company, { onDelete: 'CASCADE' })
     @JoinColumn({ name: 'companyCompanyId' })
