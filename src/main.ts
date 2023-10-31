@@ -12,8 +12,8 @@ async function bootstrap() {
   const app = await NestFactory.create<NestApplication>(AppModule);
 
   await app.useGlobalPipes(new ValidationPipe());
-  app.enableCors({
-    origin: "*",
+  app.enableCors({ 
+    origin: "*",  
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
     credentials: true, 
   });
@@ -50,7 +50,7 @@ async function bootstrap() {
     } else {
       return res.status(401).send('Unauthorized');
     }
-  });
+  }); 
 
   const port = configService.get('port');
   await app.listen(port);

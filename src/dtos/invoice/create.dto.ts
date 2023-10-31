@@ -48,6 +48,9 @@ export class createInvoiceDto {
   @IsNotEmpty()
   cgstPercent: number;
 
+  @IsNotEmpty()
+   grossAmount: number;
+
    
   @IsNotEmpty()
   sgstAmount: number;

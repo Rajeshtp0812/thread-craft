@@ -49,6 +49,7 @@ export class invoiceServices {
         amountInWords,
         companyId,
         clientId,
+        grossAmount
       } = data;
       const invoice = new Invoice();
       invoice.invoiceNumber = invoiceNumber;
@@ -66,6 +67,7 @@ export class invoiceServices {
       invoice.totalAmount = totalAmount;
       invoice.company = companyId;
       invoice.client = clientId;
+      invoice.grossAmount=grossAmount
       const items = data.invoiceItems.map((itemData) => {
         const item = new InvoiceItems();
         const { amount, code, hsnCode, description, quantity, rate } = itemData;

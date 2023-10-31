@@ -46,6 +46,9 @@ export class Invoice extends BaseEntity {
   @Column({ name: 'SgstPercent' ,type:'decimal', precision:10,scale:2})
   sgstPercent: number;
 
+  @Column({ name: 'Gross Amount' ,type:'decimal', precision:10,scale:2})
+   grossAmount: number;
+
   @Column({ name: 'TotalAmount',type:'decimal', precision:10,scale:2 })
   totalAmount: number;
 

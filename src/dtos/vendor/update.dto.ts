@@ -15,6 +15,10 @@ export class updateVendorDto {
 
   @IsString()
   @IsOptional()
+   gst: string;
+
+  @IsString()
+  @IsOptional()
   contact: string;
 
   @IsString()
